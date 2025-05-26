@@ -1,0 +1,41 @@
+#ifndef LIBRO_H_INCLUDED
+#define LIBRO_H_INCLUDED
+
+#include<iostream>
+#include<string>
+
+#include "funcionesMain.h"
+
+using namespace std;
+
+class libro{
+    string nombre;
+    string area;
+    string sub_area;
+    string autores;
+    string editorial;
+    string anio_P;
+    string estado;
+
+///atributos agregados
+    char ubicacionL[2];// 4( columna )  _  3( fila )
+    bool estadoSN;//1 ( DISPONIBLE ) / 0 ( NO DISPONIBLE )
+
+public :
+    libro(string, string, string, string, string, string);
+    //~libro();
+    void generar_barras();
+    void mostrarLibro();
+
+    //getters
+    string get_nombre();
+    string get_area() ;
+    string get_sub_area();
+    string get_autores() ;
+    string get_editorial();
+    string get_anio_P();
+    bool   getEstadoSN();
+
+};
+
+#endif // LIBRO_H_INCLUDED
