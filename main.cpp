@@ -136,6 +136,8 @@ int main()
                         /**VER LIBRO
                                 - MUESTRA TODOS LOS LIBROS*/
 
+                        mostrarL(vector_Libro);
+
                         break;
 
                     case '2' :

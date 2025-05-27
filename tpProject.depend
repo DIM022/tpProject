@@ -94,13 +94,27 @@
 	"libroH.h"
 	"func.h"
 
-1748378188 source:c:\users\marin\onedrive\escritorio\tpproject\buscar_libros.cpp
+1748368994 D
+
+1748379722 source:c:\users\marin\onedrive\escritorio\tpproject\buscar_libros.cpp
 	"buscar_libros.h"
 	"funcionesLibro.h"
 
-1748378188 c:\users\marin\onedrive\escritorio\tpproject\buscar_libros.h
+1748379722 c:\users\marin\onedrive\escritorio\tpproject\buscar_libros.h
 	<vector>
 	"libroH.h"
+
+1748378974 uLibro
+	<vector>
+	"libroH.h"
+	<vector>
+	<sstream>
+	<fstream>
+	"libroH.h"
+	"libroH.h"
+	"funcionesLibro.h"
+	"funcionesMain.h"
+	"gestionVectorSocio.h"
 
 1748374124 c:\users\marin\onedrive\escritorio\tpproject\libroh.h
 	<iostream>
@@ -126,7 +140,7 @@
 1748368994 source:c:\users\marin\onedrive\escritorio\tpproject\cargar_libros.cpp
 	"cargar_libros.h"
 
-1748378188 c:\users\marin\onedrive\escritorio\tpproject\cargar_libros.h
+1748379722 c:\users\marin\onedrive\escritorio\tpproject\cargar_libros.h
 	<vector>
 	<sstream>
 	<fstream>
@@ -164,13 +178,13 @@
 	"socioH.h"
 	"libroH.h"
 
-1748378188 source:c:\users\marin\onedrive\escritorio\tpproject\libro.cpp
+1748379722 source:c:\users\marin\onedrive\escritorio\tpproject\libro.cpp
 	"libroH.h"
 
 1748368994 source:c:\users\marin\onedrive\escritorio\tpproject\socio.cpp
 	"socioH.h"
 
-1748280203 source:c:\users\marin\onedrive\escritorio\tpproject\main.cpp
+1748379806 source:c:\users\marin\onedrive\escritorio\tpproject\main.cpp
 	<iostream>
 	<string>
 	<fstream>
@@ -199,7 +213,7 @@
 	<unordered_map>
 	<vector>
 
-1748378188 source:c:\users\marin\onedrive\escritorio\tpproject\funcioneslibro.cpp
+1748379722 source:c:\users\marin\onedrive\escritorio\tpproject\funcioneslibro.cpp
 	"funcionesLibro.h"
 
 1747862549 c:\users\marin\onedrive\escritorio\tpproject\gestorvectorsocio.h
@@ -216,7 +230,7 @@
 	"funcionesMain.h"
 	"funcionesLibro.h"
 
-1748378188 source:c:\users\marin\onedrive\escritorio\tpproject\gestionvectorsocio.cpp
+1748379722 source:c:\users\marin\onedrive\escritorio\tpproject\gestionvectorsocio.cpp
 	"funcionesMain.h"
 	"gestionVectorSocio.h"
 

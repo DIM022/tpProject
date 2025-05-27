@@ -8,6 +8,6 @@
 #include "libroH.h"
 
 ///TOMA LOS DATOS DEL ARCHIVO LIBRO
-vector<libro> cargarLibro(string nombre_archivo);
+vector<libro> cargarLibro(string);
 
 #endif//fin del if

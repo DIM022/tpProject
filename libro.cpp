@@ -41,7 +41,8 @@ bool libro::getEstadoSN(){
 }
 
 void libro:: mostrarLibro(){
-        cout<<"--------------------"<<endl;
+
+        cout<< "-----------------------"<<endl;
         cout<<"Nombre: "<<quitar_tildes(nombre)<<endl;
         cout<<"Area: "<<quitar_tildes(area)<<endl;
         cout<<"Sub Area: "<<quitar_tildes(sub_area)<<endl;
