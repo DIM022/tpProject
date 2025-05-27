@@ -182,3 +182,13 @@ void busqueda_libros(vector<libro> libros) {
     	}
 	}
 }
+
+void mostrarL(vector <libro>& vectorLibro){
+
+    for(size_t i=0; i<vectorLibro.size(); i++){
+
+        cout<< "--------------------"<<endl;
+        vectorLibro[i].mostrarLibro();
+    }
+
+}

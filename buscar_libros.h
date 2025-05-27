@@ -6,5 +6,6 @@
 #include "libroH.h"
 
 void busqueda_libros(vector<libro> libros);
+void mostrarL(vector <libro>& vectorLibro);
 
 #endif

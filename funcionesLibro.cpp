@@ -166,13 +166,3 @@ bool es_entero_valido(string s) {
     }
     return true;
 }
-
-void mostrarL(vector <libro>& vectorLibro){
-
-    for(size_t i=0; i<vectorLibro.size(); i++){
-
-        cout<< "--------------------"<<endl;
-        vectorLibro.mostrarLibro();
-    }
-
-}
