@@ -18,7 +18,7 @@ class libro{
     string estado;
 
 ///atributos agregados
-    char ubicacionL[2];// 4( columna )  _  3( fila )
+    int ubicacionL[2];// 4( columna )  _  3( fila )
     bool estadoSN;//1 ( DISPONIBLE ) / 0 ( NO DISPONIBLE )
 
 public :
@@ -34,7 +34,10 @@ public :
     string get_autores() ;
     string get_editorial();
     string get_anio_P();
+    string getEstado();
     bool   getEstadoSN();
+    int    getColumna();
+    int    getFila();
 
 };
 

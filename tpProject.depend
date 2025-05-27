@@ -96,7 +96,7 @@
 
 1748368994 D
 
-1748379722 source:c:\users\marin\onedrive\escritorio\tpproject\buscar_libros.cpp
+1748385051 source:c:\users\marin\onedrive\escritorio\tpproject\buscar_libros.cpp
 	"buscar_libros.h"
 	"funcionesLibro.h"
 
@@ -116,7 +116,7 @@
 	"funcionesMain.h"
 	"gestionVectorSocio.h"
 
-1748374124 c:\users\marin\onedrive\escritorio\tpproject\libroh.h
+1748383475 c:\users\marin\onedrive\escritorio\tpproject\libroh.h
 	<iostream>
 	<string>
 	"funcionesMain.h"
@@ -178,13 +178,13 @@
 	"socioH.h"
 	"libroH.h"
 
-1748379722 source:c:\users\marin\onedrive\escritorio\tpproject\libro.cpp
+1748383475 source:c:\users\marin\onedrive\escritorio\tpproject\libro.cpp
 	"libroH.h"
 
 1748368994 source:c:\users\marin\onedrive\escritorio\tpproject\socio.cpp
 	"socioH.h"
 
-1748379806 source:c:\users\marin\onedrive\escritorio\tpproject\main.cpp
+1748384602 source:c:\users\marin\onedrive\escritorio\tpproject\main.cpp
 	<iostream>
 	<string>
 	<fstream>

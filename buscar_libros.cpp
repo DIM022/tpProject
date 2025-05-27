@@ -1,26 +1,26 @@
 #include "buscar_libros.h"
 #include "funcionesLibro.h"
 
-int estadoBSN = 0;
+int columnaB = 0, filaB = 0;
+int opcionCase7 = 0;
+string busquedaEstado = "";
+char eleccion = 0;
 
 void busqueda_libros(vector<libro> libros) {
-
-	string eleccion;
 
 	do {
 		cout<<"Seleccione una opcion de busqueda y filtrado de libros: "<<endl;
 		cout<<" 1.Nombre\n 2.Area\n 3.Sub Area\n 4.Autores\n 5.Editorial\n 6.Anio de Publicacion\n"
-            << "7.Estado ( Disponible / No Disponible )\n 8.Ubicacion\n 9.Estado(Prestado, Devuelto)\n"<<endl;
-		cin>>eleccion;
+            << "7.Estado ( Disponible / No Disponible )\n 8.Ubicacion\n 9.Estado(Bueno - Regular - Malo - Destruido)\n"
+            << " 'S'/Salir"<< endl;
+		cin>> eleccion;
+		cin.ignore();
 
-	} while(eleccion != "1" && eleccion != "2" && eleccion != "3" && eleccion != "4" && eleccion != "5" && eleccion != "6" && eleccion != "7" && eleccion != "8" && eleccion != "9" );
+	} while(eleccion != '1' && eleccion != '2' && eleccion != '3' && eleccion != '4' && eleccion != '5' && eleccion != '6' && eleccion != '7' && eleccion != '8' && eleccion != '9' && eleccion != 'S' && eleccion != 's' );
 
-    //todas tienen que ser falsas para seguir pidiendo el ingreso;
-	int opcion = 0;
-	opcion = stoi(eleccion);
 
-	switch(opcion) {
-    	case 1: {
+	switch(eleccion) {
+    	case  '1' : {
     		bool band;
     		string nombre_busc;
     		cin.ignore();
@@ -40,7 +40,7 @@ void busqueda_libros(vector<libro> libros) {
     		} while(!band && nombre_busc != "E" && nombre_busc != "e");
     		break;
     	}
-    	case 2: {
+    	case '2' : {
     		string area_busc;
     		bool exist = false;
     		cin.ignore();
@@ -62,7 +62,7 @@ void busqueda_libros(vector<libro> libros) {
     		} while(/*!exist &&*/ area_busc != "E" && area_busc != "e");
     		break;
     	}
-    	case 3: {
+    	case '3' : {
     		cin.ignore();//limpiar buffer
     		bool encontrado;
     		string subarea_busc;
@@ -81,7 +81,8 @@ void busqueda_libros(vector<libro> libros) {
     		} while(!encontrado && subarea_busc != "E" && subarea_busc != "e");
     		break;
     	}
-    	case 4: {
+
+    	case '4' : {
     		bool band;
     		string autor_busc;
     		cin.ignore();
@@ -100,7 +101,7 @@ void busqueda_libros(vector<libro> libros) {
     		} while(!band && autor_busc != "E" && autor_busc != "e");
     		break;
     	}
-    	case 5: {
+    	case '5' : {
     		bool band;
     		string edi_busc;
     		cin.ignore();
@@ -123,7 +124,7 @@ void busqueda_libros(vector<libro> libros) {
     		} while(!band && edi_busc != "E" && edi_busc != "e");
     		break;
     	}
-    	case 6: {
+    	case '6' : {
     		string anio_busc;
     		bool band;
     		do {
@@ -142,21 +143,21 @@ void busqueda_libros(vector<libro> libros) {
     		break;
     	}
 
-    	case 7: {
+    	case '7' : {
     	    bool band;
 
                do {
                 band = false;
 
     			cout<<" 1/LIBROS NO DISPONIBLES     2/ LIBROS DISPONIBLES   3/SALIR"<<endl;
-    			cin >> estadoBSN;
+    			cin >> opcionCase7;
 
-                if(estadoBSN == 1 || estadoBSN == 2){
+                if(opcionCase7 == 1 || opcionCase7 == 2){
 
-                    estadoBSN -=1;
+                    opcionCase7 -=1;
                     for(size_t i = 0; i < libros.size(); i++){
 
-                        if(estadoBSN == libros[i].getEstadoSN() ){
+                        if(opcionCase7 == libros[i].getEstadoSN() ){
 
                             libros[i].mostrarLibro();
 
@@ -164,20 +165,59 @@ void busqueda_libros(vector<libro> libros) {
                     }
                      band = false;
 
-                }else if(estadoBSN != 1 && estadoBSN != 2 && estadoBSN != 3){
+                }else if(opcionCase7 != 1 && opcionCase7 != 2 && opcionCase7 != 3){
                    cout<< "OPCION INVALIDA"<< endl;
                    band = true;
                 }
 
-    		} while(!band && estadoBSN != 3);
+    		} while(!band && opcionCase7 != 3);
     	}
-    	case 8: {
+    	case '8' : {
+
+    	    cout<< "INGRESE UBICACION DEL LIBRO"<< endl;
+    	    cout<< "COLUMNA: ";
+    	    cin >> columnaB;
+    	    cin.ignore();
+
+    	    cout<< "FILA: ";
+    	    cin >> filaB;
+    	    cin.ignore();
+
+    	    for(size_t i=0; i<libros.size(); i++){
+
+                if( ( columnaB == libros[i].getColumna() ) && ( filaB == libros[i].getFila() ) ){
+
+                    libros[i].mostrarLibro();
+                }
+    	    }
+
     		break;
     	}
-    	case 9: {
+    	case '9' : {
+
+    	    cout<< "INGRESE EL ESTADO  QUE QUIERE BUSCAR ( BUENO - REGULAR - MALO - DESTRUIDO ): ";
+    	    cin >> busquedaEstado;
+
+    	    busquedaEstado = a_minusculas(busquedaEstado);
+
+    	    for(size_t i=0; i< libros.size(); i++){
+
+                if(busquedaEstado == libros[i].getEstado() ){
+
+                    libros[i].mostrarLibro();
+                }
+    	    }
+
     		break;
+    	}
+
+    	case 's' | 'S' : {
+
+            cout<< "SALIENDO"<< endl;
+            break;
     	}
     	default: {
+    	    cout<< "OPCION INVALIDA ( MENU BUSQUEDA_LIBRO )"<< endl;
     		break;
     	}
 	}

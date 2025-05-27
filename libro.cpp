@@ -1,6 +1,7 @@
 #include "libroH.h"
 
 using namespace std;
+
 //constructor
 libro::libro(string n, string a , string s, string aut, string edi, string ani){
     nombre = n;
@@ -35,9 +36,24 @@ string libro::get_anio_P()  {
     return anio_P;
 }
 
+string libro::getEstado(){
+
+    return estado;
+}
+
 bool libro::getEstadoSN(){
 
     return estadoSN;
+}
+
+int libro::getColumna(){
+
+    return ubicacionL[0];
+}
+
+int libro::getFila(){
+
+    return ubicacionL[1];
 }
 
 void libro:: mostrarLibro(){

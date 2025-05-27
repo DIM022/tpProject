@@ -137,7 +137,6 @@ int main()
                                 - MUESTRA TODOS LOS LIBROS*/
 
                         mostrarL(vector_Libro);
-
                         break;
 
                     case '2' :
@@ -153,6 +152,7 @@ int main()
                         /**AGREGAR LIBRO
                                 -AGREGAR LIBRO
                         */
+
                     default :
                         cout<< "OPCION INCORRECTA ( MENU LIBRO )"<< endl;
                 }
@@ -167,6 +167,10 @@ int main()
 
                 ///SUBIR CAMBIO SOCIO
                 subirCambios(vector_Socio);
+                break;
+
+            default :
+                cout<< "OPCION INCORRECTA ( MENU MAIN )"<< endl;
                 break;
         }
 
