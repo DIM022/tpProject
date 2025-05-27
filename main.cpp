@@ -135,7 +135,7 @@ int main()
                     case '1' :
                         /**VER LIBRO
                                 - MUESTRA TODOS LOS LIBROS*/
-                        mostrar(vector_Libro);
+                        mostrarL(vector_Libro);
                         break;
 
                     case '2' :

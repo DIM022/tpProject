@@ -1,0 +1,7 @@
+#ifndef GESTIONVECTORLIBRO_H_INCLUDED
+#define GESTIONVECTORLIBRO_H_INCLUDED
+
+
+void agregarLibro(vector <libro>&);
+
+#endif // GESTIONVECTORLIBRO_H_INCLUDED

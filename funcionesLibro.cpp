@@ -167,14 +167,12 @@ bool es_entero_valido(string s) {
     return true;
 }
 
-void mostrar(vector<libro>& vectorLibro){
+void mostrarL(vector <libro>& vectorLibro){
 
-     cout<< "LIBROS"<<endl;
-    for(size_t i = 0; i<vectorLibro.size(); i++){
-        cout<< "---------------"<< endl;
-        cout<< "- ";
-        vectorLibro[i].mostrarLibro();
+    for(size_t i=0; i<vectorLibro.size(); i++){
+
+        cout<< "--------------------"<<endl;
+        vectorLibro.mostrarLibro();
     }
-        cout<< "---------------"<< endl;
-}
 
+}
