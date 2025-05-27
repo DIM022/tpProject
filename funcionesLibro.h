@@ -18,6 +18,4 @@ string borrar_espacios(string texto);
 string quitar_tildes(string texto);
 bool es_entero_valido(string s);
 
-void mostrar(vector<libro>&);
-
 #endif //cierra condicion del ifndef
