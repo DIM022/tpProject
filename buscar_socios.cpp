@@ -1,7 +1,6 @@
 #include "buscar_socios.h"
-#include "funcionesLibro.h"
 
-int busqueda_socios(vector<socio>& socios){
+int busquedaSocios(vector<socio>& socios){
 
 	string eleccion;
 	int flagDNI = -1;///INDICA EL INDICE DEL SOCIO ENCONTRADO -- USADO EN MAIN -- LINEA  78

@@ -1,5 +1,4 @@
 #include "funcionesMain.h"
-
 #include "gestionVectorSocio.h"
 
 using namespace std;
@@ -78,10 +77,11 @@ void subirCambios(vector <socio>& vector_Socio){
 
     fstream file;
     string aux;
-    int cont = 0;
 
 /**COMENTADO : AGREGA DNI A LOS SOCIOS */
 /*
+    int cont = 0;
+
     for(size_t i=0; i<vector_Socio.size(); i++){
 
         if (i <= 50) {

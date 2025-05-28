@@ -96,11 +96,11 @@
 
 1748368994 D
 
-1748385051 source:c:\users\marin\onedrive\escritorio\tpproject\buscar_libros.cpp
+1748458416 source:c:\users\marin\onedrive\escritorio\tpproject\buscar_libros.cpp
 	"buscar_libros.h"
 	"funcionesLibro.h"
 
-1748379722 c:\users\marin\onedrive\escritorio\tpproject\buscar_libros.h
+1748458416 c:\users\marin\onedrive\escritorio\tpproject\buscar_libros.h
 	<vector>
 	"libroH.h"
 
@@ -116,7 +116,7 @@
 	"funcionesMain.h"
 	"gestionVectorSocio.h"
 
-1748383475 c:\users\marin\onedrive\escritorio\tpproject\libroh.h
+1748461192 c:\users\marin\onedrive\escritorio\tpproject\libroh.h
 	<iostream>
 	<string>
 	"funcionesMain.h"
@@ -125,28 +125,28 @@
 	<vector>
 	<string>
 
-1748368994 source:c:\users\marin\onedrive\escritorio\tpproject\buscar_socios.cpp
+1748460178 source:c:\users\marin\onedrive\escritorio\tpproject\buscar_socios.cpp
 	"buscar_socios.h"
-	"funcionesLibro.h"
 
-1748368994 c:\users\marin\onedrive\escritorio\tpproject\buscar_socios.h
+1748460178 c:\users\marin\onedrive\escritorio\tpproject\buscar_socios.h
 	<vector>
 	"socioH.h"
+	"funcionesLibro.h"
 
 1747865651 c:\users\marin\onedrive\escritorio\tpproject\socioh.h
 	<iostream>
 	<string>
 
-1748368994 source:c:\users\marin\onedrive\escritorio\tpproject\cargar_libros.cpp
+1748458416 source:c:\users\marin\onedrive\escritorio\tpproject\cargar_libros.cpp
 	"cargar_libros.h"
 
-1748379722 c:\users\marin\onedrive\escritorio\tpproject\cargar_libros.h
+1748458412 c:\users\marin\onedrive\escritorio\tpproject\cargar_libros.h
 	<vector>
 	<sstream>
 	<fstream>
 	"libroH.h"
 
-1748368994 source:c:\users\marin\onedrive\escritorio\tpproject\cargar_socios.cpp
+1748458416 source:c:\users\marin\onedrive\escritorio\tpproject\cargar_socios.cpp
 	"cargar_socios.h"
 
 1747865418 c:\users\marin\onedrive\escritorio\tpproject\cargar_socios.h
@@ -178,13 +178,13 @@
 	"socioH.h"
 	"libroH.h"
 
-1748383475 source:c:\users\marin\onedrive\escritorio\tpproject\libro.cpp
+1748461192 source:c:\users\marin\onedrive\escritorio\tpproject\libro.cpp
 	"libroH.h"
 
-1748368994 source:c:\users\marin\onedrive\escritorio\tpproject\socio.cpp
+1748466864 source:c:\users\marin\onedrive\escritorio\tpproject\socio.cpp
 	"socioH.h"
 
-1748384602 source:c:\users\marin\onedrive\escritorio\tpproject\main.cpp
+1748474279 source:c:\users\marin\onedrive\escritorio\tpproject\main.cpp
 	<iostream>
 	<string>
 	<fstream>
@@ -192,6 +192,7 @@
 	"buscar_libros.h"
 	"cargar_libros.h"
 	"funcionesLibro.h"
+	"gestionVectorLibro.h"
 	"buscar_socios.h"
 	"funcionesMain.h"
 	"gestionVectorSocio.h"
@@ -203,17 +204,17 @@
 	"socioH.h"
 	"gestionVectorSocio.h"
 
-1748368994 source:c:\users\marin\onedrive\escritorio\tpproject\funcionesmain.cpp
+1748466845 source:c:\users\marin\onedrive\escritorio\tpproject\funcionesmain.cpp
 	"funcionesMain.h"
 	"gestionVectorSocio.h"
 
-1748378234 c:\users\marin\onedrive\escritorio\tpproject\funcioneslibro.h
+1748458416 c:\users\marin\onedrive\escritorio\tpproject\funcioneslibro.h
 	"libroH.h"
 	<string>
 	<unordered_map>
 	<vector>
 
-1748379722 source:c:\users\marin\onedrive\escritorio\tpproject\funcioneslibro.cpp
+1748458416 source:c:\users\marin\onedrive\escritorio\tpproject\funcioneslibro.cpp
 	"funcionesLibro.h"
 
 1747862549 c:\users\marin\onedrive\escritorio\tpproject\gestorvectorsocio.h
@@ -226,11 +227,20 @@
 	"socioH.h"
 	"libroH.h"
 
-1748368994 c:\users\marin\onedrive\escritorio\tpproject\gestionvectorsocio.h
+1748456645 c:\users\marin\onedrive\escritorio\tpproject\gestionvectorsocio.h
 	"funcionesMain.h"
 	"funcionesLibro.h"
 
-1748379722 source:c:\users\marin\onedrive\escritorio\tpproject\gestionvectorsocio.cpp
+1748456645 source:c:\users\marin\onedrive\escritorio\tpproject\gestionvectorsocio.cpp
 	"funcionesMain.h"
 	"gestionVectorSocio.h"
+
+1748460986 c:\users\marin\onedrive\escritorio\tpproject\gestionvectorlibro.h
+	<vector>
+	"libroH.h"
+	"funcionesLibro.h"
+	"funcionesMain.h"
+
+1748461192 source:c:\users\marin\onedrive\escritorio\tpproject\gestionvectorlibro.cpp
+	"gestionVectorLibro.h"
 

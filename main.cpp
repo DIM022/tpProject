@@ -6,8 +6,10 @@
 #include "buscar_libros.h"
 #include "cargar_libros.h"
 #include "funcionesLibro.h"
+#include "gestionVectorLibro.h"
 
-#include "buscar_socios.h"///FUNCION BUSQUEDA SOCIO -- LINEA 80
+///FUNCION BUSQUEDA SOCIO -- LINEA 80
+#include "buscar_socios.h"
 
 #include "funcionesMain.h"///ACCEDE A ALGUNAS FUNCIONES NORMALES DEL MAIN
 #include "gestionVectorSocio.h"///ACCEDE A LAS FUNCIONES QUE MANIPULA AL VECTOR SOCIO
@@ -72,11 +74,12 @@ int main()
 
                     switch(menuSL){
                         case '1' :
-                            mostrar(vector_Socio);break;
+                            mostrar(vector_Socio);
+                            break;
 
                         case '2' :
                             ///GUARDAMOS EL DNI DEL SOCIO BUSCADO
-                             flagDNI = busqueda_socios(vector_Socio);
+                             flagDNI = busquedaSocios(vector_Socio);
 
                              ///SI ES MAYOR O IGUAL A < 0 > SE ENCONTRO UN SOCIO
                              ///SI NO RETORNA A < MENU SOCIO >
@@ -126,43 +129,49 @@ int main()
                 vector_Libro = cargarLibro(ARCHIVO_LIBROS);
 
 
-                cout<< " MENU LIBRO ( MAIN )"<< endl;
-                cout<< "1/ VER LIBRO    2/BUSCAR LIBRO     3/AGREGAR LIBRO"<< endl;
-                cin >> menuSL;
+                do{
 
-                switch(menuSL){
+                    cout<< " MENU LIBRO ( MAIN )"<< endl;
+                    cout<< "1/ VER LIBRO    2/BUSCAR LIBRO     3/AGREGAR LIBRO      'S'/SALIR"<< endl;
+                    cin >> menuSL;
+                    cin.ignore();
 
-                    case '1' :
-                        /**VER LIBRO
-                                - MUESTRA TODOS LOS LIBROS*/
+                    switch(menuSL){
 
-                        mostrarL(vector_Libro);
-                        break;
+                        case '1' :
+                            /**VER LIBRO
+                                    - MUESTRA TODOS LOS LIBROS*/
 
-                    case '2' :
-                        /**BUSCAR LIBRO
-                                - BUSCAR POR CIERA CARACTERISTICAS
-                                        MUESTRA TODOS SUS DATOS
-                                                - NOMBRE, ETC, SI ESTA PRESTADO/DEVUELTO, ETC
-                        */
-                        busqueda_libros(vector_Libro);
-                        break;
+                            mostrarL(vector_Libro);
+                            break;
 
-                    case '3' :
-                        /**AGREGAR LIBRO
-                                -AGREGAR LIBRO
-                        */
+                        case '2' :
+                            /**BUSCAR LIBRO
+                                    - BUSCAR POR CIERA CARACTERISTICAS
+                                            MUESTRA TODOS SUS DATOS
+                                                    - NOMBRE, ETC, SI ESTA PRESTADO/DEVUELTO, ETC
+                            */
+                            busqueda_libros(vector_Libro);
+                            break;
 
-                    default :
-                        cout<< "OPCION INCORRECTA ( MENU LIBRO )"<< endl;
-                }
+                        case '3' :
+                            /**AGREGAR LIBRO
+                                    -AGREGAR LIBRO
+                            */
+                            agregarLibro(vector_Libro);
+                            break;
 
-            /*
-                /
-                cout<<"Buscar libro."<<endl;//unica opcion por ahora
-                busqueda_libros(vector_Libro);
-                break;
-            */
+                        case 's' | 'S' :
+                            cout<< "SALIENDO AL MENU PRINCIPAL..."<< endl;
+                            break;
+
+                        default :
+                            cout<< "OPCION INCORRECTA ( MENU LIBRO )"<< endl;
+                            break;
+                    }
+
+                }while(menuSL != 'S' && menuSL != 's');
+
             case 'S' |  's' :
 
                 ///SUBIR CAMBIO SOCIO

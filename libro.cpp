@@ -11,6 +11,20 @@ libro::libro(string n, string a , string s, string aut, string edi, string ani){
     editorial = edi;
     anio_P = ani;
 }
+
+libro::libro(string n, string a , string s, string aut, string edi, string ani, int* _ubi,bool _estadoSN){
+
+    nombre = n;
+    area = a;
+    sub_area = s;
+    autores = aut;
+    editorial = edi;
+    anio_P = ani;
+    ubicacionL[0] = _ubi[0];
+    ubicacionL[1] = _ubi[1];
+    estadoSN = _estadoSN;
+
+}
 //getters
 string libro::get_nombre() {
     return nombre;

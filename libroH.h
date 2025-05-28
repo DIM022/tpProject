@@ -23,6 +23,7 @@ class libro{
 
 public :
     libro(string, string, string, string, string, string);
+    libro(string, string, string, string, string, string, int*,bool);
     //~libro();
     void generar_barras();
     void mostrarLibro();

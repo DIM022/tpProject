@@ -74,8 +74,6 @@ string socio::stringFile(){
 ///MODIFICA LOS ATRIBUTOS DEL OBJETO
 void socio::setDato(string nuevoValor, int posDato){
 
-    cout<< "SE ENCUENTRA EN SETDATOS"<< endl;
-
     switch(posDato){
 
     case 1 :

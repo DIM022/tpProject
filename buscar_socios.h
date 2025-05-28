@@ -4,7 +4,8 @@
 #include <vector>
 
 #include "socioH.h"
+#include "funcionesLibro.h"
 
-int busqueda_socios(vector<socio> &socios);
+int busquedaSocios(vector<socio> &socios);
 
 #endif
