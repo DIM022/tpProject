@@ -174,8 +174,14 @@ int main()
 
             case 'S' |  's' :
 
+                ///SI NO SE ABRE NUNCA A SOCIO ESTO TRUNCA A SOCIOS ES DECIR QUE BORRA EL CONTENIDO
+                ///Y SUBE LO DE VECTOR PERO COMO EN VECTOR NO HAY NADA YA QUE NUNCA SE ABRIO
+                ///QUEDA VACIO
+
                 ///SUBIR CAMBIO SOCIO
-                subirCambios(vector_Socio);
+                if(contRepe){
+                    subirCambios(vector_Socio);
+                }
                 break;
 
             default :

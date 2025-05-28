@@ -114,8 +114,8 @@ void subirCambios(vector <socio>& vector_Socio){
             ///stringFile -- CONVIERTE LOS ATRIBUTOS DEL OBJETO EN UN STRING QUE RETORNA
             file << vector_Socio[i].stringFile()<<'\n';
         }
-        file.close();
 
+        file.close();
 }
 
 
