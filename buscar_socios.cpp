@@ -7,7 +7,7 @@ int busquedaSocios(vector<socio>& socios){
 
 	do {
 		cout<< "Seleccione una opcion de busqueda y filtrado de socios: "<<endl;
-		cout<< " 1.Apellido\n 2.Dni\n 3.Sexo\n 4.Direccion\n 5.Numero de Telefono\n 6.Edad\n 7.Fecha de Nacimiento\n 8.Mail"<<endl << ">";
+		cout<< " 1.Apellido\n 2.Dni\n 3.Sexo\n 4.Direccion\n 5.Numero de Telefono\n 6.Edad\n 7.Fecha de Nacimiento\n 8.Mail\n 'S'/SALIR"<<endl << ">";
 		cin >> eleccion;
 
 	} while(eleccion != "1" && eleccion != "2" && eleccion != "3" && eleccion != "4" && eleccion != "5"&& eleccion != "6"&& eleccion != "7"&& eleccion != "8");
@@ -298,6 +298,11 @@ int busquedaSocios(vector<socio>& socios){
     		} while(!band && mail_busc != "e" && mail_busc != "E");
     	}
     	break;
+
+    	case 's' | 'S' : {
+
+            cout<< "SALIENDO AL MENU PRINCIAL"<< endl;
+    	}
 
     	default: {
     		cout<<"Error."<<endl;

@@ -1,12 +1,13 @@
 #include "buscar_libros.h"
 #include "funcionesLibro.h"
 
-int columnaB = 0, filaB = 0;
-int opcionCase7 = 0;
-string busquedaEstado = "";
-char eleccion = 0;
+int busqueda_libros(vector<libro> libros) {
 
-void busqueda_libros(vector<libro> libros) {
+    int columnaB = 0, filaB = 0;
+    int opcionCase7 = 0;
+    string busquedaEstado = "";
+    char eleccion = 0;
+    int flagID = -1;
 
 	do {
 		cout<<"Seleccione una opcion de busqueda y filtrado de libros: "<<endl;
@@ -21,9 +22,9 @@ void busqueda_libros(vector<libro> libros) {
 
 	switch(eleccion) {
     	case  '1' : {
+
     		bool band;
     		string nombre_busc;
-    		cin.ignore();
 
     		do {
 
@@ -35,6 +36,7 @@ void busqueda_libros(vector<libro> libros) {
     				if(borrar_espacios(nombre_busc) == borrar_espacios(a_minusculas(quitar_tildes(libros[i].get_nombre())))) {
     					libros[i].mostrarLibro();
     					band = 1;
+    					flagID = i;
     				}
     			}
     		} while(!band && nombre_busc != "E" && nombre_busc != "e");
@@ -43,7 +45,7 @@ void busqueda_libros(vector<libro> libros) {
     	case '2' : {
     		string area_busc;
     		bool exist = false;
-    		cin.ignore();
+
     		do {
     			exist = false;
     			cout<<"Ingrese el Area a buscar y filtrar(E para salir): "<<endl;
@@ -63,7 +65,7 @@ void busqueda_libros(vector<libro> libros) {
     		break;
     	}
     	case '3' : {
-    		cin.ignore();//limpiar buffer
+    		//limpiar buffer
     		bool encontrado;
     		string subarea_busc;
     		do {
@@ -85,7 +87,7 @@ void busqueda_libros(vector<libro> libros) {
     	case '4' : {
     		bool band;
     		string autor_busc;
-    		cin.ignore();
+
     		do {
     			band = 0;
     			cout<<"Ingrese el Autor a buscar(E para salir): "<<endl;
@@ -104,7 +106,7 @@ void busqueda_libros(vector<libro> libros) {
     	case '5' : {
     		bool band;
     		string edi_busc;
-    		cin.ignore();
+
     		do {
     			band = false;
     			cout<<"Ingrese la Editorial a buscar y filtrar(E para salir): "<<endl;
@@ -221,6 +223,8 @@ void busqueda_libros(vector<libro> libros) {
     		break;
     	}
 	}
+
+	return flagID;
 }
 
 void mostrarL(vector <libro>& vectorLibro){

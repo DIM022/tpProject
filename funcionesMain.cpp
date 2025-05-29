@@ -62,11 +62,10 @@ void mostrar(vector<socio>& vector_Socio){
 
     cout<< "SOCIOS"<<endl;
     for(size_t i = 0; i<vector_Socio.size(); i++){
-        cout<< "---------------"<< endl;
-        cout<< "- ";
+
         vector_Socio[i].mostrarSocio();
     }
-        cout<< "---------------"<< endl;
+    cout<< endl;
 }
 
 

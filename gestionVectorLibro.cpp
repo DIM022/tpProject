@@ -142,3 +142,6 @@ bool validarUbicacion(int* ubi, vector <libro>& vectorLibro){
 }
 
 /**---------------------------------------------------------------------------------------------------*/
+
+void modificarLibro(vector<libro>& vectoLibro){
+}

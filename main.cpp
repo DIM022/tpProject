@@ -24,6 +24,7 @@ int main()
 {
     int contRepe = 0;
     int flagDNI = 0;///INDICA LA POSICION DEL SOCIO BUSCADO
+    int flagL = 0;
 
     char menuP = 0;
     char menuSL = 0;
@@ -37,8 +38,9 @@ int main()
 
     while(menuP != 'S' && menuP != 's'){
 
-        cout<< "<< MENU >>"<< endl;
-        cout<< "1/SOCIO   2/LIBRO   'S'/SALIR"<<endl;
+        cout<< "================================================================================="<< endl;
+        cout<< "\t\t<< MENU >>"<< endl;
+        cout<< "\t\t1/SOCIO   2/LIBRO   'S'/SALIR"<<endl << ">";
         cin >> menuP;
         cin.ignore();
 
@@ -67,8 +69,9 @@ int main()
                 }
 
                 do{
-                    cout<< "<< MENU SOCIO ( MAIN ) >>"<<endl;
-                    cout<< "1/VER SOCIOS    2/BUSCAR SOCIO    3/AGREGAR USUARIO    'S'/SALIR"<<endl;
+                    cout<< "-----------------------------------------------"<< endl;
+                    cout<< "<< MENU SOCIO ( MAIN ) >>"<< endl;
+                    cout<< "1/VER SOCIOS    2/BUSCAR SOCIO    3/AGREGAR USUARIO    'S'/SALIR"<< endl<< ">";
                     cin >> menuSL;
                     cin.ignore();
 
@@ -86,7 +89,7 @@ int main()
                             if(flagDNI != -1){
 
                                 ///MUESTRA EL MENU BS( BUSQUEDA )
-                                 cout<< "1/MODIFICAR SOCIO    2/ELIMINAR SOCIO    'S'/SALIR"<<endl;
+                                 cout<< "1/MODIFICAR SOCIO    2/ELIMINAR SOCIO    'S'/SALIR"<< endl<< ">";
                                  cin >> menuBS;
                                  cin.ignore();
 
@@ -106,16 +109,18 @@ int main()
 
                         case '3' :
                             agregarSocio(vector_Socio);
-                            cout<< "SOCIO AGREGADO"<< endl;
+                            cout<< "<<< SOCIO AGREGADO >>"<< endl;
 
                             break;
 
                         case 's' | 'S' :
-                            cout<< "SALIENDO AL MENU PRINCIPAL..."<< endl;
+                            cout<< "<<< SALIENDO AL MENU PRINCIPAL... >>"<< endl;
                             break;
 
                         default :
+                            cout<< "======================"<< endl;
                             cout<< "OPCION INCORRECTA ( MENU SOCIO )"<< endl;
+                            cout<< "======================"<< endl;
                             break;
                     }
 
@@ -130,9 +135,9 @@ int main()
 
 
                 do{
-
+                    cout<< "-----------------------------------------------"<< endl;
                     cout<< " MENU LIBRO ( MAIN )"<< endl;
-                    cout<< "1/ VER LIBRO    2/BUSCAR LIBRO     3/AGREGAR LIBRO      'S'/SALIR"<< endl;
+                    cout<< "1/ VER LIBRO    2/BUSCAR LIBRO     3/AGREGAR LIBRO      'S'/SALIR"<< endl<< ">";
                     cin >> menuSL;
                     cin.ignore();
 
@@ -151,7 +156,14 @@ int main()
                                             MUESTRA TODOS SUS DATOS
                                                     - NOMBRE, ETC, SI ESTA PRESTADO/DEVUELTO, ETC
                             */
-                            busqueda_libros(vector_Libro);
+                            flagL = busqueda_libros(vector_Libro);
+
+                            ///SI ENTRA ES PORQUE UN LIBRO ESPECIFICO
+                            ///Y QUEREMOS MODIFICARLO
+                            if(flagL != -1){
+
+                            }
+
                             break;
 
                         case '3' :
@@ -166,7 +178,9 @@ int main()
                             break;
 
                         default :
+                            cout<< "======================"<< endl;
                             cout<< "OPCION INCORRECTA ( MENU LIBRO )"<< endl;
+                            cout<< "======================"<< endl;
                             break;
                     }
 
@@ -185,7 +199,9 @@ int main()
                 break;
 
             default :
+                cout<< "======================"<< endl;
                 cout<< "OPCION INCORRECTA ( MENU MAIN )"<< endl;
+                cout<< "======================"<< endl;
                 break;
         }
 

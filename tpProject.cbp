@@ -32,17 +32,12 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="_funcionesLibro.h">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
 		<Unit filename="buscar_libros.cpp" />
 		<Unit filename="buscar_libros.h" />
 		<Unit filename="buscar_socios.cpp" />
 		<Unit filename="buscar_socios.h" />
 		<Unit filename="cargar_libros.cpp" />
 		<Unit filename="cargar_libros.h" />
-		<Unit filename="cargar_socios.cpp" />
-		<Unit filename="cargar_socios.h" />
 		<Unit filename="funcionesLibro.cpp" />
 		<Unit filename="funcionesLibro.h" />
 		<Unit filename="funcionesMain.cpp" />
