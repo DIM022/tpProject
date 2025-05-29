@@ -24,7 +24,7 @@ void agregarSocio(vector <socio>& vector_Socio){
     string _apellido, _dni, _genero, _direccion, _numeroT, _edad, _fechaC, _mail;
     string numCalle, nombreCalle;///VARIABLE AUXILIAR --- LINEA 142
 
-    bool valido = true, salir = true;
+   bool salir = true;
 
     cout<< "-------------------------"<< endl;
     cout<< "INGRESO DE NUEVO SOCIO"<< endl;
@@ -230,9 +230,9 @@ void agregarSocio(vector <socio>& vector_Socio){
     _posicionA = vector_Socio.size();
 
     ///LE PASAMOS TODOS ESOS DATOS A VECTOR QUE DE FORMA DINAMICA ALMACENA A LO ULTIMO EL NUEVO OBJETO SOCIO
-     vector_Socio.push_back(socio(_apellido, _dni, _genero, _direccion, _numeroT, _edad, _fechaC, _mail, _posicionA));
-}
+     vector_Socio.push_back(socio(_apellido, _dni, _genero, _direccion, _numeroT, _edad, _fechaC, _mail, _posicionA) );
 
+}
 
 /**---------------------------------------------------------------------------------------------------*/
 
@@ -271,6 +271,7 @@ void modificar_Socio(vector <socio>& vector_Socio, int flagDNIB){
 }
 
 /**---------------------------------------------------------------------------------------------------*/
+
 ///TOMA LA LINEA DEL ARCHIVO Y LO PLASMA EN VARIABLES
 void lecturaLinea(vector <socio>& vector_Socio, ifstream& file){
 
@@ -365,7 +366,3 @@ void lecturaLinea(vector <socio>& vector_Socio, ifstream& file){
 }
 
 /**---------------------------------------------------------------------------------------------------*/
-
-
-
-

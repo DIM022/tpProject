@@ -25,6 +25,7 @@ public :
     libro(string, string, string, string, string, string);
     libro(string, string, string, string, string, string, int*,bool);
     //~libro();
+    string stringFile();
     void generar_barras();
     void mostrarLibro();
 
@@ -42,9 +43,8 @@ public :
 
     //setters
     void setDato(string, int);
-    void setDato_UBI(int&);
+    void setDato_UBI(int, int);
     void setDato_estadoSN(bool);
-
 };
 
 #endif // LIBRO_H_INCLUDED

@@ -22,7 +22,7 @@ using namespace std;
 
 int main()
 {
-    int contRepe = 0;
+    int contRepeS = 0, contRepeL = 0;
     int flagDNI = 0;///INDICA LA POSICION DEL SOCIO BUSCADO
     int flagL = 0;
 
@@ -51,7 +51,7 @@ int main()
                 ///SOLO SE ABRE EL ARCHIVO 1 VEZ
                 ///YA QUE SI SELECIONACMOS PARA ACCEDER A SOCIO SIN AVER GUARDAO LAS MODIFICACIONES
                 ///SE PIERDEN ESAS MODIFICACIONES Y TIENE EL VECTOR ORIGINAL DENUEVO
-                if(!contRepe){
+                if(!contRepeS){
                     ///ABRIMOS EL ARCHIVO
                     file = archivo_IO();
 
@@ -65,7 +65,7 @@ int main()
                     ///TOMA LOS DATOS DEL ARCHIVO Y CIERRA ARCHIVO
                     lecturaLinea(vector_Socio, file);
 
-                    contRepe++;
+                    contRepeS++;
                 }
 
                 do{
@@ -118,9 +118,9 @@ int main()
                             break;
 
                         default :
-                            cout<< "======================"<< endl;
+                            cout<< endl<< "======================"<< endl;
                             cout<< "OPCION INCORRECTA ( MENU SOCIO )"<< endl;
-                            cout<< "======================"<< endl;
+                            cout<< endl<< "======================"<< endl;
                             break;
                     }
 
@@ -130,8 +130,14 @@ int main()
 
             case '2' :
 
-                //ABRE Y RETORNA UN VECTOR DE LIBRO
-                vector_Libro = cargarLibro(ARCHIVO_LIBROS);
+                ///ASEGURA QUE SE CARGUE EL LIBRO UNA SOLA VEZ PARA EVITAR
+                ///ACTUALIZACIONES NO BUSCADAS
+                if(!contRepeL){
+                    //ABRE Y RETORNA UN VECTOR DE LIBRO
+                    vector_Libro = cargarLibro(ARCHIVO_LIBROS);
+
+                    contRepeL++;
+                }
 
 
                 do{
@@ -143,33 +149,35 @@ int main()
 
                     switch(menuSL){
 
-                        case '1' :
-                            /**VER LIBRO
-                                    - MUESTRA TODOS LOS LIBROS*/
-
+                    case '1' :
                             mostrarL(vector_Libro);
                             break;
 
                         case '2' :
-                            /**BUSCAR LIBRO
-                                    - BUSCAR POR CIERA CARACTERISTICAS
-                                            MUESTRA TODOS SUS DATOS
-                                                    - NOMBRE, ETC, SI ESTA PRESTADO/DEVUELTO, ETC
-                            */
+                            ///RETORNA EL INDICE DEL LIBRO BUSCADO -- SOLO SI SE BUSCA EL NOMBRE
                             flagL = busqueda_libros(vector_Libro);
 
-                            ///SI ENTRA ES PORQUE UN LIBRO ESPECIFICO
+                            ///SI ENTRA ES PORQUE ENCONTRO UN LIBRO ESPECIFICO
                             ///Y QUEREMOS MODIFICARLO
                             if(flagL != -1){
-                                modificarLibro(flagL, vector_Libro);
-                            }
 
+                                cout<< "1-MODIFICAR LIBRO      2-ELIMINAR     'S'/SALIR"<< endl;
+                                cin >> menuSL;
+                                cin.ignore();
+
+                                if(menuSL == '1'){
+                                    modificarLibro(flagL, vector_Libro);
+
+                                }else if(menuSL == '2'){
+
+                                }else if(menuSL == 's' || menuSL == 'S'){
+                                        cout<< "SALIENDO DEL < MENU BUSQUEDA >"<< endl;
+                                }
+
+                            }
                             break;
 
                         case '3' :
-                            /**AGREGAR LIBRO
-                                    -AGREGAR LIBRO
-                            */
                             agregarLibro(vector_Libro);
                             break;
 
@@ -178,9 +186,9 @@ int main()
                             break;
 
                         default :
-                            cout<< "======================"<< endl;
+                            cout<< endl<< "======================"<< endl;
                             cout<< "OPCION INCORRECTA ( MENU LIBRO )"<< endl;
-                            cout<< "======================"<< endl;
+                            cout<< endl<< "======================"<< endl;
                             break;
                     }
 
@@ -193,15 +201,19 @@ int main()
                 ///QUEDA VACIO
 
                 ///SUBIR CAMBIO SOCIO
-                if(contRepe){
+                if(contRepeS){
                     subirCambios(vector_Socio);
+                }
+
+                if(contRepeL){
+                    subirCambiosLibro(vector_Libro);
                 }
                 break;
 
             default :
-                cout<< "======================"<< endl;
+                cout<< endl<< "======================"<< endl;
                 cout<< "OPCION INCORRECTA ( MENU MAIN )"<< endl;
-                cout<< "======================"<< endl;
+                cout<< endl<< "======================"<< endl;
                 break;
         }
 

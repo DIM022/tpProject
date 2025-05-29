@@ -1,5 +1,7 @@
 #include "buscar_socios.h"
 
+/**---------------------------------------------------------------------------------------------------*/
+
 int busquedaSocios(vector<socio>& socios){
 
 	string eleccion;
@@ -312,3 +314,5 @@ int busquedaSocios(vector<socio>& socios){
 
     return flagDNI;
 }
+
+/**---------------------------------------------------------------------------------------------------*/

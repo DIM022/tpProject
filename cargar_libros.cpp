@@ -1,5 +1,7 @@
 #include "cargar_libros.h"
 
+/**---------------------------------------------------------------------------------------------------*/
+
 ///FUNCION QUE RETORNA UN VECTOS < LIBRO >
 vector<libro> cargarLibro(string nombre_archivo){
 
@@ -59,3 +61,5 @@ vector<libro> cargarLibro(string nombre_archivo){
 
     return libros;
 }
+
+/**---------------------------------------------------------------------------------------------------*/

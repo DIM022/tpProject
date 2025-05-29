@@ -3,6 +3,8 @@
 
 using namespace std;
 
+/**---------------------------------------------------------------------------------------------------*/
+
 ///FUNCION PARA VERIFICAR STRING DE SOLO CARACTERES
 bool verificarCharString(string _string){
 
@@ -29,6 +31,7 @@ bool verificarCharString(string _string){
     return false;
 }
 
+/**---------------------------------------------------------------------------------------------------*/
 
 bool verificarNumeroString(string _string){
 
@@ -57,6 +60,7 @@ bool verificarNumeroString(string _string){
 
 }
 
+/**---------------------------------------------------------------------------------------------------*/
 
 void mostrar(vector<socio>& vector_Socio){
 
@@ -68,9 +72,7 @@ void mostrar(vector<socio>& vector_Socio){
     cout<< endl;
 }
 
-
-
-
+/**---------------------------------------------------------------------------------------------------*/
 
 void subirCambios(vector <socio>& vector_Socio){
 
@@ -117,8 +119,7 @@ void subirCambios(vector <socio>& vector_Socio){
         file.close();
 }
 
-
-
+/**---------------------------------------------------------------------------------------------------*/
 
 /// ABRE UN ARCHIVO VALIDO Y LO RETORNA
 ifstream archivo_IO() {
@@ -141,5 +142,5 @@ ifstream archivo_IO() {
     ///SI TODO SALE BIEN RETORNAMOS LA DIRECCION DEL ARCHIVO
     return file;
 }
-/*----------------------------------------------------------------*/
 
+/**---------------------------------------------------------------------------------------------------*/

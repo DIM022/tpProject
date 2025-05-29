@@ -5,6 +5,9 @@ using namespace std;
 
 #include <vector>
 
+#include "buscar_libros.h"
+#include "cargar_libros.h"
+
 #include "libroH.h"
 #include "funcionesLibro.h"
 #include "funcionesMain.h"
@@ -15,6 +18,8 @@ bool validarNombre(string);
 bool validarAutores(string);
 bool validarUbicacion(int *, vector <libro>&);
 
-void modificarLibro(vector<libro>&);
+void modificarLibro(int, vector<libro>&);
+
+void subirCambiosLibro(vector <libro>&);
 
 #endif // GESTIONVECTORLIBRO_H_INCLUDED

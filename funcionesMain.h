@@ -12,6 +12,7 @@
 using namespace std;
 
 ifstream archivo_IO();///FUNCION PARA ABRIR EL ARCHIVO EN MODO ESCRITURA O LECTURA
+
 void subirCambios(vector <socio>&);///TOMA EL VECTOR Y LO COPIA EN EL ARCHIVO
 void mostrar(vector<socio>&);///RECORRE EL VECTOR
 bool verificarNumeroString(string);

@@ -2,6 +2,8 @@
 
 using namespace std;
 
+/**---------------------------------------------------------------------------------------------------*/
+
 //constructor
 libro::libro(string n, string a , string s, string aut, string edi, string ani){
     nombre = n;
@@ -11,6 +13,8 @@ libro::libro(string n, string a , string s, string aut, string edi, string ani){
     editorial = edi;
     anio_P = ani;
 }
+
+/**---------------------------------------------------------------------------------------------------*/
 
 libro::libro(string n, string a , string s, string aut, string edi, string ani, int* _ubi,bool _estadoSN){
 
@@ -25,6 +29,8 @@ libro::libro(string n, string a , string s, string aut, string edi, string ani, 
     estadoSN = _estadoSN;
 
 }
+
+/**---------------------------------------------------------------------------------------------------*/
 
 //setters
 void libro::setDato(string nuevoValor, int posDato){
@@ -55,61 +61,87 @@ void libro::setDato(string nuevoValor, int posDato){
     }
 }
 
-void libro::setDato_UBI(int& _ubi){
+/**---------------------------------------------------------------------------------------------------*/
 
-    ubicacionL[0] = _ubi[0];
-    ubicacionL[1] = _ubi[1];
+void libro::setDato_UBI(int colu, int fila){
+
+    ubicacionL[0] = colu;
+    ubicacionL[1] = fila;
 }
+
+/**---------------------------------------------------------------------------------------------------*/
 
 void libro::setDato_estadoSN(bool _est){
 
     estadoSN = _est;
 }
 
+/**---------------------------------------------------------------------------------------------------*/
+
 //getters
 string libro::get_nombre() {
     return nombre;
 }
 
+/**---------------------------------------------------------------------------------------------------*/
+
 string libro::get_area() {
     return area;
 }
+
+/**---------------------------------------------------------------------------------------------------*/
 
 string libro::get_sub_area() {
     return sub_area;
 }
 
+/**---------------------------------------------------------------------------------------------------*/
+
 string libro::get_autores()  {
     return autores;
 }
+
+/**---------------------------------------------------------------------------------------------------*/
 
 string libro::get_editorial()  {
     return editorial;
 }
 
+/**---------------------------------------------------------------------------------------------------*/
+
 string libro::get_anio_P()  {
     return anio_P;
 }
+
+/**---------------------------------------------------------------------------------------------------*/
 
 string libro::getEstado(){
 
     return estado;
 }
 
+/**---------------------------------------------------------------------------------------------------*/
+
 bool libro::getEstadoSN(){
 
     return estadoSN;
 }
+
+/**---------------------------------------------------------------------------------------------------*/
 
 int libro::getColumna(){
 
     return ubicacionL[0];
 }
 
+/**---------------------------------------------------------------------------------------------------*/
+
 int libro::getFila(){
 
     return ubicacionL[1];
 }
+
+/**---------------------------------------------------------------------------------------------------*/
 
 void libro:: mostrarLibro(){
 
@@ -121,6 +153,8 @@ void libro:: mostrarLibro(){
         cout<<"Editorial:"<<quitar_tildes(editorial)<<endl;
         cout<<"Anio de Publicacion: "<<quitar_tildes(anio_P)<<endl;
 }
+
+/**---------------------------------------------------------------------------------------------------*/
 
 void libro::generar_barras(){
 
@@ -243,4 +277,49 @@ void libro::generar_barras(){
             cout<< "destruido"<< endl;
 
         }
+}
+
+/**---------------------------------------------------------------------------------------------------*/
+
+string libro::stringFile(){
+
+    string _stringFile;///DONDE ALMACENAREMOS LOS ATRIBUTOS
+    string _aux;
+
+
+    ///AGREGAR AL FINAL DEL ARCHIVO CADA ATRIBUTO
+    ///PARA FORMA UNA LINEA COMPLETA
+    ///PARECIDA A COMO LA TOMAMOS ORIGINALMENTE
+    _stringFile.append(nombre);
+    _stringFile +=',';
+    _stringFile.append(area);
+    _stringFile +=',';
+    _stringFile.append(sub_area);
+    _stringFile +=',';
+    _stringFile.append(autores);
+    _stringFile +=',';
+    _stringFile.append(editorial);
+    _stringFile +=',';
+    _stringFile.append(anio_P);
+    _stringFile +=',';
+    _stringFile.append(estado);
+    _stringFile +=',';
+
+    _stringFile += ubicacionL[0];
+    _stringFile +='-';
+    _stringFile += ubicacionL[1];
+
+    _stringFile +=',';
+
+    ///SI BOOL ESTA DISPONIBLE LO REGISTRAMOS COMO UN 1 EN EL ARCHIVO
+    ///SI NO COMO UN < 0 >
+    if(estadoSN){
+        _stringFile.append("1");
+    }else{
+         _stringFile.append("0");
+    }
+    _stringFile +='\0';
+
+    ///RETORNAMOS
+    return _stringFile;
 }

@@ -2,31 +2,56 @@
 
 using namespace std;
 
+/**---------------------------------------------------------------------------------------------------*/
+
 // getters
 string socio::getapll() {
     return apellido;
- }
+}
+
+/**---------------------------------------------------------------------------------------------------*/
+
 string socio::getdni() {
     return dni;
 }
+
+/**---------------------------------------------------------------------------------------------------*/
+
 string socio::getsex() {
     return sexo;
 }
+
+/**---------------------------------------------------------------------------------------------------*/
+
 string socio::getdir() {
      return direccion;
-     }
+}
+
+/**---------------------------------------------------------------------------------------------------*/
+
 string socio::getnum() {
      return num_telefonico;
-     }
+}
+
+/**---------------------------------------------------------------------------------------------------*/
+
 string socio::getedad() {
      return edad;
-    }
+}
+
+/**---------------------------------------------------------------------------------------------------*/
+
 string socio::getfechaN() {
      return fechaN;
-     }
+}
+
+/**---------------------------------------------------------------------------------------------------*/
+
 string socio::getmail() {
     return mail;
 }
+
+/**---------------------------------------------------------------------------------------------------*/
 
 void socio::mostrarSocio(){
     cout<<"--------------------"<<endl; //aplicamos quitar_tildes porque sino el cout no funciona bien para los caracteres con tilde
@@ -40,6 +65,8 @@ void socio::mostrarSocio(){
     cout<<"Email: "<<mail <<endl;
      cout<<"--------------------"<<endl;
 }
+
+/**---------------------------------------------------------------------------------------------------*/
 
 string socio::stringFile(){
 
@@ -70,6 +97,7 @@ string socio::stringFile(){
     return _stringFile;
 }
 
+/**---------------------------------------------------------------------------------------------------*/
 
 ///MODIFICA LOS ATRIBUTOS DEL OBJETO
 void socio::setDato(string nuevoValor, int posDato){
@@ -106,6 +134,7 @@ void socio::setDato(string nuevoValor, int posDato){
     }
 }
 
+/**---------------------------------------------------------------------------------------------------*/
 
 ///VALIDA SI EL STRING RECIBIDO ES IGUAL AL DEL OBJETO
 ///USADO EN LA FUNCION BUSQUEDA
@@ -120,6 +149,7 @@ int socio::validar(string socioDNIB){
     }
 }
 
+/**---------------------------------------------------------------------------------------------------*/
 
 ///CONSTRUCTOR QUE INICIALIZA LOS ATRIBUTOS
 socio::socio(string _apellido, string _dni, string _genero, string _direccion, string _numeroT, string _edad, string _fechaN, string _mail, int _posicionA){
@@ -135,8 +165,12 @@ socio::socio(string _apellido, string _dni, string _genero, string _direccion, s
     posicionDato = _posicionA;
 }
 
+/**---------------------------------------------------------------------------------------------------*/
+
 socio::socio(){
 }
+
+/**---------------------------------------------------------------------------------------------------*/
 
 socio::~socio(){
 
@@ -146,3 +180,5 @@ socio::~socio(){
 
     //cout<< "llamada a destructor"<< endl;
 }
+
+/**---------------------------------------------------------------------------------------------------*/

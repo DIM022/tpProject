@@ -1,6 +1,8 @@
 #include "buscar_libros.h"
 #include "funcionesLibro.h"
 
+/**---------------------------------------------------------------------------------------------------*/
+
 int busqueda_libros(vector<libro> libros) {
 
     int columnaB = 0, filaB = 0;
@@ -227,6 +229,8 @@ int busqueda_libros(vector<libro> libros) {
 	return flagID;
 }
 
+/**---------------------------------------------------------------------------------------------------*/
+
 void mostrarL(vector <libro>& vectorLibro){
 
     for(size_t i=0; i<vectorLibro.size(); i++){
@@ -235,3 +239,5 @@ void mostrarL(vector <libro>& vectorLibro){
     }
     cout<< "------------------------------"<< endl;
 }
+
+/**---------------------------------------------------------------------------------------------------*/

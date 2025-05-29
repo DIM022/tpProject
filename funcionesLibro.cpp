@@ -2,6 +2,8 @@
 
 using namespace std;
 
+/**---------------------------------------------------------------------------------------------------*/
+
 ///RETORNA EL STIRNG A MIINUSCULAS
 string a_minusculas(string texto){
 
@@ -15,6 +17,7 @@ string a_minusculas(string texto){
     return texto ;
 }
 
+/**---------------------------------------------------------------------------------------------------*/
 
 string borrar_comillas(string texto){
 
@@ -34,6 +37,9 @@ string borrar_comillas(string texto){
     //devolvemos el text sin "
     return salida;
 }
+
+/**---------------------------------------------------------------------------------------------------*/
+
 string borrar_ceros(string fecha){
 
     string salida = "";
@@ -52,6 +58,9 @@ string borrar_ceros(string fecha){
 
     return salida;
 }
+
+/**---------------------------------------------------------------------------------------------------*/
+
 bool fecha_valida(string fecha){
 
     int longitud = fecha.length();
@@ -82,6 +91,9 @@ bool fecha_valida(string fecha){
 
     }
 }
+
+/**---------------------------------------------------------------------------------------------------*/
+
 string normalizar_anio(string fecha){
     int len = fecha.length();
 
@@ -105,6 +117,8 @@ string normalizar_anio(string fecha){
     return fecha;
 }
 
+/**---------------------------------------------------------------------------------------------------*/
+
 string borrar_espacios(string texto){
     string salida = "";
 
@@ -117,6 +131,9 @@ string borrar_espacios(string texto){
     }
     return salida;
 }
+
+/**---------------------------------------------------------------------------------------------------*/
+
 string quitar_tildes(string texto) {
 
     unordered_map<string, char> reemplazos = {//las tildes van con string porque ocupan mas de un char
@@ -153,6 +170,8 @@ string quitar_tildes(string texto) {
     return resultado;
 }
 
+/**---------------------------------------------------------------------------------------------------*/
+
 bool es_entero_valido(string s) {
 
     if (s.empty()) {
@@ -166,3 +185,5 @@ bool es_entero_valido(string s) {
     }
     return true;
 }
+
+/**---------------------------------------------------------------------------------------------------*/
