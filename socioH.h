@@ -22,11 +22,13 @@ public :
     socio(string, string, string, string, string, string, string, string, int);
     ~socio();
 
-    void setDato(string, int);///MODIFICA ALGUN ATRIBUTO DEL OBJETO
     int validar(string);///SIRVE PARA LA BUSQUEDA DEL SOCIO
     string stringFile();///CONVIERTE LOS ATRIBUTOS A UN STRING
-
     void mostrarSocio();
+
+    //setters
+    void setDato(string, int);///MODIFICA ALGUN ATRIBUTO DEL OBJETO
+
     //getters
     string getapll();
     string getdni();

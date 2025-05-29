@@ -40,6 +40,11 @@ public :
     int    getColumna();
     int    getFila();
 
+    //setters
+    void setDato(string, int);
+    void setDato_UBI(int&);
+    void setDato_estadoSN(bool);
+
 };
 
 #endif // LIBRO_H_INCLUDED

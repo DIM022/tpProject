@@ -96,11 +96,11 @@
 
 1748368994 D
 
-1748477072 source:c:\users\marin\onedrive\escritorio\tpproject\buscar_libros.cpp
+1748477957 source:c:\users\marin\onedrive\escritorio\tpproject\buscar_libros.cpp
 	"buscar_libros.h"
 	"funcionesLibro.h"
 
-1748475753 c:\users\marin\onedrive\escritorio\tpproject\buscar_libros.h
+1748477957 c:\users\marin\onedrive\escritorio\tpproject\buscar_libros.h
 	<vector>
 	"libroH.h"
 
@@ -116,7 +116,7 @@
 	"funcionesMain.h"
 	"gestionVectorSocio.h"
 
-1748475753 c:\users\marin\onedrive\escritorio\tpproject\libroh.h
+1748481143 c:\users\marin\onedrive\escritorio\tpproject\libroh.h
 	<iostream>
 	<string>
 	"funcionesMain.h"
@@ -133,7 +133,7 @@
 	"socioH.h"
 	"funcionesLibro.h"
 
-1747865651 c:\users\marin\onedrive\escritorio\tpproject\socioh.h
+1748480201 c:\users\marin\onedrive\escritorio\tpproject\socioh.h
 	<iostream>
 	<string>
 
@@ -184,7 +184,7 @@
 1748475753 source:c:\users\marin\onedrive\escritorio\tpproject\socio.cpp
 	"socioH.h"
 
-1748476842 source:c:\users\marin\onedrive\escritorio\tpproject\main.cpp
+1748477957 source:c:\users\marin\onedrive\escritorio\tpproject\main.cpp
 	<iostream>
 	<string>
 	<fstream>
@@ -208,13 +208,13 @@
 	"funcionesMain.h"
 	"gestionVectorSocio.h"
 
-1748475753 c:\users\marin\onedrive\escritorio\tpproject\funcioneslibro.h
+1748478166 c:\users\marin\onedrive\escritorio\tpproject\funcioneslibro.h
 	"libroH.h"
 	<string>
 	<unordered_map>
 	<vector>
 
-1748475753 source:c:\users\marin\onedrive\escritorio\tpproject\funcioneslibro.cpp
+1748478166 source:c:\users\marin\onedrive\escritorio\tpproject\funcioneslibro.cpp
 	"funcionesLibro.h"
 
 1747862549 c:\users\marin\onedrive\escritorio\tpproject\gestorvectorsocio.h
@@ -231,16 +231,16 @@
 	"funcionesMain.h"
 	"funcionesLibro.h"
 
-1748456645 source:c:\users\marin\onedrive\escritorio\tpproject\gestionvectorsocio.cpp
+1748480201 source:c:\users\marin\onedrive\escritorio\tpproject\gestionvectorsocio.cpp
 	"funcionesMain.h"
 	"gestionVectorSocio.h"
 
-1748475753 c:\users\marin\onedrive\escritorio\tpproject\gestionvectorlibro.h
+1748478166 c:\users\marin\onedrive\escritorio\tpproject\gestionvectorlibro.h
 	<vector>
 	"libroH.h"
 	"funcionesLibro.h"
 	"funcionesMain.h"
 
-1748475753 source:c:\users\marin\onedrive\escritorio\tpproject\gestionvectorlibro.cpp
+1748478166 source:c:\users\marin\onedrive\escritorio\tpproject\gestionvectorlibro.cpp
 	"gestionVectorLibro.h"
 

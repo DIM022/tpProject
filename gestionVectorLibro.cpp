@@ -1,11 +1,11 @@
 #include "gestionVectorLibro.h"
+#include "libroH.h"
 
 void agregarLibro(vector<libro>& vectorLibro){
 
     bool valido = true;
     string _nombre, _area, _subArea, _autores, _editorial, _anioP;
     int _ubi[2];
-    bool estadoSN;
 
         cout<< "-------------------------"<< endl;
         cout<< "INGRESO DE NUEVO LIBRO"<< endl;
@@ -143,5 +143,75 @@ bool validarUbicacion(int* ubi, vector <libro>& vectorLibro){
 
 /**---------------------------------------------------------------------------------------------------*/
 
-void modificarLibro(vector<libro>& vectoLibro){
+void modificarLibro(int flagDNIB,vector<libro>& vectoLibro){
+
+    string nuevoValor;///ALMACENA EL NUEVO VALOR
+    int posDato = 0;
+    int _ubi[2];
+    bool valido = true;
+    bool est;
+
+    do{
+        cout<< "QUE CAMPO QUIERE MODIFICAR : "
+            << "1-NOMBRE  2-AREA   3-SUBAREA   4-AUTORES    "
+            << "5-EDITORIA  6-AÑO PUBLICACION 7-UBICACION  8-ESTADO (DISPOPNIBLE / NO DISPONIBLE )  9-SALIR"<< endl<< ">";
+        cin >> posDato;
+
+        ///IGNORA EL ENTER PARA EVITAR LEERLO
+        cin.ignore();
+
+        if(posDato == 9){
+            valido = false;
+
+        }else if(posDato >= 1 && posDato <= 6){
+
+            cout<< "INGRESE EL NUEVO VALOR : ";
+            getline(cin, nuevoValor);
+
+            ///PARAMETROS : EL VALOR NUEVO, Y LA OPCION DEL DATO A CAMBIAR
+            vectoLibro[flagDNIB].setDato(nuevoValor, posDato);
+
+        }else if(posDato == 7){
+
+            do{
+                cout<< "INGRESE COLUMNA DONDE SE UBICARA EL LIBRO: ";
+                cin >> _ubi[0];
+                cin.ignore();
+
+                cout<< "INGRESE FILA DONDE UBICARA EL LIBRO: ";
+                cin >> _ubi[1];
+                cin.ignore();
+
+                ///VERIFICAMOS QUE NO ESTE EN USO ESA FILA Y COLUMNA
+                valido = validarUbicacion(_ubi, vectoLibro);
+
+                if(valido){
+                    cout<< "COLUMNA Y FILA YA UTILIZADOS.."<<endl;
+                }
+
+            }while(valido);
+
+        }else if(posDato == 8){
+
+                cout<< "1/DISPONIBLE   2/NO DISPONIBLE";
+                cin >>posDato;
+                cin.ignore();
+
+                if(posDato == 1){
+                    est = true;
+                    setDato_estadoSN(est);
+
+                }else if(posDato == 2){
+                    est = false;
+                    setDato_estadoSN(est);
+
+                }else{
+                    cout<< "OPCION INCORRECTA"<< endl;
+                }
+
+        }else{
+            cout<< "OPCION INVALIDA < MENU MODIFCAR ( FUNCION ) >"<< endl;
+        }
+
+    }while(valido);
 }

@@ -25,6 +25,47 @@ libro::libro(string n, string a , string s, string aut, string edi, string ani, 
     estadoSN = _estadoSN;
 
 }
+
+//setters
+void libro::setDato(string nuevoValor, int posDato){
+
+    switch(posDato){
+
+        case 1 :
+            nombre = nuevoValor;break;
+
+        case 2 :
+            area = nuevoValor;break;
+            break;
+
+        case 3 :
+            sub_area = nuevoValor;break;
+
+        case 4 :
+            autores = nuevoValor;break;
+
+        case 5 :
+            editorial = nuevoValor;break;
+
+        case 6 :
+            anio_P = nuevoValor;break;
+
+        case 7 :
+            estado = nuevoValor;break;
+    }
+}
+
+void libro::setDato_UBI(int& _ubi){
+
+    ubicacionL[0] = _ubi[0];
+    ubicacionL[1] = _ubi[1];
+}
+
+void libro::setDato_estadoSN(bool _est){
+
+    estadoSN = _est;
+}
+
 //getters
 string libro::get_nombre() {
     return nombre;

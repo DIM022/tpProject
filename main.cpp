@@ -161,7 +161,7 @@ int main()
                             ///SI ENTRA ES PORQUE UN LIBRO ESPECIFICO
                             ///Y QUEREMOS MODIFICARLO
                             if(flagL != -1){
-
+                                modificarLibro(flagL, vector_Libro);
                             }
 
                             break;

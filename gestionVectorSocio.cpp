@@ -261,7 +261,7 @@ void modificar_Socio(vector <socio>& vector_Socio, int flagDNIB){
             getline(cin, nuevoValor);
 
             ///PARAMETROS : EL VALOR NUEVO, Y LA OPCION DEL DATO A CAMBIAR
-            vector_Socio[flagDNIB].setDato(nuevoValor, posDato);break;
+            vector_Socio[flagDNIB].setDato(nuevoValor, posDato);
 
         }else{
             cout<< "OPCION INVALIDA < MENU MODIFCAR ( FUNCION ) >"<< endl;
