@@ -20,8 +20,8 @@
 
 using namespace std;
 
-int main()
-{
+int main(){
+
     int contRepeS = 0, contRepeL = 0;
     int flagDNI = 0;///INDICA LA POSICION DEL SOCIO BUSCADO
     int flagL = 0;
