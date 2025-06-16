@@ -14,7 +14,8 @@
 
 void registrarPrestamo(vector <datoPrestamo>&, vector <socio>&, vector <libro>&);
 
-bool verificarExistenciaNombresocio(string, vector <socio>&);
-bool verificarExistenciaNombreLibro(string, vector <libro>&);
+void filtrarPrestamoSocio(vector <datoPrestamo>&);
+void filtrarPrestamoLibro(vector <datoPrestamo>&);
+void filtrarPrestamoFecha(vector <datoPrestamo>&);
 
 #endif // FUNCIONESPRESTAMO_H_INCLUDED

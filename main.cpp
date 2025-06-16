@@ -212,11 +212,13 @@ int main(){
                         cin >> menuSL;
 
                         if(menuSL == '1'){
+                            filtrarPrestamoSocio(vectorPrestamo);
 
                         }else if(menuSL == '2'){
+                            filtrarPrestamoLibro(vectorPrestamo);
 
                         }else if(menuSL == '3'){
-
+                            filtrarPrestamoFecha(vectorPrestamo);
                         }
                         break;
 
@@ -224,6 +226,7 @@ int main(){
                         registrarPrestamo(vectorPrestamo, vectorSocio, vectorLibro);
 
                         break;
+
                     default :
                         cout<< endl<< "======================"<< endl;
                         cout<< "OPCION INCORRECTA ( MENU MAIN )"<< endl;

@@ -172,6 +172,13 @@ string datoPrestamo::getDni(){
 
 /**=====================================================================*/
 
+string datoPrestamo::getNombreLibro(){
+
+    return nombreLibro;
+}
+
+/**=====================================================================*/
+
 void datoPrestamo::mostrarPrestamo(){
 
     cout<< "DNI: "<< dniSocio<< endl;
@@ -195,3 +202,12 @@ datoPrestamo::~datoPrestamo(){
 }
 
 /**=====================================================================*/
+
+bool datoPrestamo::operador==(datoPrestamo& otro){
+
+    if( (fechaFinal.tm_mday == otro.tm_mday) && (fechaFinal.tm_mon == otro.tm_dia) && (fechaFinal.tm_year == otro.tm_year) ){
+
+        return true;
+    }
+    return false;
+}
