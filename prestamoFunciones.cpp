@@ -211,3 +211,5 @@ bool datoPrestamo::operador==(datoPrestamo& otro){
     }
     return false;
 }
+
+/**=====================================================================*/
