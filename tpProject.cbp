@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="tpProject" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/tpProject" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-std=gnu++14" />
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/tpProject" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="buscar_libros.cpp" />
+		<Unit filename="buscar_libros.h" />
+		<Unit filename="buscar_socios.cpp" />
+		<Unit filename="buscar_socios.h" />
+		<Unit filename="cargar_libros.cpp" />
+		<Unit filename="cargar_libros.h" />
+		<Unit filename="funcionesLibro.cpp" />
+		<Unit filename="funcionesLibro.h" />
+		<Unit filename="funcionesMain.cpp" />
+		<Unit filename="funcionesMain.h" />
+		<Unit filename="gestionVectorLibro.cpp" />
+		<Unit filename="gestionVectorLibro.h" />
+		<Unit filename="gestionVectorSocio.cpp" />
+		<Unit filename="gestionVectorSocio.h" />
+		<Unit filename="libro.cpp" />
+		<Unit filename="libroH.h" />
+		<Unit filename="lista de socios.csv" />
+		<Unit filename="lista_libros.csv" />
+		<Unit filename="main.cpp" />
+		<Unit filename="prestamoFormato.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="socio.cpp" />
+		<Unit filename="socioH.h" />
+		<Extensions>
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

@@ -1,0 +1,265 @@
+# depslib dependency file v1.0
+1747573657 source:c:\users\marin\onedrive\escritorio\tp_eda2\buscar_libros.cpp
+	"buscar_libros.h"
+	"func.h"
+
+1747573651 c:\users\marin\onedrive\escritorio\tp_eda2\buscar_libros.h
+	"libroH.h"
+	<vector>
+
+1747573675 c:\users\marin\onedrive\escritorio\tp_eda2\libroh.h
+	<iostream>
+	<string>
+	<fstream>
+	<vector>
+
+1747573665 c:\users\marin\onedrive\escritorio\tp_eda2\func.h
+	<vector>
+	<string>
+
+1747573654 source:c:\users\marin\onedrive\escritorio\tp_eda2\buscar_socios.cpp
+	"buscar_socios.h"
+	"func.h"
+
+1747573648 c:\users\marin\onedrive\escritorio\tp_eda2\buscar_socios.h
+	"socioH.h"
+	<vector>
+
+1747573692 c:\users\marin\onedrive\escritorio\tp_eda2\socioh.h
+	<iostream>
+	<string>
+	<fstream>
+	<vector>
+
+1747573644 source:c:\users\marin\onedrive\escritorio\tp_eda2\cargar_libros.cpp
+	"cargar_libros.h"
+
+1747573659 c:\users\marin\onedrive\escritorio\tp_eda2\cargar_libros.h
+	<vector>
+	<sstream>
+	<fstream>
+	"libroH.h"
+	"func.h"
+
+1747573662 source:c:\users\marin\onedrive\escritorio\tp_eda2\cargar_socios.cpp
+	"cargar_socios.h"
+
+1747573667 c:\users\marin\onedrive\escritorio\tp_eda2\cargar_socios.h
+	<vector>
+	"socioH.h"
+	"func.h"
+	<sstream>
+	<fstream>
+
+1747573670 source:c:\users\marin\onedrive\escritorio\tp_eda2\func.cpp
+	<iostream>
+	<vector>
+	<unordered_map>
+	"func.h"
+
+1747573678 source:c:\users\marin\onedrive\escritorio\tp_eda2\funciones2.cpp
+	<iostream>
+	<string>
+	<fstream>
+	<vector>
+	"funciones2.h"
+	"socioH.h"
+	"libroH.h"
+
+1747573673 c:\users\marin\onedrive\escritorio\tp_eda2\funciones2.h
+	<iostream>
+	<string>
+	<fstream>
+	<vector>
+	"socioH.h"
+	"libroH.h"
+
+1747573682 source:c:\users\marin\onedrive\escritorio\tp_eda2\libro.cpp
+	<iostream>
+	<string>
+	<fstream>
+	<vector>
+	"libroH.h"
+	"socioH.h"
+	"funciones2.h"
+	"func.h"
+
+1747573689 source:c:\users\marin\onedrive\escritorio\tp_eda2\socio.cpp
+	<iostream>
+	<string>
+	<fstream>
+	<vector>
+	"socioH.h"
+	"funciones2.h"
+	"libroH.h"
+	"func.h"
+
+1748368994 D
+
+1749686803 source:c:\users\marin\onedrive\escritorio\tpproject\buscar_libros.cpp
+	"buscar_libros.h"
+	"funcionesLibro.h"
+
+1749686803 c:\users\marin\onedrive\escritorio\tpproject\buscar_libros.h
+	<vector>
+	"libroH.h"
+
+1748378974 uLibro
+	<vector>
+	"libroH.h"
+	<vector>
+	<sstream>
+	<fstream>
+	"libroH.h"
+	"libroH.h"
+	"funcionesLibro.h"
+	"funcionesMain.h"
+	"gestionVectorSocio.h"
+
+1749688766 c:\users\marin\onedrive\escritorio\tpproject\libroh.h
+	<iostream>
+	<string>
+	"funcionesMain.h"
+
+1747578678 c:\users\marin\onedrive\escritorio\tpproject\func.h
+	<vector>
+	<string>
+
+1749686803 source:c:\users\marin\onedrive\escritorio\tpproject\buscar_socios.cpp
+	"buscar_socios.h"
+
+1749686803 c:\users\marin\onedrive\escritorio\tpproject\buscar_socios.h
+	<vector>
+	"socioH.h"
+	"funcionesLibro.h"
+
+1749688766 c:\users\marin\onedrive\escritorio\tpproject\socioh.h
+	<iostream>
+	<string>
+
+1749686803 source:c:\users\marin\onedrive\escritorio\tpproject\cargar_libros.cpp
+	"cargar_libros.h"
+
+1749686677 c:\users\marin\onedrive\escritorio\tpproject\cargar_libros.h
+	<vector>
+	<sstream>
+	<fstream>
+	"libroH.h"
+
+1748458416 source:c:\users\marin\onedrive\escritorio\tpproject\cargar_socios.cpp
+	"cargar_socios.h"
+
+1747865418 c:\users\marin\onedrive\escritorio\tpproject\cargar_socios.h
+	<vector>
+	<sstream>
+	<fstream>
+	"gestionVectorSocio.h"
+
+1747580260 source:c:\users\marin\onedrive\escritorio\tpproject\func.cpp
+	<iostream>
+	<vector>
+	<unordered_map>
+	"funcionesLibro.h"
+
+1747576065 source:c:\users\marin\onedrive\escritorio\tpproject\funciones2.cpp
+	<iostream>
+	<string>
+	<fstream>
+	<vector>
+	"funciones2.h"
+	"socioH.h"
+	"libroH.h"
+
+1747573673 c:\users\marin\onedrive\escritorio\tpproject\funciones2.h
+	<iostream>
+	<string>
+	<fstream>
+	<vector>
+	"socioH.h"
+	"libroH.h"
+
+1749686803 source:c:\users\marin\onedrive\escritorio\tpproject\libro.cpp
+	"libroH.h"
+
+1749686803 source:c:\users\marin\onedrive\escritorio\tpproject\socio.cpp
+	"socioH.h"
+
+1750033538 source:c:\users\marin\onedrive\escritorio\tpproject\main.cpp
+	<iostream>
+	<string>
+	<fstream>
+	<vector>
+	"buscar_libros.h"
+	"cargar_libros.h"
+	"funcionesLibro.h"
+	"gestionVectorLibro.h"
+	"buscar_socios.h"
+	"funcionesMain.h"
+	"gestionVectorSocio.h"
+	"funcionesPrestamo.h"
+	"prestamoFormato.h"
+
+1749686803 c:\users\marin\onedrive\escritorio\tpproject\funcionesmain.h
+	<string>
+	<fstream>
+	<vector>
+	"socioH.h"
+	"gestionVectorSocio.h"
+
+1749686803 source:c:\users\marin\onedrive\escritorio\tpproject\funcionesmain.cpp
+	"funcionesMain.h"
+	"gestionVectorSocio.h"
+
+1749686677 c:\users\marin\onedrive\escritorio\tpproject\funcioneslibro.h
+	"libroH.h"
+	<string>
+	<unordered_map>
+	<vector>
+
+1749686803 source:c:\users\marin\onedrive\escritorio\tpproject\funcioneslibro.cpp
+	"funcionesLibro.h"
+
+1747862549 c:\users\marin\onedrive\escritorio\tpproject\gestorvectorsocio.h
+	<iostream>
+	<string>
+	<fstream>
+	<vector>
+	"gestorVectorSocio.h"
+	"funcionesMain.h"
+	"socioH.h"
+	"libroH.h"
+
+1749686677 c:\users\marin\onedrive\escritorio\tpproject\gestionvectorsocio.h
+	"funcionesMain.h"
+	"funcionesLibro.h"
+
+1749686803 source:c:\users\marin\onedrive\escritorio\tpproject\gestionvectorsocio.cpp
+	"funcionesMain.h"
+	"gestionVectorSocio.h"
+
+1749686803 c:\users\marin\onedrive\escritorio\tpproject\gestionvectorlibro.h
+	<vector>
+	"buscar_libros.h"
+	"cargar_libros.h"
+	"libroH.h"
+	"funcionesLibro.h"
+	"funcionesMain.h"
+
+1749688798 source:c:\users\marin\onedrive\escritorio\tpproject\gestionvectorlibro.cpp
+	"gestionVectorLibro.h"
+
+1750082524 c:\users\marin\onedrive\escritorio\tpproject\funcionesprestamo.h
+	<vector>
+	<string>
+	"socioH.h"
+	"libroH.h"
+	"prestamoFormato.h"
+	"gestionVectorLibro.h"
+	"gestionVectorSocio.h"
+	"funcionesMain.h"
+
+1750029707 c:\users\marin\onedrive\escritorio\tpproject\prestamoformato.h
+	<iostream>
+	<ctime>
+	<string>
+
