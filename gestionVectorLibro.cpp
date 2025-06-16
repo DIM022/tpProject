@@ -231,7 +231,7 @@ void modificarLibro(int flagDNIB, vector<libro>& vectoLibro){
 
 void subirCambiosLibro(vector <libro>& vectorLibro){
 
-    fstream file = nullptr;
+    fstream file;
         ///LIBRO
         ///OUT PARA ESCRIBIR Y TRUNC PARA ELIMINAR EL CONTENIDO ANTERIOIR DEL ARCHIVO
         file.open("lista_libros.csv", ios::out | ios::trunc);

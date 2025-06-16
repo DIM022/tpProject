@@ -1,0 +1,20 @@
+#ifndef FUNCIONESPRESTAMO_H_INCLUDED
+#define FUNCIONESPRESTAMO_H_INCLUDED
+
+#include <vector>
+#include <string>
+
+#include "socioH.h"
+#include "libroH.h"
+#include "prestamoFormato.h"
+
+#include "gestionVectorLibro.h"
+#include "gestionVectorSocio.h"
+#include "funcionesMain.h"
+
+void registrarPrestamo(vector <datoPrestamo>&, vector <socio>&, vector <libro>&);
+
+bool verificarExistenciaNombresocio(string, vector <socio>&);
+bool verificarExistenciaNombreLibro(string, vector <libro>&);
+
+#endif // FUNCIONESPRESTAMO_H_INCLUDED

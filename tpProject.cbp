@@ -12,6 +12,7 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
+					<Add option="-std=gnu++14" />
 					<Add option="-g" />
 				</Compiler>
 			</Target>
@@ -51,6 +52,9 @@
 		<Unit filename="lista de socios.csv" />
 		<Unit filename="lista_libros.csv" />
 		<Unit filename="main.cpp" />
+		<Unit filename="prestamoFormato.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="socio.cpp" />
 		<Unit filename="socioH.h" />
 		<Extensions>

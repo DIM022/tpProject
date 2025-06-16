@@ -1,0 +1,32 @@
+#ifndef PRESTAMOFORMATO_H_INCLUDED
+#define PRESTAMOFORMATO_H_INCLUDED
+
+#include <iostream>
+#include <ctime>
+#include <string>
+
+using namespace std;
+
+class datoPrestamo{
+
+private :
+    string dniSocio;
+    string nombreLibro;
+    tm fechaInicio;
+    tm fechaFinal;
+
+public :
+
+    datoPrestamo(string, string);
+    ~datoPrestamo() = default;
+    void realizarPrestamo();
+    void establecerFechaPrestamo();
+
+    void getDevolucion();///DEVUELVE LOS DIAS DESDE L PRESTAMO HASTA LA FECHA MAXIMA
+    void getFechaFinal();///DEVUELVE LA FECHA INDICADA DE DEVOLUCION
+    void getFechaInicio();///DEVUELVE CUANDO SE REALIZO EL PRESTAMO
+    void mostrarPrestamo();///MUESTRA LOS DATOS DE LAS PROPIEDADES
+    string getDni();
+};
+
+#endif // PRESTAMOFORMATO_H_INCLUDED
