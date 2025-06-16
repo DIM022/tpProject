@@ -15,7 +15,6 @@
 #include "gestionVectorSocio.h"///ACCEDE A LAS FUNCIONES QUE MANIPULA AL VECTOR SOCIO
 
 #include "funcionesPrestamo.h"
-#include "prestamoFormato.h"
 
 #define ARCHIVO_SOCIOS "lista de socios.csv"
 #define ARCHIVO_LIBROS "lista_libros.csv"
@@ -212,18 +211,18 @@ int main(){
                         cin >> menuSL;
 
                         if(menuSL == '1'){
-                            filtrarPrestamoSocio(vectorPrestamo);
+//                            filtrarPrestamoSocio(vectorPrestamo);
 
                         }else if(menuSL == '2'){
-                            filtrarPrestamoLibro(vectorPrestamo);
+//                            filtrarPrestamoLibro(vectorPrestamo);
 
                         }else if(menuSL == '3'){
-                            filtrarPrestamoFecha(vectorPrestamo);
+//                            filtrarPrestamoFecha(vectorPrestamo);
                         }
                         break;
 
                     case '2' :
-                        registrarPrestamo(vectorPrestamo, vectorSocio, vectorLibro);
+//                        registrarPrestamo(vectorPrestamo, vectorSocio, vectorLibro);
 
                         break;
 
