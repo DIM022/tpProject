@@ -14,7 +14,7 @@
 
 void registrarPrestamo(vector <datoPrestamo>&, vector <socio>&, vector <libro>&);
 
-bool verificarExistenciaNombresocio(string, vector <socio>&);
+bool verificarExistenciaNombreSocio(string, vector <socio>&);
 bool verificarExistenciaNombreLibro(string, vector <libro>&);
 
 #endif // FUNCIONESPRESTAMO_H_INCLUDED

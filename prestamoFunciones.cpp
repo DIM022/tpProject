@@ -37,7 +37,7 @@ void datoPrestamo::establecerFechaPrestamo(){
 
     do{
         valido = false;
-        cout<< "INGRESE AÑO: ";
+        cout<< "INGRESE Aï¿½O: ";
         cin >> anio;
         cin.ignore();
 
@@ -51,7 +51,7 @@ void datoPrestamo::establecerFechaPrestamo(){
 
 ///MODIFICAMOS EL VALOR YA QUE
 /// MES : EMPIEZA DESDE 0 ( 0 - ENERO && 11 - DICIEMBRE
-/// AÑO : SUMA EL NUM INGRESADO + 1900 ( 2025 - 1900 = 125 + 1900 = 2025)
+/// Aï¿½O : SUMA EL NUM INGRESADO + 1900 ( 2025 - 1900 = 125 + 1900 = 2025)
     mes = mes - 1;
     anio -= 1900;
 
@@ -175,7 +175,7 @@ string datoPrestamo::getDni(){
 void datoPrestamo::mostrarPrestamo(){
 
     cout<< "DNI: "<< dniSocio<< endl;
-        << "LIBRO: "<< nombreLibro<< endl;
+    cout<< "LIBRO: "<< nombreLibro<< endl;
         getFechaInicio();
         getFechaFinal();
         getDevolucion();
@@ -189,9 +189,9 @@ datoPrestamo::datoPrestamo(string _nombrelibro, string nombreSocio): nombreLibro
 }
 
 /**=====================================================================*/
-
+/*INNECESARIO YA QUE DEFINIMOS COMO DEFAULT EN PRESTAMOFORMATO.H 
 datoPrestamo::~datoPrestamo(){
     cout<< "DESTROIT";
 }
-
+*/
 /**=====================================================================*/

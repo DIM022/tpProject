@@ -35,6 +35,10 @@ int main(){
     vector < socio > vectorSocio;
     vector < libro > vectorLibro;
     vector < datoPrestamo > vectorPrestamo;
+    //!!se ejecuta 1 sola vez, despues comentar
+    /*
+    asignar_estadosUbicacion(ARCHIVO_LIBROS);//para asignar los estados, disponibilidad y ubicacion
+    */
 
     ifstream file;///
 
@@ -196,6 +200,8 @@ int main(){
                     }
 
                 }while(menuSL != 'S' && menuSL != 's');
+                
+                break;
 
             case '3' :
 
@@ -232,7 +238,8 @@ int main(){
                 }
                 break;
 
-            case 'S' |  's' :
+            case 'S' : //si hacemos case 's' || 'S' no es como un or, si lo ahcemos asi si ya q del case 'S' tambien pasa al de abajo como no hay break
+            case 's' :
 
                 ///SI NO SE ABRE NUNCA A SOCIO ESTO TRUNCA A SOCIOS ES DECIR QUE BORRA EL CONTENIDO
                 ///Y SUBE LO DE VECTOR PERO COMO EN VECTOR NO HAY NADA YA QUE NUNCA SE ABRIO
@@ -256,6 +263,6 @@ int main(){
         }
 
     }
-
+    cin.get();
     return 0;
 }
