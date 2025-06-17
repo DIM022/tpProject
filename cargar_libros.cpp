@@ -26,7 +26,6 @@ vector<libro> cargarLibro(string nombre_archivo){
 
     stringstream stream(linea);
     int cantidad_campos = contar_campos(linea);
-
     string nombre, area, subarea, autores, editorial, anio_de_publicacion;
 
     string estado, estadoSN_string, ubicacion_string; //los atributos q agregamos

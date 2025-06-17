@@ -25,5 +25,6 @@ void asignar_ubicacion(int &contador, int ubicacionL[2]);
 void asignar_estadosUbicacion(string nombre_archivo);
 int contar_campos(string linea);
 void cambiar_ubicacion(string ubicacion_string, int[2]); 
+bool es_ubicacion_valida(string);
 
 #endif //cierra condicion del ifndef

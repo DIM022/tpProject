@@ -14,7 +14,7 @@ void registrarPrestamo(vector <datoPrestamo>& vectorPrestamo, vector <socio>& ve
 
     do{
         cout<< "DNI DEL SOCIO: ";
-        cin >> _dniSocio;
+        getline(cin, _dniSocio);
         cin.ignore();
 
         validar = verificarNumeroString(_dniSocio);
@@ -67,7 +67,7 @@ bool verificarExistenciaNombreLibro(string _nombreLibro, vector <libro>& vectorL
 bool verificarExistenciaNombreSocio(string _string, vector <socio>& vectorSocio){
 
     for(size_t i=0; i<vectorSocio.size(); i++){
-
+        cout << "conparando con: "<<vectorSocio[i].getdni()<<endl;
         if(_string == vectorSocio[i].getdni()){
 
             i = vectorSocio.size();

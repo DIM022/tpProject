@@ -36,9 +36,8 @@ int main(){
     vector < libro > vectorLibro;
     vector < datoPrestamo > vectorPrestamo;
     //!!se ejecuta 1 sola vez, despues comentar
-    /*
     asignar_estadosUbicacion(ARCHIVO_LIBROS);//para asignar los estados, disponibilidad y ubicacion
-    */
+    
 
     ifstream file;///
 

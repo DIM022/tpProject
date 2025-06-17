@@ -174,8 +174,11 @@ void agregarSocio(vector <socio>& vector_Socio){
         getline(cin, _edad);
 
         ///CONVERTIMOS LA EDAD DE STRIING A NUMERO PARA VERIFICAR
-        contEdad = stoi(_edad);
-
+        if(es_entero_valido(_edad)){
+            contEdad = stoi(_edad);
+        }else{
+            cout<<"edad invalida"<<endl;
+        }
         if(contEdad > 0 && contEdad <= 120){
             ///EDAD VALIDA
             salir = false;

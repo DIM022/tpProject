@@ -177,6 +177,9 @@ void libro:: mostrarLibro(){
         cout<<"Autores: "<<quitar_tildes(autores)<<endl;
         cout<<"Editorial:"<<quitar_tildes(editorial)<<endl;
         cout<<"Anio de Publicacion: "<<quitar_tildes(anio_P)<<endl;
+        cout<<"Estado: "<<estado<<endl;
+        cout<<"Ubicacion: "<<ubicacionL[0]<< "-"<<ubicacionL[1]<<endl;
+        cout<<"Disponible: "<<(estadoSN ? "si": "no")<<endl;//si es true imprime si, si es false no
 }
 
 /**---------------------------------------------------------------------------------------------------*/

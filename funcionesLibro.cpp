@@ -102,11 +102,11 @@ string normalizar_anio(string fecha){
 
         //substr saca una parte del string, desde donde(len-2) y cuantos caracteres queremos(2)
         string ult_dos = fecha.substr(len - 2, 2);
-
+        int an_ingresado = 0;
         //stoi = string to int
-
+        if(es_entero_valido(ult_dos)){
         int an_ingresado = stoi(ult_dos);
-
+        }
         //si es 26 = 1926 si es 25 = 2025
         string insertar = (an_ingresado>=26) ? "19" : "20";
 
@@ -236,11 +236,14 @@ void asignar_estadosUbicacion(string nombre_archivo){
     //leemos el encabezado y le agregamos los otros parametros
    
     getline(archivo_entrada, linea);
-    
-    linea += ",ESTADO,ESTADOSN,UBICACION";
-    
-    lineas_nuevas.push_back(linea);
+    if((linea.find("ESTADO") != string::npos) && (linea.find("ESTADOSN") != string::npos) && (linea.find("UBICACION") != string::npos)){ 
+        cout<<"El encabezado ya fue actualizado."<<endl;
+        archivo_entrada.close();
+        return; //salimos
+    }
 
+    linea += ",ESTADO,ESTADOSN,UBICACION";
+    lineas_nuevas.push_back(linea);
     //leemos y modificamos las otras lineas
     while(getline(archivo_entrada, linea)){
         
@@ -292,11 +295,33 @@ int contar_campos(string linea) {
 void cambiar_ubicacion(string ubicacion_string, int ubicacion[2]){
     size_t guion = ubicacion_string.find('-');//buscamos el guion .find devuelve la pos, ej 2, sino devuelve string::npos(no encontrado)
     if( guion != string::npos){ //si el guion se encontro(distinto de no encontrado)
+    if(es_ubicacion_valida(ubicacion_string)){
     ubicacion[0] = stoi(ubicacion_string.substr(0, guion));//hacemos un string to int y substraemos de la ubicacion desde 0, tamaño de substring va a ser = guion
     ubicacion[1] = stoi(ubicacion_string.substr(guion + 1));//y aca desde guion + 1, osea las filas
+    }
     } else{
     ubicacion[0] = 0;
     ubicacion[1] = 0;
     }
 }
 /**------------------------------------------------------------------------------------------------- */
+bool es_ubicacion_valida(string ubicacion_string) {
+    size_t guion = ubicacion_string.find('-');
+    // Verificamos que el guion este y que no este al inicio ni final
+    if (guion == string::npos || guion == 0 || guion == ubicacion_string.length() - 1) {
+        return false;
+    }
+    string parte1 = ubicacion_string.substr(0, guion);
+    string parte2 = ubicacion_string.substr(guion + 1);
+
+    // Verificamos que ambas partes sean enteros positivos
+    for (char c : parte1) {
+        if (!isdigit(c)) return false;
+    }
+    for (char c : parte2) {
+        if (!isdigit(c)) return false;
+    }
+
+    return true;
+}
+/**------------------------------------------------------------------------------------------------ */

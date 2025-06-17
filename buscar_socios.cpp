@@ -6,16 +6,17 @@ int busquedaSocios(vector<socio>& socios){
 
 	string eleccion;
 	int flagDNI = -1;///INDICA EL INDICE DEL SOCIO ENCONTRADO -- USADO EN MAIN -- LINEA  78
-
+	int opcion = 0;
 	do {
 		cout<< "Seleccione una opcion de busqueda y filtrado de socios: "<<endl;
 		cout<< " 1.Apellido\n 2.Dni\n 3.Sexo\n 4.Direccion\n 5.Numero de Telefono\n 6.Edad\n 7.Fecha de Nacimiento\n 8.Mail\n 'S'/SALIR"<<endl << ">";
 		cin >> eleccion;
 
 	} while(eleccion != "1" && eleccion != "2" && eleccion != "3" && eleccion != "4" && eleccion != "5"&& eleccion != "6"&& eleccion != "7"&& eleccion != "8");
-
-	int opcion = stoi(eleccion); //evitamos overflow de int, hacemos string to int
-
+	if(es_entero_valido(eleccion)){
+	 opcion = stoi(eleccion); //evitamos overflow de int, hacemos string to int
+	}
+	cout<<"debug : valor de eleccion :["<< eleccion << "]"<<endl;
 	switch(opcion) {
     	case 1: {
     		bool existe;
