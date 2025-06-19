@@ -4,7 +4,7 @@ using namespace std;
 
 /**---------------------------------------------------------------------------------------------------*/
 
-///RETORNA EL STIRNG A MIINUSCULAS
+//RETORNA EL STIRNG A MIINUSCULAS
 string a_minusculas(string texto){
 
     //size() devuelve un unsigned long, o size_t y size_t segun el entorno de ejecucion puede ser uns long,
@@ -105,8 +105,15 @@ string normalizar_anio(string fecha){
         int an_ingresado = 0;
         //stoi = string to int
         if(es_entero_valido(ult_dos)){
-        int an_ingresado = stoi(ult_dos);
+        an_ingresado = stoi(ult_dos);
         }
+
+
+        //stoi = string to int
+
+        an_ingresado = stoi(ult_dos);
+
+
         //si es 26 = 1926 si es 25 = 2025
         string insertar = (an_ingresado>=26) ? "19" : "20";
 
@@ -187,8 +194,12 @@ bool es_entero_valido(string s) {
 }
 
 /**---------------------------------------------------------------------------------------------------*/
+
+
+
+
 string asignar_estado( int &contador){
-    
+
     string estados[4] = {
         "bueno", "regular", "malo", "destruido"
     };
@@ -214,29 +225,29 @@ void asignar_ubicacion(int &contador, int ubicacionL[2]){
 /**------------------------------------------------------------------------------------------------- */
 
 void asignar_estadosUbicacion(string nombre_archivo){
-   
+
     ifstream archivo_entrada(nombre_archivo);
-   
+
     if (!archivo_entrada.is_open()){
-       
+
         cout<<"no se pudo abrir el archivo."<<endl;
     }
-    
-    
+
+
     vector<string> lineas_nuevas;
-    
+
     string linea;
-    
+
     int contador_estado = 0;
-   
+
     int contador_estadoSN = 0;
-   
+
     int contador_ubicacion = 0;
 
     //leemos el encabezado y le agregamos los otros parametros
-   
+
     getline(archivo_entrada, linea);
-    if((linea.find("ESTADO") != string::npos) && (linea.find("ESTADOSN") != string::npos) && (linea.find("UBICACION") != string::npos)){ 
+    if((linea.find("ESTADO") != string::npos) && (linea.find("ESTADOSN") != string::npos) && (linea.find("UBICACION") != string::npos)){
         cout<<"El encabezado ya fue actualizado."<<endl;
         archivo_entrada.close();
         return; //salimos
@@ -246,19 +257,19 @@ void asignar_estadosUbicacion(string nombre_archivo){
     lineas_nuevas.push_back(linea);
     //leemos y modificamos las otras lineas
     while(getline(archivo_entrada, linea)){
-        
+
         string estado = asignar_estado(contador_estado);
-       
+
         string estadoSN = asignar_estadoSN(contador_estadoSN);
-       
+
         int ubicacionL[2];
-        
+
         asignar_ubicacion(contador_ubicacion, ubicacionL);
-        
+
         string ubicacionstring = to_string(ubicacionL[0]) + "-" + to_string(ubicacionL[1]); //quedaria 1-2 por ej
-        
+
         string nueva_linea = linea + "," + estado + "," + ubicacionstring + "," + estadoSN; //la nueva linea seria los datos anteriores sumando los estados
-        
+
         lineas_nuevas.push_back(nueva_linea);
     }
     archivo_entrada.close();
@@ -267,11 +278,11 @@ void asignar_estadosUbicacion(string nombre_archivo){
     ofstream archivo_salida(nombre_archivo);
 
     if (!archivo_salida.is_open()){
-        
+
         cout<<"no se pudo abrir el archivo."<<endl;
     }
     for (string l : lineas_nuevas){//por cada string en lineas_nuevas
-        
+
         archivo_salida << l <<endl; //escribimos el contenido de l
     }
 

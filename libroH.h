@@ -17,7 +17,7 @@ class libro{
     string anio_P;
     string estado;
 
-///atributos agregados
+//atributos agregados
     int ubicacionL[2];// 4( columna )  _  3( fila )
     bool estadoSN;//1 ( DISPONIBLE ) / 0 ( NO DISPONIBLE )
 
@@ -26,6 +26,7 @@ public :
     libro(string, string, string, string, string, string, int*,bool);
     libro(string, string, string, string, int[2], bool);//sobrecargo el constructor para el ultimo libro del csv
     libro(string, string, string, string, string, string, string, int[2], bool);
+
     //~libro();
     string stringFile();
     void generar_barras();

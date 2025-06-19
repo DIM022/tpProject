@@ -3,50 +3,44 @@
 #include<fstream>
 #include<vector>
 
-#include "buscar_libros.h"
-#include "cargar_libros.h"
-#include "funcionesLibro.h"
 #include "gestionVectorLibro.h"
 
-///FUNCION BUSQUEDA SOCIO -- LINEA 80
+//ACCEDE A LA FUNCION DE BUSQUEDA
 #include "buscar_socios.h"
-
-#include "funcionesMain.h"///ACCEDE A ALGUNAS FUNCIONES NORMALES DEL MAIN
-#include "gestionVectorSocio.h"///ACCEDE A LAS FUNCIONES QUE MANIPULA AL VECTOR SOCIO
-
+//ACCEDE A ALGUNAS FUNCIONES NORMALES DEL MAIN
+#include "funcionesMain.h"
+//ACCEDE A LAS FUNCIONES QUE MANIPULA AL VECTOR SOCIO
+#include "gestionVectorSocio.h"
+//ACCEDE A LAS FUNCIONES QUE ACCEDEN Y MANIPULAN PRESTAMOS
 #include "funcionesPrestamo.h"
-#include "prestamoFormato.h"
-
-#define ARCHIVO_SOCIOS "lista de socios.csv"
-#define ARCHIVO_LIBROS "lista_libros.csv"
 
 using namespace std;
 
 int main(){
 
     int contRepeS = 0, contRepeL = 0;
-    int flagDNI = 0;///INDICA LA POSICION DEL SOCIO BUSCADO
+    int flagDNI = 0;//INDICA LA POSICION DEL SOCIO BUSCADO
     int flagL = 0;
 
     char menuP = 0;
     char menuSL = 0;
-    char menuBS = 0;///MENU BUSQUEDA SOCIO -- linea 52
+    char menuL = 0;
+    char menuPS = 0;
+    char menuSUBPS = 0;
 
     vector < socio > vectorSocio;
     vector < libro > vectorLibro;
     vector < datoPrestamo > vectorPrestamo;
-    //!!se ejecuta 1 sola vez, despues comentar
-    asignar_estadosUbicacion(ARCHIVO_LIBROS);//para asignar los estados, disponibilidad y ubicacion
-    
 
-    ifstream file;///
+    ifstream file;//
 
 
     while(menuP != 'S' && menuP != 's'){
 
-        cout<< "================================================================================="<< endl;
-        cout<< "\t\t<< MENU >>"<< endl;
-        cout<< "\t\t1/SOCIO   2/LIBRO   3/PRESTAMO    'S'/SALIR"<<endl << ">";
+        cout<< "==============================================="<< endl;
+        cout<< "==============================================="<< endl;
+        cout<< "\t<< MENU >>"<< endl;
+        cout<< "\t1/SOCIO   2/LIBRO   3/PRESTAMO    'S'/SALIR"<<endl << ">";
         cin >> menuP;
         cin.ignore();
 
@@ -54,24 +48,9 @@ int main(){
 
             case '1' :
 
-                ///SOLO SE ABRE EL ARCHIVO 1 VEZ
-                ///YA QUE SI SELECIONACMOS PARA ACCEDER A SOCIO SIN AVER GUARDAO LAS MODIFICACIONES
-                ///SE PIERDEN ESAS MODIFICACIONES Y TIENE EL VECTOR ORIGINAL DENUEVO
-                if(!contRepeS){
-                    ///ABRIMOS EL ARCHIVO
-                    file = archivo_IO();
+                if(inicioAperturaSocio(vectorSocio, file, contRepeS) ){
 
-                    ///VERIFICAMOS QUE SE ASIGNO
-                    if(file.fail()){
-                        ///SI NO, IMPRIMOS Y RETORNAMOS
-                        cout<< "ERROR AL ABRIR EL ARCHIVO ( MAIN )"<< endl;
-                        return 1;
-                    }
-
-                    ///TOMA LOS DATOS DEL ARCHIVO Y CIERRA ARCHIVO
-                    lecturaLinea(vectorSocio, file);
-
-                    contRepeS++;
+                    return 1;
                 }
 
                 do{
@@ -87,28 +66,31 @@ int main(){
                             break;
 
                         case '2' :
-                            ///GUARDAMOS EL DNI DEL SOCIO BUSCADO
+                            //GUARDAMOS EL DNI DEL SOCIO BUSCADO
                              flagDNI = busquedaSocios(vectorSocio);
 
-                             ///SI ES MAYOR O IGUAL A < 0 > SE ENCONTRO UN SOCIO
-                             ///SI NO RETORNA A < MENU SOCIO >
+                             //SI ES MAYOR O IGUAL A < 0 > SE ENCONTRO UN SOCIO
+                             //SI NO RETORNA A < MENU SOCIO >
                             if(flagDNI != -1){
 
-                                ///MUESTRA EL MENU BS( BUSQUEDA )
+                                //MUESTRA EL MENU BS( BUSQUEDA )
                                  cout<< "1/MODIFICAR SOCIO    2/ELIMINAR SOCIO    'S'/SALIR"<< endl<< ">";
-                                 cin >> menuBS;
+                                 cin >> menuSL;
                                  cin.ignore();
 
-                                 if(menuBS == '1'){
-                                    modificar_Socio(vectorSocio, flagDNI);
+                                //PASAMOS COMO ARGUMENTO
+                                //EL VECTOR PARA SER MODIFCADO
+                                //Y LA POSICION DEL SOCIO ( flagDNI )
+                                 if(menuSL == '1'){
+                                    modificarSocio(vectorSocio, flagDNI);
 
-                                 }else if(menuBS == '2'){
+                                 }else if(menuSL == '2'){
                                     eliminarSocio(vectorSocio, flagDNI);
 
-                                 }else if(menuBS == 's' || menuBS == 'S'){
+                                 }else if(menuSL == 's' || menuSL == 'S'){
 
                                     cout<< "SALIENDO DE < MENU BUSQUEDA >"<< endl;
-                                    ///RETORNA AL < MENU SOCIO >
+                                    //RETORNA AL < MENU SOCIO >
                                  }
                             }
                             break;
@@ -136,47 +118,39 @@ int main(){
 
             case '2' :
 
-                ///ASEGURA QUE SE CARGUE EL LIBRO UNA SOLA VEZ PARA EVITAR
-                ///ACTUALIZACIONES NO BUSCADAS
-                if(!contRepeL){
-                    //ABRE Y RETORNA UN VECTOR DE LIBRO
-                    vectorLibro = cargarLibro(ARCHIVO_LIBROS);
-
-                    contRepeL++;
-                }
-
+                inicioAperturaLibro(vectorLibro, contRepeL);
 
                 do{
                     cout<< "-----------------------------------------------"<< endl;
                     cout<< " MENU LIBRO ( MAIN )"<< endl;
                     cout<< "1/ VER LIBRO    2/BUSCAR LIBRO     3/AGREGAR LIBRO      'S'/SALIR"<< endl<< ">";
-                    cin >> menuSL;
+                    cin >> menuL;
                     cin.ignore();
 
-                    switch(menuSL){
+                    switch(menuL){
 
                     case '1' :
                             mostrarL(vectorLibro);
                             break;
 
                         case '2' :
-                            ///RETORNA EL INDICE DEL LIBRO BUSCADO -- SOLO SI SE BUSCA EL NOMBRE
+                            //RETORNA EL INDICE DEL LIBRO BUSCADO -- SOLO SI SE BUSCA EL NOMBRE
                             flagL = busqueda_libros(vectorLibro);
 
-                            ///SI ENTRA ES PORQUE ENCONTRO UN LIBRO ESPECIFICO
-                            ///Y QUEREMOS MODIFICARLO
+                            //SI ENTRA ES PORQUE ENCONTRO UN LIBRO ESPECIFICO
+                            //Y QUEREMOS MODIFICARLO
                             if(flagL != -1){
 
                                 cout<< "1-MODIFICAR LIBRO      2-ELIMINAR     'S'/SALIR"<< endl;
-                                cin >> menuSL;
+                                cin >> menuL;
                                 cin.ignore();
 
-                                if(menuSL == '1'){
+                                if(menuL == '1'){
                                     modificarLibro(flagL, vectorLibro);
 
-                                }else if(menuSL == '2'){
+                                }else if(menuL == '2'){
 
-                                }else if(menuSL == 's' || menuSL == 'S'){
+                                }else if(menuL == 's' || menuL == 'S'){
                                         cout<< "SALIENDO DEL < MENU BUSQUEDA >"<< endl;
                                 }
 
@@ -198,55 +172,84 @@ int main(){
                             break;
                     }
 
-                }while(menuSL != 'S' && menuSL != 's');
-                
+                }while(menuL != 'S' && menuL != 's');
                 break;
 
             case '3' :
 
-                cout<< "-----------------------------------------------"<< endl;
-                cout<< "MENU PRESTAMO ( MAIN )"<< endl;
-                cout<< "1/VER PRESTAMOS    2/REALIZAR PRESTAMO"<< endl;
-                cin >> menuSL;
+                do{
+                    cout<< "-----------------------------------------------"<< endl;
+                    cout<< "MENU PRESTAMO ( MAIN )"<< endl;
+                    cout<< "1/VER PRESTAMOS    2/REALIZAR PRESTAMO    'S'/SALIR"<< endl;
+                    cin >> menuPS;
 
-                switch(menuSL){
-                    case '1' :
-                        cout<< "-----------------------------------------------"<< endl;
-                        cout<< "MENU PRESTAMO BUSQUEDA"<< endl;
-                        cout<< "1/SOCIO    2/LIBRO    3/FECHA"<< endl;
-                        cin >> menuSL;
+                    switch(menuPS){
+                        case '1' :
 
-                        if(menuSL == '1'){
+                            do{
+                                cout<< "-----------------------------------------------"<< endl;
+                                cout<< "MENU PRESTAMO BUSQUEDA"<< endl;
+                                cout<< "1/SOCIO    2/LIBRO    3/FECHA   4/TODO  'S'/SALIR"<< endl;
+                                cin >> menuSUBPS;
 
-                        }else if(menuSL == '2'){
+                                if(menuSUBPS == '1'){
+                                    filtrarPrestamoSocio(vectorPrestamo);
 
-                        }else if(menuSL == '3'){
+                                }else if(menuSUBPS == '2'){
+                                    filtrarPrestamoLibro(vectorPrestamo);
 
-                        }
-                        break;
+                                }else if(menuSUBPS == '3'){
+                                    filtrarPrestamoFecha(vectorPrestamo);
 
-                    case '2' :
-                        registrarPrestamo(vectorPrestamo, vectorSocio, vectorLibro);
+                                }else if(menuSUBPS == '4'){
+                                    filtrarPrestamoTodo(vectorPrestamo);
 
-                        break;
-                    default :
-                        cout<< endl<< "======================"<< endl;
-                        cout<< "OPCION INCORRECTA ( MENU MAIN )"<< endl;
-                        cout<< endl<< "======================"<< endl;
-                        break;
-                }
+                                }else if(menuSUBPS == 's' || menuSUBPS == 'S'){
+                                    cout<< "SALIENDO AL MENU ( MAIN )"<< endl;
+
+                                }else{
+                                    cout<< "SELECCIONE UNA OPCION VALIDA"<< endl;
+                                }
+
+                            }while(menuSUBPS != 's' && menuSUBPS != 'S');
+
+                            break;
+
+                        case '2' :
+
+                            if(inicioAperturaSocio(vectorSocio, file, contRepeS)){
+
+                                return 1;
+                            }
+                            inicioAperturaLibro(vectorLibro, contRepeL);
+
+                            registrarPrestamo(vectorPrestamo, vectorSocio, vectorLibro);
+
+                            break;
+
+                        case 's' | 'S' :
+                            cout<< "SALIENDO AL MENU < MAIN >"<< endl;
+
+                        default :
+                            cout<< endl<< "======================"<< endl;
+                            cout<< "OPCION INCORRECTA ( MENU MAIN )"<< endl;
+                            cout<< endl<< "======================"<< endl;
+                            break;
+                    }
+                }while(menuPS != 's' && menuPS != 'S');
                 break;
 
-            case 'S' : //si hacemos case 's' || 'S' no es como un or, si lo ahcemos asi si ya q del case 'S' tambien pasa al de abajo como no hay break
-            case 's' :
+            case 'S' |  's' :
 
-                ///SI NO SE ABRE NUNCA A SOCIO ESTO TRUNCA A SOCIOS ES DECIR QUE BORRA EL CONTENIDO
-                ///Y SUBE LO DE VECTOR PERO COMO EN VECTOR NO HAY NADA YA QUE NUNCA SE ABRIO
-                ///QUEDA VACIO
+                //SI NO SE ABRE NUNCA A SOCIO ESTO TRUNCA A SOCIOS ES DECIR QUE BORRA EL CONTENIDO
+                //Y SUBE LO DE VECTOR PERO COMO EN VECTOR NO HAY NADA YA QUE NUNCA SE ABRIO
+                //QUEDA VACIO
 
-                ///SUBIR CAMBIO SOCIO
+                //SUBIR CAMBIO SOCIO
                 if(contRepeS){
                     subirCambios(vectorSocio);
+                    vectorSocio.clear();
+                    vectorSocio[1].mostrarSocio();
                 }
 
                 if(contRepeL){
@@ -262,6 +265,6 @@ int main(){
         }
 
     }
-    cin.get();
+
     return 0;
 }

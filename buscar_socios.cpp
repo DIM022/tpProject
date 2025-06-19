@@ -5,8 +5,9 @@
 int busquedaSocios(vector<socio>& socios){
 
 	string eleccion;
-	int flagDNI = -1;///INDICA EL INDICE DEL SOCIO ENCONTRADO -- USADO EN MAIN -- LINEA  78
+	int flagDNI = -1;//INDICA EL INDICE DEL SOCIO ENCONTRADO -- USADO EN MAIN -- LINEA  78
 	int opcion = 0;
+
 	do {
 		cout<< "Seleccione una opcion de busqueda y filtrado de socios: "<<endl;
 		cout<< " 1.Apellido\n 2.Dni\n 3.Sexo\n 4.Direccion\n 5.Numero de Telefono\n 6.Edad\n 7.Fecha de Nacimiento\n 8.Mail\n 'S'/SALIR"<<endl << ">";
@@ -17,6 +18,7 @@ int busquedaSocios(vector<socio>& socios){
 	 opcion = stoi(eleccion); //evitamos overflow de int, hacemos string to int
 	}
 	cout<<"debug : valor de eleccion :["<< eleccion << "]"<<endl;
+
 	switch(opcion) {
     	case 1: {
     		bool existe;
@@ -27,12 +29,12 @@ int busquedaSocios(vector<socio>& socios){
     			cout<<"Ingrese el Apellido a Buscar(E para salir): "<<endl;
     			cin>>apellido_busc;
 
-                ///PASA TODO EL STRING A MINUSCULA
+                //PASA TODO EL STRING A MINUSCULA
     			apellido_busc = a_minusculas(quitar_tildes(apellido_busc));
 
     			for(size_t i = 0; i<socios.size(); i++) {
 
-                    ///COMPARA EL APELLIDO INGRESO CON EL APELLIDO DEL OBJETO PASADO A MINUSCULA
+                    //COMPARA EL APELLIDO INGRESO CON EL APELLIDO DEL OBJETO PASADO A MINUSCULA
     				if(apellido_busc == a_minusculas(socios[i].getapll() ) ) {
                     //size_t es un unsigned long long
 
