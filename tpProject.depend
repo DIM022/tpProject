@@ -96,11 +96,11 @@
 
 1748368994 D
 
-1749686803 source:c:\users\marin\onedrive\escritorio\tpproject\buscar_libros.cpp
+1750340974 source:c:\users\marin\onedrive\escritorio\tpproject\buscar_libros.cpp
 	"buscar_libros.h"
 	"funcionesLibro.h"
 
-1749686803 c:\users\marin\onedrive\escritorio\tpproject\buscar_libros.h
+1750340974 c:\users\marin\onedrive\escritorio\tpproject\buscar_libros.h
 	<vector>
 	"libroH.h"
 
@@ -116,7 +116,7 @@
 	"funcionesMain.h"
 	"gestionVectorSocio.h"
 
-1749688766 c:\users\marin\onedrive\escritorio\tpproject\libroh.h
+1750340974 c:\users\marin\onedrive\escritorio\tpproject\libroh.h
 	<iostream>
 	<string>
 	"funcionesMain.h"
@@ -125,22 +125,22 @@
 	<vector>
 	<string>
 
-1749686803 source:c:\users\marin\onedrive\escritorio\tpproject\buscar_socios.cpp
+1750340974 source:c:\users\marin\onedrive\escritorio\tpproject\buscar_socios.cpp
 	"buscar_socios.h"
 
-1749686803 c:\users\marin\onedrive\escritorio\tpproject\buscar_socios.h
+1750340974 c:\users\marin\onedrive\escritorio\tpproject\buscar_socios.h
 	<vector>
 	"socioH.h"
 	"funcionesLibro.h"
 
-1749688766 c:\users\marin\onedrive\escritorio\tpproject\socioh.h
+1750340974 c:\users\marin\onedrive\escritorio\tpproject\socioh.h
 	<iostream>
 	<string>
 
-1749686803 source:c:\users\marin\onedrive\escritorio\tpproject\cargar_libros.cpp
+1750340974 source:c:\users\marin\onedrive\escritorio\tpproject\cargar_libros.cpp
 	"cargar_libros.h"
 
-1749686677 c:\users\marin\onedrive\escritorio\tpproject\cargar_libros.h
+1750340952 c:\users\marin\onedrive\escritorio\tpproject\cargar_libros.h
 	<vector>
 	<sstream>
 	<fstream>
@@ -178,13 +178,13 @@
 	"socioH.h"
 	"libroH.h"
 
-1749686803 source:c:\users\marin\onedrive\escritorio\tpproject\libro.cpp
+1750340974 source:c:\users\marin\onedrive\escritorio\tpproject\libro.cpp
 	"libroH.h"
 
-1749686803 source:c:\users\marin\onedrive\escritorio\tpproject\socio.cpp
+1750340974 source:c:\users\marin\onedrive\escritorio\tpproject\socio.cpp
 	"socioH.h"
 
-1750033538 source:c:\users\marin\onedrive\escritorio\tpproject\main.cpp
+1750340974 source:c:\users\marin\onedrive\escritorio\tpproject\main.cpp
 	<iostream>
 	<string>
 	<fstream>
@@ -199,24 +199,26 @@
 	"funcionesPrestamo.h"
 	"prestamoFormato.h"
 
-1749686803 c:\users\marin\onedrive\escritorio\tpproject\funcionesmain.h
+1750340974 c:\users\marin\onedrive\escritorio\tpproject\funcionesmain.h
 	<string>
 	<fstream>
 	<vector>
 	"socioH.h"
 	"gestionVectorSocio.h"
 
-1749686803 source:c:\users\marin\onedrive\escritorio\tpproject\funcionesmain.cpp
+1750340974 source:c:\users\marin\onedrive\escritorio\tpproject\funcionesmain.cpp
 	"funcionesMain.h"
 	"gestionVectorSocio.h"
 
-1749686677 c:\users\marin\onedrive\escritorio\tpproject\funcioneslibro.h
+1750340974 c:\users\marin\onedrive\escritorio\tpproject\funcioneslibro.h
 	"libroH.h"
 	<string>
 	<unordered_map>
 	<vector>
+	<fstream>
+	<array>
 
-1749686803 source:c:\users\marin\onedrive\escritorio\tpproject\funcioneslibro.cpp
+1750340974 source:c:\users\marin\onedrive\escritorio\tpproject\funcioneslibro.cpp
 	"funcionesLibro.h"
 
 1747862549 c:\users\marin\onedrive\escritorio\tpproject\gestorvectorsocio.h
@@ -229,15 +231,15 @@
 	"socioH.h"
 	"libroH.h"
 
-1749686677 c:\users\marin\onedrive\escritorio\tpproject\gestionvectorsocio.h
+1750340952 c:\users\marin\onedrive\escritorio\tpproject\gestionvectorsocio.h
 	"funcionesMain.h"
 	"funcionesLibro.h"
 
-1749686803 source:c:\users\marin\onedrive\escritorio\tpproject\gestionvectorsocio.cpp
+1750340974 source:c:\users\marin\onedrive\escritorio\tpproject\gestionvectorsocio.cpp
 	"funcionesMain.h"
 	"gestionVectorSocio.h"
 
-1749686803 c:\users\marin\onedrive\escritorio\tpproject\gestionvectorlibro.h
+1750340974 c:\users\marin\onedrive\escritorio\tpproject\gestionvectorlibro.h
 	<vector>
 	"buscar_libros.h"
 	"cargar_libros.h"
@@ -245,10 +247,10 @@
 	"funcionesLibro.h"
 	"funcionesMain.h"
 
-1749688798 source:c:\users\marin\onedrive\escritorio\tpproject\gestionvectorlibro.cpp
+1750340974 source:c:\users\marin\onedrive\escritorio\tpproject\gestionvectorlibro.cpp
 	"gestionVectorLibro.h"
 
-1750082524 c:\users\marin\onedrive\escritorio\tpproject\funcionesprestamo.h
+1750340974 c:\users\marin\onedrive\escritorio\tpproject\funcionesprestamo.h
 	<vector>
 	<string>
 	"socioH.h"
@@ -258,7 +260,7 @@
 	"gestionVectorSocio.h"
 	"funcionesMain.h"
 
-1750029707 c:\users\marin\onedrive\escritorio\tpproject\prestamoformato.h
+1750340974 c:\users\marin\onedrive\escritorio\tpproject\prestamoformato.h
 	<iostream>
 	<ctime>
 	<string>
