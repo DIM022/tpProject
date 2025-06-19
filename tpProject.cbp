@@ -43,19 +43,22 @@
 		<Unit filename="funcionesLibro.h" />
 		<Unit filename="funcionesMain.cpp" />
 		<Unit filename="funcionesMain.h" />
+		<Unit filename="funcionesPrestamo.cpp" />
+		<Unit filename="funcionesPrestamo.h" />
 		<Unit filename="gestionVectorLibro.cpp" />
 		<Unit filename="gestionVectorLibro.h" />
 		<Unit filename="gestionVectorSocio.cpp" />
 		<Unit filename="gestionVectorSocio.h" />
-		<Unit filename="libro.cpp" />
+		<Unit filename="libroH.cpp" />
 		<Unit filename="libroH.h" />
 		<Unit filename="lista de socios.csv" />
 		<Unit filename="lista_libros.csv" />
 		<Unit filename="main.cpp" />
+		<Unit filename="prestamoFormato.cpp" />
 		<Unit filename="prestamoFormato.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
-		<Unit filename="socio.cpp" />
+		<Unit filename="socioH.cpp" />
 		<Unit filename="socioH.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />

@@ -2,214 +2,124 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-<<<<<<< HEAD
-	<File name="socioH.h" open="1" top="0" tabpos="15" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="317" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="libroH.h" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="304" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="gestionVectorSocio.h" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="326" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="cargar_libros.cpp" open="1" top="1" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="26" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="funcionesLibro.cpp" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="4783" topLine="133" />
-		</Cursor>
-	</File>
-	<File name="cargar_libros.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="233" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="main.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="7732" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="gestionVectorLibro.cpp" open="1" top="0" tabpos="19" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="7136" topLine="209" />
-		</Cursor>
-	</File>
-	<File name="funcionesMain.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="506" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="lista_libros.csv" open="1" top="0" tabpos="16" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="68" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="gestionVectorSocio.cpp" open="0" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="7483" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="funcionesLibro.h" open="1" top="0" tabpos="17" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="544" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="prestamoFormato.h" open="1" top="0" tabpos="21" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="211" topLine="2" />
-		</Cursor>
-	</File>
-	<File name="libro.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="6414" topLine="292" />
-		</Cursor>
-	</File>
-	<File name="funcionesMain.cpp" open="1" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1612" topLine="111" />
-		</Cursor>
-	</File>
-	<File name="buscar_socios.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="143" topLine="0" />
-=======
-	<File name="prestamoFormato.h" open="1" top="0" tabpos="21" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="211" topLine="0" />
->>>>>>> MenuPrestamos
-		</Cursor>
-	</File>
-	<File name="buscar_socios.cpp" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="8895" topLine="0" />
-		</Cursor>
-	</File>
-<<<<<<< HEAD
-	<File name="socio.cpp" open="1" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1829" topLine="69" />
-=======
-	<File name="buscar_libros.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="242" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="funcionesLibro.cpp" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="4783" topLine="133" />
-		</Cursor>
-	</File>
-	<File name="cargar_libros.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="26" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="funcionesMain.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="506" topLine="0" />
->>>>>>> MenuPrestamos
-		</Cursor>
-	</File>
-	<File name="lista de socios.csv" open="1" top="0" tabpos="20" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="funcionesPrestamo.h" open="1" top="0" tabpos="22" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="0" topLine="0" />
 		</Cursor>
 	</File>
-<<<<<<< HEAD
+	<File name="buscar_socios.cpp" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1318" topLine="18" />
+		</Cursor>
+	</File>
 	<File name="buscar_libros.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="242" topLine="0" />
-=======
-	<File name="cargar_libros.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="233" topLine="0" />
+			<Cursor1 position="55" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="libroH.h" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="prestamoFormato.cpp" open="1" top="0" tabpos="23" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="304" topLine="0" />
+			<Cursor1 position="3458" topLine="118" />
 		</Cursor>
 	</File>
-	<File name="funcionesLibro.h" open="1" top="0" tabpos="17" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="socioH.h" open="1" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="544" topLine="0" />
+			<Cursor1 position="653" topLine="11" />
 		</Cursor>
 	</File>
-	<File name="socioH.h" open="1" top="0" tabpos="15" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="prestamoFormato.h" open="1" top="0" tabpos="19" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="317" topLine="0" />
+			<Cursor1 position="874" topLine="13" />
 		</Cursor>
 	</File>
-	<File name="libro.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="funcionesPrestamo.cpp" open="1" top="0" tabpos="25" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="6414" topLine="292" />
+			<Cursor1 position="9792" topLine="308" />
 		</Cursor>
 	</File>
-	<File name="socio.cpp" open="1" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="lista de socios.csv" open="1" top="0" tabpos="18" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1829" topLine="69" />
->>>>>>> MenuPrestamos
+			<Cursor1 position="0" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="buscar_libros.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="libroH.h" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-<<<<<<< HEAD
-			<Cursor1 position="184" topLine="0" />
-=======
-			<Cursor1 position="185" topLine="0" />
+			<Cursor1 position="310" topLine="1" />
 		</Cursor>
 	</File>
-	<File name="gestionVectorSocio.h" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="lista_libros.csv" open="1" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="326" topLine="0" />
->>>>>>> MenuPrestamos
+			<Cursor1 position="106" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="gestionVectorLibro.h" open="1" top="0" tabpos="18" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="gestionVectorSocio.cpp" open="1" top="0" tabpos="21" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="323" topLine="0" />
+			<Cursor1 position="12341" topLine="403" />
 		</Cursor>
 	</File>
-<<<<<<< HEAD
-=======
-	<File name="gestionVectorLibro.cpp" open="1" top="0" tabpos="19" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="buscar_libros.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="7136" topLine="209" />
+			<Cursor1 position="92" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="main.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="funcionesLibro.h" open="1" top="0" tabpos="15" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="7064" topLine="180" />
+			<Cursor1 position="949" topLine="10" />
 		</Cursor>
 	</File>
-	<File name="funcionesMain.cpp" open="1" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1612" topLine="111" />
-		</Cursor>
-	</File>
-	<File name="gestionVectorSocio.cpp" open="0" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="7483" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="lista_libros.csv" open="1" top="0" tabpos="16" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="68" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="buscar_socios.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="buscar_socios.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="143" topLine="0" />
 		</Cursor>
 	</File>
->>>>>>> MenuPrestamos
+	<File name="funcionesLibro.cpp" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="5917" topLine="179" />
+		</Cursor>
+	</File>
+	<File name="funcionesMain.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="427" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="gestionVectorLibro.cpp" open="1" top="1" tabpos="17" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="6840" topLine="208" />
+		</Cursor>
+	</File>
+	<File name="main.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="9368" topLine="229" />
+		</Cursor>
+	</File>
+	<File name="libroH.cpp" open="1" top="0" tabpos="24" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2872" topLine="88" />
+		</Cursor>
+	</File>
+	<File name="funcionesMain.cpp" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3649" topLine="119" />
+		</Cursor>
+	</File>
+	<File name="gestionVectorSocio.h" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="414" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="gestionVectorLibro.h" open="1" top="0" tabpos="16" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="570" topLine="6" />
+		</Cursor>
+	</File>
+	<File name="cargar_libros.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="255" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="cargar_libros.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2994" topLine="71" />
+		</Cursor>
+	</File>
 </CodeBlocks_layout_file>
