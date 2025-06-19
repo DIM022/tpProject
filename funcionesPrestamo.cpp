@@ -25,6 +25,10 @@ void registrarPrestamo(vector <datoPrestamo>& vectorPrestamo, vector <socio>& ve
         //ENTONVES VALIDAMOS SU EXISTENCIA COMPARANDOLO CON VECTOR SOCIO
         if(!validar){
             validar = verificarExistenciaDniSocio(_dniSocio, vectorSocio);
+
+            if(!validar){
+                cout<< "DNI NO ENCONTRADO VERIFICAR SI ES CORRECTO Y/O EXISTENTE"<< endl;
+            }
         }
 
     }while(validar);
@@ -223,26 +227,6 @@ void filtrarPrestamoFecha(vector <datoPrestamo>& vectorPrestamo){
             cout<< "=============================="<< endl;
         }
     }
-}
-
-/**=====================================================================*/
-
-bool verificarExistenciaDniSocio(string _string, vector <socio>& vectorSocio){
-
-    ///RECORRE TODO EL VECTOR SOCIO
-    for(size_t i=0; i<vectorSocio.size(); i++){
-
-        ///SI ENCUENTRA AL BUSCADO ENTRA
-        if(_string == vectorSocio[i].getdni() ){
-
-            i = vectorSocio.size();
-            return false;
-        }
-    }
-
-    ///EN CASO DE NO SER ENCOTRADO RETORNAMOS UN MENSAJE
-    cout<< "NO SE ENCONTRO EL DNI INGRESADO CON NINGUN SOCIO"<< endl;
-    return true;
 }
 
 /**=====================================================================*/

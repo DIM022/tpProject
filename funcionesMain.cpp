@@ -42,18 +42,13 @@ bool verificarNumeroString(string _string){
         if(_string[i] >= '0' && _string[i] <= '9'){
 
         }else{
-            cout<< "SOLO VALIDO NUMEROS";
+            cout<< "SOLO VALIDO NUMEROS"<< endl;
             i = _string.size();
-            valido = true;
+            return true;
         }
 
     }
 
-    if(valido){
-        ///EL STRING TIENE ALGO MAS QUE SOLO NUMERO
-        ///RETORNAMOS < true >
-        return true;
-    }
     ///SI TODO ESTA BIEN RETORNAMOS < false >
     ///PARA TERMINE EL BUCLE WHILE
     return false;

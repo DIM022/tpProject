@@ -47,7 +47,7 @@ void eliminarSocio(vector <socio>& vector_Socio, int flagDNI){
 
 /**---------------------------------------------------------------------------------------------------*/
 
-void agregarSocio(vector <socio>& vector_Socio){
+void agregarSocio(vector <socio>& vectorSocio){
 
     int _posicionA = 0, tam_bytes = 0, contEdad = 0, posChar = 0;
 
@@ -78,17 +78,21 @@ void agregarSocio(vector <socio>& vector_Socio){
         cout<< "DNI: ";
         getline(cin, _dni);
 
-        for(size_t i=0; i<_dni.size(); i++){
+        ///VERIFIACAMOS SOLO NUMEROS
+        ///TRUE - HAY MAS QUE SOLO NUMEROS
+        ///FALSE - SOLO NUMEROS
+        ///----
+        ///VERIFICAMOS QUE NO HALLA UN DNI EXISTENTE
+        ///TRUE - EXISTE
+        ///FALSE NO EXISTE
+        salir = verificarNumeroString(_dni);
 
-            if(_dni[i] >= '0' && _dni[i] <= '9'){
-                ///NO HACE NADA
-                salir = false;
+        if(!salir){
+            ///VERIFICAMOS QUE NO HALLA UN DNI EXISTENTE PARA EVITAR ERRORES
+            salir = verificarExistenciaDniSocio(_dni, vectorSocio);
 
-            }else{
-                cout<< "SOLO SE PERMITE NUMERO"<< endl;
-                i = _dni.size();
-                ///LE ASIGNAMOS TRUE PARA QUE ENTRE AL IF
-                salir = true;
+            if(salir){
+                cout<< "DNI YA EXISTENTE INGRESAR UN DNI VALIDO"<< endl;
             }
         }
 
@@ -203,16 +207,19 @@ void agregarSocio(vector <socio>& vector_Socio){
         cout<< "EDAD: ";
         getline(cin, _edad);
 
-        ///CONVERTIMOS LA EDAD DE STRIING A NUMERO PARA VERIFICAR
-        contEdad = stoi(_edad);
+        if(!verificarNumeroString(_edad)){
 
-        if(contEdad > 0 && contEdad <= 120){
-            ///EDAD VALIDA
-            salir = false;
+            ///CONVERTIMOS LA EDAD DE STRIING A NUMERO PARA VERIFICAR
+            contEdad = stoi(_edad);
 
-        }else{
-            cout<< "EDAD INVALIDA"<< endl;
-            salir = true;
+            if(contEdad > 0 && contEdad <= 120){
+                ///EDAD VALIDA
+                salir = false;
+
+            }else{
+                cout<< "EDAD INVALIDA"<< endl;
+                salir = true;
+            }
         }
 
     }while(salir);
@@ -234,7 +241,7 @@ void agregarSocio(vector <socio>& vector_Socio){
         ///LEEMOS HASTA EL ARROBA Y VERIFICAMOS SOLO LETRAS Y/O NUMEROS
         posChar = _mail.find("@");
 
-        if(posChar != 0){
+        if(_mail[posChar] == '@'){
 
             for(int i=0; i<posChar; i++){
 
@@ -257,10 +264,10 @@ void agregarSocio(vector <socio>& vector_Socio){
 /**-----*/
 
     ///LE ASIGNAMOS LA POSICION IDENTIFICATORIA AL SOCIO
-    _posicionA = vector_Socio.size();
+    _posicionA = vectorSocio.size();
 
     ///LE PASAMOS TODOS ESOS DATOS A VECTOR QUE DE FORMA DINAMICA ALMACENA A LO ULTIMO EL NUEVO OBJETO SOCIO
-     vector_Socio.push_back(socio(_apellido, _dni, _genero, _direccion, _numeroT, _edad, _fechaC, _mail, _posicionA) );
+    vectorSocio.push_back(socio(_apellido, _dni, _genero, _direccion, _numeroT, _edad, _fechaC, _mail, _posicionA) );
 
 }
 
@@ -396,3 +403,19 @@ void lecturaLinea(vector <socio>& vector_Socio, ifstream& file){
 }
 
 /**---------------------------------------------------------------------------------------------------*/
+
+bool verificarExistenciaDniSocio(string _string, vector <socio>& vectorSocio){
+
+    ///RECORRE TODO EL VECTOR SOCIO
+    for(size_t i=0; i<vectorSocio.size(); i++){
+
+        ///SI ENCUENTRA UNA COINCIDENCIA ENTRA
+        if(_string == vectorSocio[i].getdni() ){
+            i = vectorSocio.size();
+            return true;
+        }
+    }
+
+    ///EN CASO DE ENCNTRAR NADA RETORNAMOS FALSE
+    return false;
+}

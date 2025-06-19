@@ -14,7 +14,6 @@
 
 void registrarPrestamo(vector <datoPrestamo>&, vector <socio>&, vector <libro>&);
 
-bool verificarExistenciaDniSocio(string, vector <socio>&);
 bool verificarExistenciaNombreLibro(string, vector <libro>&);
 tm establecerFechaFuncion(int, int, int);
 
