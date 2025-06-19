@@ -3,23 +3,16 @@
 #include<fstream>
 #include<vector>
 
-#include "buscar_libros.h"
-#include "cargar_libros.h"
-#include "funcionesLibro.h"
 #include "gestionVectorLibro.h"
 
-///FUNCION BUSQUEDA SOCIO -- LINEA 80
 #include "buscar_socios.h"
 
-#include "funcionesMain.h"///ACCEDE A ALGUNAS FUNCIONES NORMALES DEL MAIN
-#include "gestionVectorSocio.h"///ACCEDE A LAS FUNCIONES QUE MANIPULA AL VECTOR SOCIO
-
-///
+//ACCEDE A ALGUNAS FUNCIONES NORMALES DEL MAIN
+#include "funcionesMain.h"
+//ACCEDE A LAS FUNCIONES QUE MANIPULA AL VECTOR SOCIO
+#include "gestionVectorSocio.h"
+//ACCEDE A LAS FUNCIONES QUE ACCEDEN Y MANIPULAN PRESTAMOS
 #include "funcionesPrestamo.h"
-#include "prestamoFormato.h"
-
-#define ARCHIVO_SOCIOS "lista de socios.csv"
-#define ARCHIVO_LIBROS "lista_libros.csv"
 
 using namespace std;
 
@@ -33,6 +26,7 @@ int main(){
     char menuSL = 0;
     char menuL = 0;
     char menuPS = 0;
+    char menuSUBPS = 0;
 
     vector < socio > vectorSocio;
     vector < libro > vectorLibro;
@@ -43,9 +37,10 @@ int main(){
 
     while(menuP != 'S' && menuP != 's'){
 
-        cout<< "================================================================================="<< endl;
-        cout<< "\t\t<< MENU >>"<< endl;
-        cout<< "\t\t1/SOCIO   2/LIBRO   3/PRESTAMO    'S'/SALIR"<<endl << ">";
+        cout<< "==============================================="<< endl;
+        cout<< "==============================================="<< endl;
+        cout<< "\t<< MENU >>"<< endl;
+        cout<< "\t1/SOCIO   2/LIBRO   3/PRESTAMO    'S'/SALIR"<<endl << ">";
         cin >> menuP;
         cin.ignore();
 
@@ -54,7 +49,8 @@ int main(){
             case '1' :
 
                 if(inicioAperturaSocio(vectorSocio, file, contRepeS) ){
-                    cout<< "ECHOOO"<< endl;
+
+                    return 1;
                 }
 
                 do{
@@ -82,8 +78,11 @@ int main(){
                                  cin >> menuSL;
                                  cin.ignore();
 
+                                ///PASAMOS COMO ARGUMENTO
+                                ///EL VECTOR PARA SER MODIFCADO
+                                ///Y LA POSICION DEL SOCIO ( flagDNI )
                                  if(menuSL == '1'){
-                                    modificar_Socio(vectorSocio, flagDNI);
+                                    modificarSocio(vectorSocio, flagDNI);
 
                                  }else if(menuSL == '2'){
                                     eliminarSocio(vectorSocio, flagDNI);
@@ -177,51 +176,63 @@ int main(){
 
             case '3' :
 
-                cout<< "-----------------------------------------------"<< endl;
-                cout<< "MENU PRESTAMO ( MAIN )"<< endl;
-                cout<< "1/VER PRESTAMOS    2/REALIZAR PRESTAMO"<< endl;
-                cin >> menuPS;
+                do{
+                    cout<< "-----------------------------------------------"<< endl;
+                    cout<< "MENU PRESTAMO ( MAIN )"<< endl;
+                    cout<< "1/VER PRESTAMOS    2/REALIZAR PRESTAMO    'S'/SALIR"<< endl;
+                    cin >> menuPS;
 
-                switch(menuPS){
-                    case '1' :
+                    switch(menuPS){
+                        case '1' :
 
-                        do{
-                            cout<< "-----------------------------------------------"<< endl;
-                            cout<< "MENU PRESTAMO BUSQUEDA"<< endl;
-                            cout<< "1/SOCIO    2/LIBRO    3/FECHA   'S'/SALIR"<< endl;
-                            cin >> menuPS;
+                            do{
+                                cout<< "-----------------------------------------------"<< endl;
+                                cout<< "MENU PRESTAMO BUSQUEDA"<< endl;
+                                cout<< "1/SOCIO    2/LIBRO    3/FECHA   4/TODO  'S'/SALIR"<< endl;
+                                cin >> menuSUBPS;
 
-                            if(menuPS == '1'){
-                                filtrarPrestamoSocio(vectorPrestamo);
+                                if(menuSUBPS == '1'){
+                                    filtrarPrestamoSocio(vectorPrestamo);
 
-                            }else if(menuPS == '2'){
-                                filtrarPrestamoLibro(vectorPrestamo);
+                                }else if(menuSUBPS == '2'){
+                                    filtrarPrestamoLibro(vectorPrestamo);
 
-                            }else if(menuPS == '3'){
-                                filtrarPrestamoFecha(vectorPrestamo);
+                                }else if(menuSUBPS == '3'){
+                                    filtrarPrestamoFecha(vectorPrestamo);
 
-                            }else if(menuPS == 's' || menuPS == 'S'){
-                                cout<< "SALIENDO AL MENU ( MAIN )"<< endl;
+                                }else if(menuSUBPS == '4'){
+                                    filtrarPrestamoTodo(vectorPrestamo);
 
-                            }else{
-                                cout<< "SELECCIONE UNA OPCION VALIDA"<< endl;
-                            }
+                                }else if(menuSUBPS == 's' || menuSUBPS == 'S'){
+                                    cout<< "SALIENDO AL MENU ( MAIN )"<< endl;
 
-                        }while(menuPS != 's' && menuPS != 'S');
+                                }else{
+                                    cout<< "SELECCIONE UNA OPCION VALIDA"<< endl;
+                                }
 
-                        break;
+                            }while(menuSUBPS != 's' && menuSUBPS != 'S');
 
-                    case '2' :
-                        registrarPrestamo(vectorPrestamo, vectorSocio, vectorLibro);
+                            break;
 
-                        break;
+                        case '2' :
 
-                    default :
-                        cout<< endl<< "======================"<< endl;
-                        cout<< "OPCION INCORRECTA ( MENU MAIN )"<< endl;
-                        cout<< endl<< "======================"<< endl;
-                        break;
-                }
+                            inicioAperturaSocio(vectorSocio, file, contRepeS);
+                            inicioAperturaLibro(vectorLibro, contRepeL);
+
+                            registrarPrestamo(vectorPrestamo, vectorSocio, vectorLibro);
+
+                            break;
+
+                        case 's' | 'S' :
+                            cout<< "SALIENDO AL MENU < MAIN >"<< endl;
+
+                        default :
+                            cout<< endl<< "======================"<< endl;
+                            cout<< "OPCION INCORRECTA ( MENU MAIN )"<< endl;
+                            cout<< endl<< "======================"<< endl;
+                            break;
+                    }
+                }while(menuPS != 's' && menuPS != 'S');
                 break;
 
             case 'S' |  's' :

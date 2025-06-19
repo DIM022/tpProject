@@ -24,7 +24,7 @@ void registrarPrestamo(vector <datoPrestamo>& vectorPrestamo, vector <socio>& ve
         //SI EL INGRESO ES CORRECTO = false
         //ENTONVES VALIDAMOS SU EXISTENCIA COMPARANDOLO CON VECTOR SOCIO
         if(!validar){
-            validar = verificarExistenciaNombreSocio(_dniSocio, vectorSocio);
+            validar = verificarExistenciaDniSocio(_dniSocio, vectorSocio);
         }
 
     }while(validar);
@@ -50,10 +50,11 @@ void registrarPrestamo(vector <datoPrestamo>& vectorPrestamo, vector <socio>& ve
     //LLAMOS A ESA ULTIMA CLASE Y ESTABLECEMOS LAS FECHAS
 
     //FECHA DE INICIO PRESTAMO
-    vectorPrestamo.back().realizarPrestamo();///GUARDAMOS LA FECHA ACTUAL DE PRESTAMO
+    vectorPrestamo.back().realizarPrestamo();
 
-    //FECHA MAXIMA DEL PRESTAMO
-    vectorPrestamo.back().establecerFechaPrestamo();///ESTABLECER LA FECHA LIMITE DEL PRESTAMO
+    //FECHA LIMITE DEL PRESTAMO
+    cout<< "ESTABLECER FECHA DE DEVOLUCION: "<< endl;
+    vectorPrestamo.back().establecerFechaPrestamo();
 
     cout<< "================"<< endl;
     cout<< "PRESTAMO AÑADIDO"<< endl;
@@ -63,29 +64,62 @@ void registrarPrestamo(vector <datoPrestamo>& vectorPrestamo, vector <socio>& ve
 
 /**=====================================================================*/
 
+void filtrarPrestamoTodo(vector <datoPrestamo>& vectorPrestamo){
+
+    ///MUESTRA TOS LOS PRESTAMOS EXSTENES
+    for(size_t i=0; i<vectorPrestamo.size(); i++){
+
+        cout<< "--------------------------"<< endl;
+        vectorPrestamo[i].mostrarPrestamo();
+        cout<< "--------------------------"<< endl;
+    }
+
+    ///EN CASO DE QUE NO HALLA
+    ///RETORNAMOS UN MENSAJE
+    if(!vectorPrestamo.size()){
+
+        cout<< "NO HAY PRESTAMOS HECHOS"<< endl;
+    }
+}
+
+/**=====================================================================*/
+
 void filtrarPrestamoLibro(vector <datoPrestamo>& vectorPrestamo){
 
     string _libroBusqueda;
     bool valido = true;
 
-    cout<< "INGRESE NOMBRE DEL LIBRO A FILTRAR: ";
-    cin >> _libroBusqueda;
+    ///VERIFICAMOS QUE EXISTA ALGUN PRESTAMO
+    if(!vectorPrestamo.size()){
 
-    for(size_t i=0; i<vectorPrestamo.size(); i++){
+        cout<< "NO HAY PRESTAMOS HECHOS"<< endl;
 
-        if( _libroBusqueda == vectorPrestamo[i].getNombreLibro() ){
+    }else{
 
-            vectorPrestamo[i].mostrarPrestamo();
-            i = vectorPrestamo.size();
-            valido = false;
+        ///EN CASO QUE EXISTA
+        ///BUSCAMOS
+
+        cout<< "INGRESE NOMBRE DEL LIBRO A FILTRAR: ";
+        cin >> _libroBusqueda;
+
+        for(size_t i=0; i<vectorPrestamo.size(); i++){
+
+            if( _libroBusqueda == vectorPrestamo[i].getNombreLibro() ){
+
+                cout<< "--------------------------"<< endl;
+                vectorPrestamo[i].mostrarPrestamo();
+                cout<< "--------------------------"<< endl;
+                i = vectorPrestamo.size();
+                valido = false;
+            }
         }
-    }
 
-      if(valido){
+          if(valido){
 
-        cout<< "=============================="<< endl;
-        cout<< "NO SE ENCONTRO NINGUN PRESTAMO ASOCIADO A ESE LIBRO"<< endl;
-        cout<< "=============================="<< endl;
+            cout<< "=============================="<< endl;
+            cout<< "NO SE ENCONTRO NINGUN PRESTAMO ASOCIADO A ESE LIBRO"<< endl;
+            cout<< "=============================="<< endl;
+        }
     }
 }
 
@@ -96,59 +130,42 @@ void filtrarPrestamoSocio(vector <datoPrestamo>& vectorPrestamo){
     string _dniBusqueda;
     bool valido = true;
 
-    cout<< "INGRESE DNI A FILTRAR: ";
-    cin >> _dniBusqueda;
+    ///VERIFICAMOS QUE EXISTAN PRESTAMOS
+    if(!vectorPrestamo.size()){
 
-    for(size_t i=0; i<vectorPrestamo.size(); i++){
+        cout<< "NO HAY PRESTAMOS HECHOS"<< endl;
 
-        if( _dniBusqueda == vectorPrestamo[i].getDni() ){
+    }else{
 
-            vectorPrestamo[i].mostrarPrestamo();
-            i = vectorPrestamo.size();
-            valido = false;
+        ///EN CASO DE QUE HALLA
+        ///BUSCAMOS
+
+        cout<< "INGRESE DNI A FILTRAR: ";
+        cin >> _dniBusqueda;
+
+        ///RECORRE EL VECTOR
+        for(size_t i=0; i<vectorPrestamo.size(); i++){
+
+            ///SI CINCIDE ENTRA
+            if( _dniBusqueda == vectorPrestamo[i].getDni() ){
+
+                cout<< "--------------------------"<< endl;
+                vectorPrestamo[i].mostrarPrestamo();
+                cout<< "--------------------------"<< endl;
+                i = vectorPrestamo.size();
+                valido = false;
+            }
         }
-    }
 
-      if(valido){
-        cout<< "=============================="<< endl;
-        cout<< "NO SE ENCONTRO NINGUN PRESTAMO ASOCIADO A ESE DNI"<< endl;
-        cout<< "=============================="<< endl;
-    }
-
-}
-
-/**=====================================================================*/
-
-bool verificarExistenciaNombreSocio(string _string, vector <socio>& vectorSocio){
-
-    for(size_t i=0; i<vectorSocio.size(); i++){
-
-        if(_string == vectorSocio[i].getdni() ){
-
-            i = vectorSocio.size();
-            return false;
+        ///EN CASO QUE NO COINCIDA NINGUNA BUSQUEDA
+        ///RETORNAMOS UN MENSAJE
+        if(valido){
+            cout<< "=============================="<< endl;
+            cout<< "NO SE ENCONTRO NINGUN PRESTAMO ASOCIADO A ESE DNI"<< endl;
+            cout<< "=============================="<< endl;
         }
+
     }
-
-    cout<< "NO SE ENCONTRO EL DNI INGRESADO CON NINGUN SOCIO"<< endl;
-    return true;
-}
-
-/**=====================================================================*/
-
-bool verificarExistenciaNombreLibro(string _nombreLibro, vector <libro>& vectorLibro){
-
-    for(size_t i=0; i<vectorLibro.size(); i++){
-
-        if( _nombreLibro == vectorLibro[i].get_nombre() ){
-
-            i = vectorLibro.size();
-            return false;
-        }
-    }
-
-    cout<< "NO SE ENCONTRO EL NOMBRE INGRESADO CON NINGUN LIBRO"<< endl;
-    return true;
 }
 
 /**=====================================================================*/
@@ -159,43 +176,114 @@ void filtrarPrestamoFecha(vector <datoPrestamo>& vectorPrestamo){
     int _dia = 0, _mes = 0, _anio = 0;
     bool valido = true;
 
-    cout<< "INGRESE LA FECHA A BUSCAR: "<< endl;
-    cout<< "DIA";
-    cin >> _dia;
-    cin.ignore();
+    ///VERIFICAMOS QUE EXISTAN PRESTAMOS
+    if(!vectorPrestamo.size()){
 
-    cout<< "MES";
-    cin >> _mes;
-    cin.ignore();
+        cout<< "NO HAY PRESTAMOS HECHOS"<< endl;
 
-    cout<< "ANIO";
-    cin >> _anio;
-    cin.ignore();
+    }else{
+        ///EN CASO DE QUE HAYA UN PRESTAMO
+        ///BUSCAMOS
 
-    ///LLAMAMOS A FUNCION QUE VALIDE Y ESTABLESCA LA FECHA
-    fechaBusqueda = establecerFechaFuncion(_dia, _mes, _anio);
+        cout<< "INGRESE LA FECHA A BUSCAR: "<< endl;
+        cout<< "DIA";
+        cin >> _dia;
+        cin.ignore();
 
-    ///LLAMAMOS AL OPERADOR SOBRECARGADO
+        cout<< "MES";
+        cin >> _mes;
+        cin.ignore();
 
-    for(size_t i=0; i<vectorPrestamo.size(); i++){
+        cout<< "ANIO";
+        cin >> _anio;
+        cin.ignore();
 
-        if(vectorPrestamo[i] == fechaBusqueda){
+        ///LLAMAMOS A FUNCION QUE VALIDE Y ESTABLESCA LA FECHA
+        fechaBusqueda = establecerFechaFuncion(_dia, _mes, _anio);
 
-            i = vectorPrestamo.size();
-            vectorPrestamo[i].mostrarPrestamo();
-            valido = false;
+        ///RECORREMOS TODO EL VECTOE
+        for(size_t i=0; i<vectorPrestamo.size(); i++){
+
+            ///SI COINCIDE ENTR
+            if(vectorPrestamo[i] == fechaBusqueda){
+
+                cout<< "--------------------------"<< endl;
+                vectorPrestamo[i].mostrarPrestamo();
+                cout<< "--------------------------"<< endl;
+                i = vectorPrestamo.size();
+                valido = false;
+            }
         }
-    }
-    if(valido){
 
-        cout<< "=============================="<< endl;
-        cout<< "NO SE ENCONTRO NINGUN PRESTAMO ASOCIADO A ESA FECHA"<< endl;
-        cout<< "=============================="<< endl;
+        ///EN CASO DE HABER COINCIDENCIAS RETORNAMOS UN MENSAJE
+        if(valido){
+
+            cout<< "=============================="<< endl;
+            cout<< "NO SE ENCONTRO NINGUN PRESTAMO ASOCIADO A ESA FECHA"<< endl;
+            cout<< "=============================="<< endl;
+        }
     }
 }
 
 /**=====================================================================*/
 
+bool verificarExistenciaDniSocio(string _string, vector <socio>& vectorSocio){
+
+    ///RECORRE TODO EL VECTOR SOCIO
+    for(size_t i=0; i<vectorSocio.size(); i++){
+
+        ///SI ENCUENTRA AL BUSCADO ENTRA
+        if(_string == vectorSocio[i].getdni() ){
+
+            i = vectorSocio.size();
+            return false;
+        }
+    }
+
+    ///EN CASO DE NO SER ENCOTRADO RETORNAMOS UN MENSAJE
+    cout<< "NO SE ENCONTRO EL DNI INGRESADO CON NINGUN SOCIO"<< endl;
+    return true;
+}
+
+/**=====================================================================*/
+
+bool verificarExistenciaNombreLibro(string _nombreLibro, vector <libro>& vectorLibro){
+
+    ///RECORRE TODO EL VECTOR
+    for(size_t i=0; i<vectorLibro.size(); i++){
+
+        ///SI ENCUENTRA EL QUE BUSCAMOS ENTRA
+        if( _nombreLibro == vectorLibro[i].get_nombre() ){
+
+            ///1 - TRUE ( DISPONIBLIE ) // 2 - FALSE ( NO DISPONIBLE )
+            ///SI ENTRA AL IF = TRUE --- EL LIBRO ESTA DISPONIBLE
+            if(vectorLibro[i].getEstadoSN()){
+
+                ///MODIFICAMOS EL ESTADO DEL LIBRO
+                ///COMO FALSE
+                ///PARA QUE NO PUEDA SER ALQUILADO MULTIPLES VECES
+                vectorLibro[i].setDato_estadoSN(false);
+                i = vectorLibro.size();
+                return false;
+
+            }else{
+                i = vectorLibro.size();
+                cout<< "LIBRO NO DISPONIBLE YA ALQUILADO"<< endl;
+                cout<< "INGRESE OTRO LIBRO Y/O TERMINE EL REGISTRO DE PRESTAMO"<< endl;
+                return true;
+            }
+
+        }
+    }
+
+    cout<< "NO SE ENCONTRO EL NOMBRE INGRESADO CON NINGUN LIBRO"<< endl;
+    return true;
+}
+
+/**=====================================================================*/
+
+///ESTABLECE LOS PARAMETROS COMO UNA FECHA VALIDA
+///PARA QUE PUEDA SER COMPARADO
 tm establecerFechaFuncion(int dia, int mes, int anio){
 
     bool validar = false;
@@ -239,6 +327,7 @@ tm establecerFechaFuncion(int dia, int mes, int anio){
     fechaBusquda.tm_mon = mes;
     fechaBusquda.tm_year = anio;
 
+///LE ASIGNAMOS LOS TIEMPOS EN 0 PARA EVITAR ERRORES
     fechaBusquda.tm_sec = 0;
     fechaBusquda.tm_min = 0;
     fechaBusquda.tm_hour = 0;

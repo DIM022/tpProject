@@ -101,8 +101,7 @@ void datoPrestamo::realizarPrestamo(){
 
     fechaInicio = *timeT;
 
-    cout<< "FECHA ESTABLECIDA DEL PRESTAMO"<< endl;
-    cout<< fechaInicio.tm_mday<< "/"<< fechaInicio.tm_mon<< "/"<< fechaInicio.tm_year<< endl;
+    getFechaInicio();
 }
 
 /**=====================================================================*/
@@ -188,7 +187,6 @@ void datoPrestamo::mostrarPrestamo(){
         << "LIBRO: "<< nombreLibro<< endl;
         getFechaInicio();
         getFechaFinal();
-        getDevolucion();
 }
 
 /**=====================================================================*/

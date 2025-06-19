@@ -14,10 +14,11 @@
 
 void registrarPrestamo(vector <datoPrestamo>&, vector <socio>&, vector <libro>&);
 
-bool verificarExistenciaNombreSocio(string, vector <socio>&);
+bool verificarExistenciaDniSocio(string, vector <socio>&);
 bool verificarExistenciaNombreLibro(string, vector <libro>&);
 tm establecerFechaFuncion(int, int, int);
 
+void filtrarPrestamoTodo(vector <datoPrestamo>&);
 void filtrarPrestamoSocio(vector <datoPrestamo>&);
 void filtrarPrestamoLibro(vector <datoPrestamo>&);
 void filtrarPrestamoFecha(vector <datoPrestamo>&);

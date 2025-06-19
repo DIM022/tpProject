@@ -6,12 +6,13 @@ using namespace std;
 
 /**---------------------------------------------------------------------------------------------------*/
 
+///ASEGURA QUE SE ENTRE UNA SOLA VEZ PARA EVITAR SOBRE ESCRITURAS
 int inicioAperturaSocio(vector<socio>& vectorSocio, ifstream& file, int& contRepeS){
 
 
     ///SOLO SE ABRE EL ARCHIVO 1 VEZ
     ///YA QUE SI SELECIONACMOS PARA ACCEDER A SOCIO SIN AVER GUARDAO LAS MODIFICACIONES
-    ///SE PIERDEN ESAS MODIFICACIONES Y TIENE EL VECTOR ORIGINAL DENUEVO
+    ///SE PIERDEN ESAS MODIFICACIONES Y TIENE EL VECTOR ORIGINAL DE NUEVO
     if(!contRepeS ){
 
         ///ABRIMOS EL ARCHIVO
@@ -21,6 +22,7 @@ int inicioAperturaSocio(vector<socio>& vectorSocio, ifstream& file, int& contRep
         if(file.fail()){
             ///SI NO, IMPRIMOS Y RETORNAMOS
             cout<< "ERROR AL ABRIR EL ARCHIVO ( MAIN )"<< endl;
+            cout<< "CERRANDO PROGRAMA"<< endl;
             return 1;
         }
 
@@ -29,17 +31,17 @@ int inicioAperturaSocio(vector<socio>& vectorSocio, ifstream& file, int& contRep
 
         contRepeS++;
     }
-    return 1;
+    return 0;
 }
 
 /**---------------------------------------------------------------------------------------------------*/
 
-void eliminarSocio(vector <socio>& vector_Socio, int flagDNIB){
+void eliminarSocio(vector <socio>& vector_Socio, int flagDNI){
 
     ///.begin -- apunta al primer elemento del vector
-    ///.erase -- se desplaza desde la posicion indicada, tantas veces como se especifique el segundo argumento
+    ///.erase -- se desplaza desde la posicion indicada ( begin ), tantas veces como se especifique el segundo argumento
     ///         elimina esa posicion reducion el vector sin dejar un espacio en blanco
-    vector_Socio.erase(vector_Socio.begin() + flagDNIB);
+    vector_Socio.erase(vector_Socio.begin() + flagDNI);
     cout<< "SOCIO ELIMINADO.."<< endl;
 }
 
@@ -265,7 +267,7 @@ void agregarSocio(vector <socio>& vector_Socio){
 /**---------------------------------------------------------------------------------------------------*/
 
 ///MODIFICA EL VECTOR Y EN LA FUNCION < subirCambios > SOBREESCRIBIMOS EL ARCHIVO CON EL VECTOR
-void modificar_Socio(vector <socio>& vector_Socio, int flagDNIB){
+void modificarSocio(vector <socio>& vector_Socio, int flagDNI){
 
     string nuevoValor;///ALMACENA EL NUEVO VALOR
     int posDato = 0;
@@ -289,7 +291,7 @@ void modificar_Socio(vector <socio>& vector_Socio, int flagDNIB){
             getline(cin, nuevoValor);
 
             ///PARAMETROS : EL VALOR NUEVO, Y LA OPCION DEL DATO A CAMBIAR
-            vector_Socio[flagDNIB].setDato(nuevoValor, posDato);
+            vector_Socio[flagDNI].setDato(nuevoValor, posDato);
 
         }else{
             cout<< "OPCION INVALIDA < MENU MODIFCAR ( FUNCION ) >"<< endl;

@@ -3,7 +3,6 @@
 
 void inicioAperturaLibro(vector <libro>& vectorLibro, int& contRepeL){
 
-
     ///ASEGURA QUE SE CARGUE EL LIBRO UNA SOLA VEZ PARA EVITAR
     ///ACTUALIZACIONES NO BUSCADAS
     if(!contRepeL){
@@ -161,7 +160,7 @@ bool validarUbicacion(int* ubi, vector <libro>& vectorLibro){
 
 /**---------------------------------------------------------------------------------------------------*/
 
-void modificarLibro(int flagDNIB, vector<libro>& vectoLibro){
+void modificarLibro(int flagDNI, vector<libro>& vectoLibro){
 
     string nuevoValor;///ALMACENA EL NUEVO VALOR
     int posDato = 0, colu = 0, fila = 0;
@@ -189,7 +188,7 @@ void modificarLibro(int flagDNIB, vector<libro>& vectoLibro){
             getline(cin, nuevoValor);
 
             ///PARAMETROS : EL VALOR NUEVO, Y LA OPCION DEL DATO A CAMBIAR
-            vectoLibro[flagDNIB].setDato(nuevoValor, posDato);
+            vectoLibro[flagDNI].setDato(nuevoValor, posDato);
 
         }else if(posDato == 7){
 
@@ -213,7 +212,7 @@ void modificarLibro(int flagDNIB, vector<libro>& vectoLibro){
 
             }while(valido);
 
-                vectoLibro[flagDNIB].setDato_UBI(colu, fila);
+                vectoLibro[flagDNI].setDato_UBI(colu, fila);
 
         }else if(posDato == 8){
 
@@ -223,11 +222,11 @@ void modificarLibro(int flagDNIB, vector<libro>& vectoLibro){
 
                 if(posDato == 1){
                     est = true;
-                     vectoLibro[flagDNIB].setDato_estadoSN(est);
+                    vectoLibro[flagDNI].setDato_estadoSN(est);
 
                 }else if(posDato == 2){
                     est = false;
-                    vectoLibro[flagDNIB].setDato_estadoSN(est);
+                    vectoLibro[flagDNI].setDato_estadoSN(est);
 
                 }else{
                     cout<< "OPCION INCORRECTA"<< endl;
