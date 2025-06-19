@@ -6,20 +6,23 @@ void registrarPrestamo(vector <datoPrestamo>& vectorPrestamo, vector <socio>& ve
 
     string _dniSocio;
     string _nombreLibro;
-    int intTam = 0;
     bool validar = false;
 
     cout<< "========================="<<endl;
     cout<< "INGRESO DE NUEVO PRESTAMO"<< endl;
     cout<< "========================="<<endl;
 
+//TOMAMOS LOS DATOS NECESARIOS
     do{
         cout<< "DNI DEL SOCIO: ";
         cin >> _dniSocio;
         cin.ignore();
 
+        //USAMOS ALGUBAS FUBCUIBES DEL < FUNCIONES MAIN >
         validar = verificarNumeroString(_dniSocio);
 
+        //SI EL INGRESO ES CORRECTO = false
+        //ENTONVES VALIDAMOS SU EXISTENCIA COMPARANDOLO CON VECTOR SOCIO
         if(!validar){
             validar = verificarExistenciaNombreSocio(_dniSocio, vectorSocio);
         }
@@ -31,23 +34,31 @@ void registrarPrestamo(vector <datoPrestamo>& vectorPrestamo, vector <socio>& ve
         cin >> _nombreLibro;
         cin.ignore();
 
-        valido = validarNombre(_nombreLibro, vectorLibro);
+        //USAMOS ALGUBAS FUBCUIBES DEL < gestionVectorLibro >
+        validar = validarNombre(_nombreLibro);
 
-        if(!valido){
-             valido = verificarExistenciaNombreLibro(_nombreLibro, vectorSocio);
+        if(!validar){
+            validar = verificarExistenciaNombreLibro(_nombreLibro, vectorLibro);
         }
 
     }while(validar);
 
+    //COLOCAMOS LOS DATOS EN EL CONSTRUCTOR Y
+    //SE CREA AGREGA UN OBJETO EN LA UTIMA POSICION DEL VECTOR
     vectorPrestamo.push_back(datoPrestamo(_nombreLibro, _dniSocio));
 
+    //LLAMOS A ESA ULTIMA CLASE Y ESTABLECEMOS LAS FECHAS
+
+    //FECHA DE INICIO PRESTAMO
     vectorPrestamo.back().realizarPrestamo();///GUARDAMOS LA FECHA ACTUAL DE PRESTAMO
+
+    //FECHA MAXIMA DEL PRESTAMO
     vectorPrestamo.back().establecerFechaPrestamo();///ESTABLECER LA FECHA LIMITE DEL PRESTAMO
 
     cout<< "================"<< endl;
     cout<< "PRESTAMO AÑADIDO"<< endl;
     cout<< "================"<< endl;
-
+    //TERMINAR
 }
 
 /**=====================================================================*/
@@ -57,12 +68,12 @@ void filtrarPrestamoLibro(vector <datoPrestamo>& vectorPrestamo){
     string _libroBusqueda;
     bool valido = true;
 
-    cout<< "INGRESE DNI A FILTRAR: ";
+    cout<< "INGRESE NOMBRE DEL LIBRO A FILTRAR: ";
     cin >> _libroBusqueda;
 
     for(size_t i=0; i<vectorPrestamo.size(); i++){
 
-        if( _libroBusqueda == vectorPrestamo[i].getNmbreLibro() ){
+        if( _libroBusqueda == vectorPrestamo[i].getNombreLibro() ){
 
             vectorPrestamo[i].mostrarPrestamo();
             i = vectorPrestamo.size();
@@ -70,8 +81,11 @@ void filtrarPrestamoLibro(vector <datoPrestamo>& vectorPrestamo){
         }
     }
 
-    if(valido){
-        cout<< "NO SE ENCONTRO EL DNI DEL SOCIO INGRESO, VERIFIQUE QUE SEA CORRECTO EL DNI"<< endl:
+      if(valido){
+
+        cout<< "=============================="<< endl;
+        cout<< "NO SE ENCONTRO NINGUN PRESTAMO ASOCIADO A ESE LIBRO"<< endl;
+        cout<< "=============================="<< endl;
     }
 }
 
@@ -95,8 +109,10 @@ void filtrarPrestamoSocio(vector <datoPrestamo>& vectorPrestamo){
         }
     }
 
-    if(valido){
-        cout<< "NO SE ENCONTRO EL DNI DEL SOCIO INGRESO, VERIFIQUE QUE SEA CORRECTO EL DNI"<< endl:
+      if(valido){
+        cout<< "=============================="<< endl;
+        cout<< "NO SE ENCONTRO NINGUN PRESTAMO ASOCIADO A ESE DNI"<< endl;
+        cout<< "=============================="<< endl;
     }
 
 }
@@ -107,7 +123,7 @@ bool verificarExistenciaNombreSocio(string _string, vector <socio>& vectorSocio)
 
     for(size_t i=0; i<vectorSocio.size(); i++){
 
-        if(_string == vectorSocio[i].getdni){
+        if(_string == vectorSocio[i].getdni() ){
 
             i = vectorSocio.size();
             return false;
@@ -122,11 +138,11 @@ bool verificarExistenciaNombreSocio(string _string, vector <socio>& vectorSocio)
 
 bool verificarExistenciaNombreLibro(string _nombreLibro, vector <libro>& vectorLibro){
 
-    for(size_t j=0; j<vectorLibro.size(); j++){
+    for(size_t i=0; i<vectorLibro.size(); i++){
 
         if( _nombreLibro == vectorLibro[i].get_nombre() ){
 
-            j = vectorLibro.size();
+            i = vectorLibro.size();
             return false;
         }
     }
@@ -140,17 +156,19 @@ bool verificarExistenciaNombreLibro(string _nombreLibro, vector <libro>& vectorL
 void filtrarPrestamoFecha(vector <datoPrestamo>& vectorPrestamo){
 
     tm fechaBusqueda = {};
+    int _dia = 0, _mes = 0, _anio = 0;
+    bool valido = true;
 
     cout<< "INGRESE LA FECHA A BUSCAR: "<< endl;
-    cout<< "DIA":
+    cout<< "DIA";
     cin >> _dia;
     cin.ignore();
 
-    cout<< "MES":
+    cout<< "MES";
     cin >> _mes;
     cin.ignore();
 
-    cout<< "ANIO":
+    cout<< "ANIO";
     cin >> _anio;
     cin.ignore();
 
@@ -165,7 +183,14 @@ void filtrarPrestamoFecha(vector <datoPrestamo>& vectorPrestamo){
 
             i = vectorPrestamo.size();
             vectorPrestamo[i].mostrarPrestamo();
+            valido = false;
         }
+    }
+    if(valido){
+
+        cout<< "=============================="<< endl;
+        cout<< "NO SE ENCONTRO NINGUN PRESTAMO ASOCIADO A ESA FECHA"<< endl;
+        cout<< "=============================="<< endl;
     }
 }
 
@@ -173,35 +198,35 @@ void filtrarPrestamoFecha(vector <datoPrestamo>& vectorPrestamo){
 
 tm establecerFechaFuncion(int dia, int mes, int anio){
 
-    bool valido = false;
+    bool validar = false;
 
     tm fechaBusquda = {};
 ///VERIFICAMOS EL INGRESO DE VALORESVALIDO PARA UNA FECHA
     do{
-        valido = false;
+        validar = false;
         if(dia <= 0 || dia > 31){
 
             cout<< "EL DIA DEBE SER MAYOR A 0 Y MENOR A 31"<< endl;
-            valido = true;
+            validar = true;
 
             cout<< "INGRESE DIA: ";
             cin >> dia;
             cin.ignore();
         }
-    }while(valido);
+    }while(validar);
 
     do{
-        valido = false;
+        validar = false;
         if(mes <= 0 || mes > 12){
 
             cout<< "EL MES DEBE SER MAYOR A 0 Y MENOR A 12"<< endl;
-            valido = true;
+            validar = true;
 
             cout<< "INGRESE MES: ";
             cin >> mes;
             cin.ignore();
         }
-    }while(valido);
+    }while(validar);
 
 ///MODIFICAMOS EL VALOR YA QUE
 /// MES : EMPIEZA DESDE 0 ( 0 - ENERO && 11 - DICIEMBRE

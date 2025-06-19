@@ -106,17 +106,17 @@ void subirCambios(vector <socio>& vector_Socio){
     }
 */
     ///SOCIO
-        ///OUT PARA ESCRIBIR Y TRUNC PARA ELIMINAR EL CONTENIDO ANTERIOIR DEL ARCHIVO
-        file.open("lista de socios.csv", ios::out | ios::trunc);
+    ///OUT PARA ESCRIBIR Y TRUNC PARA ELIMINAR EL CONTENIDO ANTERIOIR DEL ARCHIVO
+    file.open("", ios::out | ios::trunc);
 
-        for(size_t i=0; i<vector_Socio.size(); i++){
+    for(size_t i=0; i<vector_Socio.size(); i++){
 
-            ///ALMACENAMOS EN ARCHIVO --- stringFile
-            ///stringFile -- CONVIERTE LOS ATRIBUTOS DEL OBJETO EN UN STRING QUE RETORNA
-            file << vector_Socio[i].stringFile()<<'\n';
-        }
+        ///ALMACENAMOS EN ARCHIVO --- stringFile
+        ///stringFile -- CONVIERTE LOS ATRIBUTOS DEL OBJETO EN UN STRING QUE RETORNA
+        file << vector_Socio[i].stringFile()<<'\n';
+    }
 
-        file.close();
+    file.close();
 }
 
 /**---------------------------------------------------------------------------------------------------*/

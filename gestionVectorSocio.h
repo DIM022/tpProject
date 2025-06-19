@@ -6,6 +6,7 @@
 
 using namespace std;
 
+int inicioAperturaSocio(vector<socio>&, ifstream&, int&);
 void eliminarSocio(vector <socio>&, int);
 void agregarSocio(vector <socio>&);
 void modificar_Socio(vector <socio>&, int);///MODIFICA EL VECTOR

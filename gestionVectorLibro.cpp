@@ -1,5 +1,20 @@
 #include "gestionVectorLibro.h"
 
+
+void inicioAperturaLibro(vector <libro>& vectorLibro, int& contRepeL){
+
+
+    ///ASEGURA QUE SE CARGUE EL LIBRO UNA SOLA VEZ PARA EVITAR
+    ///ACTUALIZACIONES NO BUSCADAS
+    if(!contRepeL){
+        //ABRE Y RETORNA UN VECTOR DE LIBRO
+        vectorLibro = cargarLibro(ARCHIVO_LIBROS);
+
+        contRepeL++;
+    }
+
+}
+
 /**---------------------------------------------------------------------------------------------------*/
 
 void agregarLibro(vector<libro>& vectorLibro){

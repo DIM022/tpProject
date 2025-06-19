@@ -6,6 +6,34 @@ using namespace std;
 
 /**---------------------------------------------------------------------------------------------------*/
 
+int inicioAperturaSocio(vector<socio>& vectorSocio, ifstream& file, int& contRepeS){
+
+
+    ///SOLO SE ABRE EL ARCHIVO 1 VEZ
+    ///YA QUE SI SELECIONACMOS PARA ACCEDER A SOCIO SIN AVER GUARDAO LAS MODIFICACIONES
+    ///SE PIERDEN ESAS MODIFICACIONES Y TIENE EL VECTOR ORIGINAL DENUEVO
+    if(!contRepeS ){
+
+        ///ABRIMOS EL ARCHIVO
+        file = archivo_IO();
+
+        ///VERIFICAMOS QUE SE ASIGNO
+        if(file.fail()){
+            ///SI NO, IMPRIMOS Y RETORNAMOS
+            cout<< "ERROR AL ABRIR EL ARCHIVO ( MAIN )"<< endl;
+            return 1;
+        }
+
+        ///TOMA LOS DATOS DEL ARCHIVO Y CIERRA ARCHIVO
+        lecturaLinea(vectorSocio, file);
+
+        contRepeS++;
+    }
+    return 1;
+}
+
+/**---------------------------------------------------------------------------------------------------*/
+
 void eliminarSocio(vector <socio>& vector_Socio, int flagDNIB){
 
     ///.begin -- apunta al primer elemento del vector
