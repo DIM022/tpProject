@@ -4,7 +4,7 @@ using namespace std;
 
 /**---------------------------------------------------------------------------------------------------*/
 
-//RETORNA EL STIRNG A MIINUSCULAS
+///RETORNA EL STIRNG A MIINUSCULAS
 string a_minusculas(string texto){
 
     //size() devuelve un unsigned long, o size_t y size_t segun el entorno de ejecucion puede ser uns long,
@@ -102,17 +102,10 @@ string normalizar_anio(string fecha){
 
         //substr saca una parte del string, desde donde(len-2) y cuantos caracteres queremos(2)
         string ult_dos = fecha.substr(len - 2, 2);
-        int an_ingresado = 0;
-        //stoi = string to int
-        if(es_entero_valido(ult_dos)){
-        an_ingresado = stoi(ult_dos);
-        }
-
 
         //stoi = string to int
 
-        an_ingresado = stoi(ult_dos);
-
+        int an_ingresado = stoi(ult_dos);
 
         //si es 26 = 1926 si es 25 = 2025
         string insertar = (an_ingresado>=26) ? "19" : "20";
@@ -194,10 +187,7 @@ bool es_entero_valido(string s) {
 }
 
 /**---------------------------------------------------------------------------------------------------*/
-
-
-
-
+/**---------------------------------------------------------------------------------------------------*/
 string asignar_estado( int &contador){
 
     string estados[4] = {
@@ -306,13 +296,13 @@ int contar_campos(string linea) {
 void cambiar_ubicacion(string ubicacion_string, int ubicacion[2]){
     size_t guion = ubicacion_string.find('-');//buscamos el guion .find devuelve la pos, ej 2, sino devuelve string::npos(no encontrado)
     if( guion != string::npos){ //si el guion se encontro(distinto de no encontrado)
-    if(es_ubicacion_valida(ubicacion_string)){
-    ubicacion[0] = stoi(ubicacion_string.substr(0, guion));//hacemos un string to int y substraemos de la ubicacion desde 0, tamaño de substring va a ser = guion
-    ubicacion[1] = stoi(ubicacion_string.substr(guion + 1));//y aca desde guion + 1, osea las filas
-    }
+        if(es_ubicacion_valida(ubicacion_string)){
+            ubicacion[0] = stoi(ubicacion_string.substr(0, guion));//hacemos un string to int y substraemos de la ubicacion desde 0, tamaño de substring va a ser = guion
+            ubicacion[1] = stoi(ubicacion_string.substr(guion + 1));//y aca desde guion + 1, osea las filas
+        }
     } else{
-    ubicacion[0] = 0;
-    ubicacion[1] = 0;
+        ubicacion[0] = 0;
+        ubicacion[1] = 0;
     }
 }
 /**------------------------------------------------------------------------------------------------- */
@@ -335,4 +325,3 @@ bool es_ubicacion_valida(string ubicacion_string) {
 
     return true;
 }
-/**------------------------------------------------------------------------------------------------ */

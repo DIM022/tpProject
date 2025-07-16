@@ -1,100 +1,81 @@
+// Reemplaza la función entera en Final/cargar_libros.cpp
+
 #include "cargar_libros.h"
+#include <vector>
+#include <string>
+#include "funcionesMain.h"
+#include "funcionesLibro.h"
 
-/**---------------------------------------------------------------------------------------------------*/
-//FUNCION QUE RETORNA UN VECTOS < LIBRO >
-vector<libro> cargarLibro(string nombre_archivo){
-
-    ifstream archivoLibros;
+vector<libro> cargarLibro(string nombre_archivo) {
+    ifstream archivoLibros(nombre_archivo);
+    vector<libro> libros;
     string linea;
     char limitador = ',';
 
-    archivoLibros.open(nombre_archivo);
-
-    if(!archivoLibros.is_open()){
-        cout<<"No se pudo abrir el archivo."<<endl;
+    if (!archivoLibros.is_open()) {
+        cerr << "No se pudo abrir el archivo." << endl;
+        return {};
     }
 
-    //ARRAY DINAMICO
-    vector<libro> libros;
+    getline(archivoLibros, linea); // Saltar encabezado
 
-    getline(archivoLibros, linea);//TOMA LA PRIMERA LINEA QUE NO NECESITAMOS
+    while (getline(archivoLibros, linea)) {
+        stringstream stream(linea);
+        string nombre, area, subarea, autores, editorial, anio_de_publicacion, estado;
 
-    //LEE TODAS LAS LINEAS
-    while(getline(archivoLibros, linea)){
-
-    stringstream stream(linea);
-    int cantidad_campos = contar_campos(linea);
-    string nombre, area, subarea, autores, editorial, anio_de_publicacion;
-
-    string estado, estadoSN_string, ubicacion_string; //los atributos q agregamos
-    //PARAMETROS :
-    //STREAM : DONDE SE ENCUETRAN LOS DATOS
-    // NOMBRE : STRING DONDE SE ALMACENA
-    // LIMITADOR : INDICA HASTA QUE PUNTO LEERA
-
-    //LEE HASTA DONDE SE DEJO Y CONTINUA DESDE AHI
-    //POR ESO NOS PERMITE ALMACENAR SUS DATOS EN VARIBALES
-    //separamos la ubicacion para el array
+        // --- NUEVAS VARIABLES PARA LEER LOS DATOS ADICIONALES ---
+        string columnaStr, filaStr, estadoSN_str;
+        int columna = 0, fila = 0;
+        bool estadoSN = false;
 
 
-    //CREAMOS UN OBJETO DE TIPO LIBRO LLAMADO < objetoLibro>
-    if(cantidad_campos <= 6){
         getline(stream, nombre, limitador);
-
-         nombre = borrar_comillas(nombre);
+        nombre = borrar_comillas(nombre);
 
         getline(stream, area, limitador);
-
         area = quitar_tildes(area);
+
         getline(stream, subarea, limitador);
-        subarea = borrar_comillas(subarea);
-        getline(stream, estado, limitador);
-        getline(stream, ubicacion_string, limitador);
-        getline(stream, estadoSN_string);
-        int ubicacion[2];
-        cambiar_ubicacion(ubicacion_string, ubicacion);
+        getline(stream, autores, limitador);
+        getline(stream, editorial, limitador);
 
-         bool estadoSN = ( estadoSN_string == "si");//si es "si" da true, caso contrario false
+        getline(stream, anio_de_publicacion, limitador);
+        anio_de_publicacion = borrar_comillas(anio_de_publicacion);
 
-        libro objetoLibroCorto(nombre, area, subarea, estado, ubicacion, estadoSN);//creamos el libro
+        getline(stream, estado, limitador); // Leer el estado (Bueno, Malo, etc.)
 
-        libros.push_back(objetoLibroCorto);//Lo mandamos al final
-    }else{
-    getline(stream, nombre, limitador);
+        // --- NUEVO: LEER COLUMNA, FILA Y DISPONIBILIDAD ---
+        getline(stream, columnaStr, limitador);
+        getline(stream, filaStr, limitador);
+        getline(stream, estadoSN_str, limitador);
 
-    nombre = borrar_comillas(nombre);
+        // Convertir la ubicación de string a int
+        if (es_entero_valido(columnaStr)) {
+            columna = stoi(columnaStr);
+        }
+        if (es_entero_valido(filaStr)) {
+            fila = stoi(filaStr);
+        }
 
-    getline(stream, area, limitador);
+        // Convertir la disponibilidad de string a bool
+        if(estadoSN_str == "1"){
+            estadoSN = true;
+        }
 
-    area = quitar_tildes(area);
+        // --- CREACIÓN DEL OBJETO Y ASIGNACIÓN DE DATOS ---
+        // Se crea el objeto libro con el constructor original
+        libro objetoLibro(nombre, area, subarea, autores, editorial, anio_de_publicacion);
 
-    getline(stream, subarea, limitador);
+        // Se usan los setters para asignar los datos adicionales
+        objetoLibro.setDato(estado, 7);
+        objetoLibro.setDato_UBI(columna, fila);
+        objetoLibro.setDato_estadoSN(estadoSN);
 
-    subarea = borrar_comillas(subarea);
 
-    getline(stream, autores, limitador);
-
-    getline(stream, editorial, limitador);
-
-    getline(stream, anio_de_publicacion, limitador);
-    anio_de_publicacion = borrar_comillas(anio_de_publicacion);
-
-    getline(stream, estado, limitador);
-    getline(stream, ubicacion_string, limitador);
-    getline(stream, estadoSN_string);
-    int ubicacion[2];
-    cambiar_ubicacion(ubicacion_string, ubicacion);
-     bool estadoSN = ( estadoSN_string == "si");//si es "si" da true, caso contrario false
-
-    libro objetoLibro(nombre, area, subarea, autores, editorial, anio_de_publicacion, estado, ubicacion, estadoSN);
-    libros.push_back(objetoLibro);
-    }
+        libros.push_back(objetoLibro);
     }
 
-    //CERRAMOS EL ARCHIVO
-    //YA QUE NO LO USAMOS MAS
     archivoLibros.close();
-
     return libros;
 }
 /**---------------------------------------------------------------------------------------------------*/

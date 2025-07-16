@@ -2,13 +2,13 @@
 
 /**=====================================================================*/
 
-//ESTABLECE LA FECHA DE DEVOLUCION DEL PRESTAMO
+///ESTABLECE LA FECHA DE DEVOLUCION DEL PRESTAMO
 void datoPrestamo::establecerFechaPrestamo(){
 
     int dia = 0, mes = 0, anio = 0;
     bool valido = false;
 
-//VERIFICAMOS EL INGRESO DE VALORESVALIDO PARA UNA FECHA
+///VERIFICAMOS EL INGRESO DE VALORESVALIDO PARA UNA FECHA
     do{
         valido = false;
         cout<< "INGRESE DIA:  ";
@@ -37,7 +37,7 @@ void datoPrestamo::establecerFechaPrestamo(){
 
     do{
         valido = false;
-        cout<< "INGRESE AÑO:  ";
+        cout<< "INGRESE ANIO:  ";
         cin >> anio;
         cin.ignore();
 
@@ -49,13 +49,13 @@ void datoPrestamo::establecerFechaPrestamo(){
 
     }while(valido);
 
-//MODIFICAMOS EL VALOR YA QUE
-// MES : EMPIEZA DESDE 0 ( 0 - ENERO && 11 - DICIEMBRE
-// AÑO : SUMA EL NUM INGRESADO + 1900 ( 2025 - 1900 = 125 + 1900 = 2025)
+///MODIFICAMOS EL VALOR YA QUE
+/// MES : EMPIEZA DESDE 0 ( 0 - ENERO && 11 - DICIEMBRE
+/// ANIO : SUMA EL NUM INGRESADO + 1900 ( 2025 - 1900 = 125 + 1900 = 2025)
     mes = mes - 1;
     anio -= 1900;
 
-//VERIFICAMOS / VALIDAMOS LA FECHA VALIDA
+///VERIFICAMOS / VALIDAMOS LA FECHA VALIDA
     do{
         valido = false;
 
@@ -84,7 +84,7 @@ void datoPrestamo::establecerFechaPrestamo(){
         }
     }while(valido);
 
-//LE ASIGNAMOS LOS DATOS AL PBJETO
+///LE ASIGNAMOS LOS DATOS AL PBJETO
     fechaFinal.tm_mday = dia;
     fechaFinal.tm_mon = mes;
     fechaFinal.tm_year = anio;
@@ -92,8 +92,8 @@ void datoPrestamo::establecerFechaPrestamo(){
 
 /**=====================================================================*/
 
-//ESTABLECEMOS LA FECHA EN LA QUE SE ESTA
-//PRESTANDO EL LIBRO
+///ESTABLECEMOS LA FECHA EN LA QUE SE ESTA
+///PRESTANDO EL LIBRO
 void datoPrestamo::realizarPrestamo(){
 
     time_t timeS = time(nullptr);
@@ -106,19 +106,19 @@ void datoPrestamo::realizarPrestamo(){
 
 /**=====================================================================*/
 
-//SIRVE PARA CONSULTAR LOS DIAS FALTANTES HASTA LA DEVOLUCION
+///SIRVE PARA CONSULTAR LOS DIAS FALTANTES HASTA LA DEVOLUCION
 void datoPrestamo::getDevolucion(){
 
     double segu = 0;
     int diasDevolucion = 0;
 
-    //GUARDAMOS EN SEGUNDOS DESDE 1900 - ACTUALIDAD
+    ///GUARDAMOS EN SEGUNDOS DESDE 1900 - ACTUALIDAD
     time_t seg = time(nullptr);
 
-    //GUARDAMOS EL TIEMPO DEL MOMENTO EN EL QUE SE REVISA EL VENCIMIENTO
+    ///GUARDAMOS EL TIEMPO DEL MOMENTO EN EL QUE SE REVISA EL VENCIMIENTO
     tm* ahora = localtime(&seg);
 
-//ESTABLECEMOS LOS HORARIOS EN 0 PARA QUE NO ALTENREN LOS DATS
+///ESTABLECEMOS LOS HORARIOS EN 0 PARA QUE NO ALTENREN LOS DATS
     ahora->tm_sec = 0;
     ahora->tm_min = 0;
     ahora->tm_hour = 0;
@@ -127,14 +127,14 @@ void datoPrestamo::getDevolucion(){
     fechaFinal.tm_min = 0;
     fechaFinal.tm_hour = 0;
 
-//PASAMOS ESOS DIAS A SEUNDOS
+///PASAMOS ESOS DIAS A SEUNDOS
     time_t fechaF = mktime(&fechaFinal);
     time_t fechaI = mktime(ahora);
 
-//GUARDAMOS ESA DIFERENCIA DE SEGUNDOS
+///GUARDAMOS ESA DIFERENCIA DE SEGUNDOS
     segu = difftime(fechaF, fechaI);
 
-//Y LA CONVERTIMOS EN DIAS
+///Y LA CONVERTIMOS EN DIAS
     diasDevolucion = segu / (60 * 60 * 24);
 
     if(diasDevolucion){
@@ -151,30 +151,31 @@ void datoPrestamo::getDevolucion(){
 
 /**=====================================================================*/
 
-void datoPrestamo::getFechaInicio(){
-
-    cout<< endl<< "FECHA DEL PRESTAMO"<< endl;
-    cout<< fechaInicio.tm_mday<< "/"<< fechaInicio.tm_mon+1<< "/"<< fechaInicio.tm_year+1900<< endl;
+string datoPrestamo::getFechaInicio()const{
+    return to_string(fechaInicio.tm_mday) + "/" +
+           to_string(fechaInicio.tm_mon + 1) + "/" +
+           to_string(fechaInicio.tm_year + 1900);
 }
 
 /**=====================================================================*/
 
-void datoPrestamo::getFechaFinal(){
+string datoPrestamo::getFechaFinal()const{
 
-    cout<< endl<< "FECHA DE DEVOLUCION"<< endl;
-    cout<< fechaFinal.tm_mday<< "/"<< fechaFinal.tm_mon+1<< "/"<< fechaFinal.tm_year+1900<< endl;
+    return to_string(fechaFinal.tm_mday) + "/" +
+           to_string(fechaFinal.tm_mon + 1) + "/" +
+           to_string(fechaFinal.tm_year + 1900);
 }
 
 /**=====================================================================*/
 
-string datoPrestamo::getDni(){
+string datoPrestamo::getDni()const{
 
     return dniSocio;
 }
 
 /**=====================================================================*/
 
-string datoPrestamo::getNombreLibro(){
+string datoPrestamo::getNombreLibro()const{
 
     return nombreLibro;
 }
@@ -199,6 +200,7 @@ datoPrestamo::datoPrestamo(string _nombrelibro, string nombreSocio): nombreLibro
 /**=====================================================================*/
 
 datoPrestamo::~datoPrestamo(){
+
 }
 
 /**=====================================================================*/
@@ -213,3 +215,16 @@ bool datoPrestamo::operator==(tm& otro){
 }
 
 /**=====================================================================*/
+
+string datoPrestamo::stringFile() const {
+    return getDni() + "," + getNombreLibro() + "," +
+           getFechaInicio() + "," + getFechaFinal();
+}
+
+void datoPrestamo::setFechaInicio(const tm& fecha) {
+    fechaInicio = fecha;
+}
+void datoPrestamo::setFechaFinal(const tm& fecha) {
+    fechaFinal = fecha;
+}
+

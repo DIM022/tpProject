@@ -2,31 +2,17 @@
 
 /**---------------------------------------------------------------------------------------------------*/
 
-void inicioAperturaLibro(vector <libro>& vectorLibro, int& contRepeL){
-
-    //ASEGURA QUE SE CARGUE EL LIBRO UNA SOLA VEZ PARA EVITAR
-    //ACTUALIZACIONES NO BUSCADAS
-    if(!contRepeL){
-        //ABRE Y RETORNA UN VECTOR DE LIBRO
-        vectorLibro = cargarLibro(ARCHIVO_LIBROS);
-
-        contRepeL++;
-    }
-
-}
-
-/**---------------------------------------------------------------------------------------------------*/
-
 void agregarLibro(vector<libro>& vectorLibro){
 
     bool valido = true;
-    string _nombre, _area, _subArea, _autores, _editorial, _anioP;
+    string _nombre, _area, _subArea, _autores, _editorial, _anioP, _estado;
+
     int _ubi[2];
 
         cout<< "-------------------------"<< endl;
         cout<< "INGRESO DE NUEVO LIBRO"<< endl;
 
-        //NOMBRE
+        ///NOMBRE
         do{
             cout<< "INGRESE NOMBRE DEL LIBRO: ";
             getline(cin, _nombre);
@@ -35,27 +21,27 @@ void agregarLibro(vector<libro>& vectorLibro){
 
         }while(valido);
 
-        //AREA
+        ///AREA
         do{
             cout<< "INGRESE AREA: ";
             getline(cin, _area);
 
-            //USAMOS UNA FUNCION DE <funcionesMain> YA QUE NOS SIRVE EN ESTE CASO
+            ///USAMOS UNA FUNCION DE <funcionesMain> YA QUE NOS SIRVE EN ESTE CASO
             valido = verificarCharString(_area);
 
         }while(valido);
 
-        //SUBAREA
+        ///SUBAREA
         do{
             cout<< "INGRESE SUBAREA: ";
             getline(cin, _subArea);
 
-            //USAMOS UNA FUNCION DE < funcionesMain > YA QUE NOS SIRVE EN ESTE CASO
+            ///USAMOS UNA FUNCION DE < funcionesMain > YA QUE NOS SIRVE EN ESTE CASO
             valido = verificarCharString(_subArea);
 
         }while(valido);
 
-        //AUTORES
+        ///AUTORES
         do{
             cout<< "INGRESE NOMBRE DE AUTOR/ES ( EN FORMATO : AUTOR1-AUTOR2, etc): ";
             getline(cin, _autores);
@@ -64,29 +50,29 @@ void agregarLibro(vector<libro>& vectorLibro){
 
         }while(valido);
 
-        //EDITORIAL
+        ///EDITORIAL
         do{
             cout<< "INGRESE EDITORIAL: ";
             getline(cin, _editorial);
 
-            //USAMOS < validarAutores > YA QUE TIENE LAS MISMAS CARACTERESTICAS DE INGRESO
+            ///USAMOS < validarAutores > YA QUE TIENE LAS MISMAS CARACTERESTICAS DE INGRESO
             valido = validarAutores(_editorial);
 
         }while(valido);
 
-        //ANIO PUBLICACION
+        ///ANIO PUBLICACION
         do{
-            cout<< "INGRESE AÑO DE PUBLICACION: ";
+            cout<< "INGRESE ANIO DE PUBLICACION: ";
             cin >> _anioP;
 
-            //USAMOS UNA FUNCION DE < funcionesMain > YA QUE TIENE LAS MISMAS CARACTERISTICAS DE INGRESO
+            ///USAMOS UNA FUNCION DE < funcionesMain > YA QUE TIENE LAS MISMAS CARACTERISTICAS DE INGRESO
 
             valido = fecha_valida(_anioP);
 
-            //NEGAMOS VALIDO YA QUE LA FUNCION FECHA_VALIDA DELVUELDE TRUE SI ES CORRECTO EL INGRESO
+            ///NEGAMOS VALIDO YA QUE LA FUNCION FECHA_VALIDA DELVUELDE TRUE SI ES CORRECTO EL INGRESO
         }while(!valido);
 
-        //UBICACION
+        ///UBICACION
         do{
             cout<< "INGRESE COLUMNA DE DONDE SE ENCUENTRA EL LIBRO: ";
             cin >> _ubi[0];
@@ -107,38 +93,40 @@ void agregarLibro(vector<libro>& vectorLibro){
 /**---------------------------------------------------------------------------------------------------*/
 
 bool validarNombre(string _string){
-    //EL NOMBRE DEL LIBRO PUEDE INCLUIR LETRAS NUMERO Y > : < signo
+    ///EL NOMBRE DEL LIBRO PUEDE INCLUIR LETRAS NUMERO Y > : < signo
+    bool valido = false;
 
-    //PERMITIMOS EL INGGRESO DE MULTIPLES CARACTERES EXCEPTO LA COMA ','
+    ///PERMITIMOS EL INGGRESO DE MULTIPLES CARACTERES EXCEPTO LA COMA ','
     for(size_t i=0; i<_string.size(); i++){
 
         if(_string[i] == ','){
             cout<< "SOLO PERMITIDO CARACTES VALIDOS, la coma < , > ES UN CARACTER RESERVADO"<< endl;
             i = _string.size();
-            return true;
-        }
-    }
-    return false;
-}
-
-/**---------------------------------------------------------------------------------------------------*/
-
-bool validarAutores(string _string){
-
-    bool valido = false;
-
-    //SE PERMITE EL INGRESO DE MAYUS- MINUS - '.'
-     for(size_t i=0; i<_string.size(); i++){
-
-        if( (_string[i] >= 'a' && _string[i] <= 'z') || ( _string[i] >= 'a' && _string[i] <= 'z') ||(_string[i] == ' ') || (_string[i] == '.') ){
-
-        }else{
-            cout<< "SOLO PERMITIDO CARACTES VALIDOS"<< endl;
-            i = _string.size();
             valido = true;
         }
     }
     return valido;
+}
+
+/**---------------------------------------------------------------------------------------------------*/
+
+bool validarAutores(string _string) {
+    bool invalido = false;
+
+    for (size_t i = 0; i < _string.size(); i++) {
+        char c = _string[i];
+        if ((c >= 'a' && c <= 'z') ||
+            (c >= 'A' && c <= 'Z') ||
+            c == ' ' || c == '.' || c == '-') {
+
+        } else {
+            cout << "SOLO SE PERMITEN LETRAS, ESPACIOS, PUNTOS Y GUIONES (-)" << endl;
+            invalido = true;
+            break;
+        }
+    }
+
+    return invalido; // true = ERROR, false = OK
 }
 
 /**---------------------------------------------------------------------------------------------------*/
@@ -160,9 +148,9 @@ bool validarUbicacion(int* ubi, vector <libro>& vectorLibro){
 
 /**---------------------------------------------------------------------------------------------------*/
 
-void modificarLibro(int flagDNI, vector<libro>& vectoLibro){
+void modificarLibro(int flagDNIB, vector<libro>& vectoLibro){
 
-    string nuevoValor;//ALMACENA EL NUEVO VALOR
+    string nuevoValor;///ALMACENA EL NUEVO VALOR
     int posDato = 0, colu = 0, fila = 0;
     int _ubi[2];
     bool valido = true;
@@ -172,11 +160,11 @@ void modificarLibro(int flagDNI, vector<libro>& vectoLibro){
         cout<< "-----------------------------------------------"<< endl;
         cout<< "QUE CAMPO QUIERE MODIFICAR: "<< endl
             << "1-NOMBRE  2-AREA   3-SUBAREA   4-AUTORES "
-            << "5-EDITORIA  6-AÑO DE PUBLICACION\n 7-UBICACION  8-ESTADO (DISPOPNIBLE / NO DISPONIBLE )  9-SALIR"<< endl;
+            << "5-EDITORIA  6-ANIO DE PUBLICACION\n 7-UBICACION  8-ESTADO (DISPOPNIBLE / NO DISPONIBLE )  9-SALIR"<< endl;
         cout<< "------"<< endl<< ">";
         cin >> posDato;
 
-        //IGNORA EL ENTER PARA EVITAR LEERLO
+        ///IGNORA EL ENTER PARA EVITAR LEERLO
         cin.ignore();
 
         if(posDato == 9){
@@ -187,9 +175,8 @@ void modificarLibro(int flagDNI, vector<libro>& vectoLibro){
             cout<< "INGRESE EL NUEVO VALOR : ";
             getline(cin, nuevoValor);
 
-            //PARAMETROS : EL VALOR NUEVO, Y LA OPCION DEL DATO A CAMBIAR
-            vectoLibro[flagDNI].setDato(nuevoValor, posDato);
-
+            ///PARAMETROS : EL VALOR NUEVO, Y LA OPCION DEL DATO A CAMBIAR
+            vectoLibro[flagDNIB].setDato(nuevoValor, posDato);
 
         }else if(posDato == 7){
 
@@ -204,7 +191,7 @@ void modificarLibro(int flagDNI, vector<libro>& vectoLibro){
 
                 _ubi[0] = colu;
                 _ubi[1] = fila;
-                //VERIFICAMOS QUE NO ESTE EN USO ESA FILA Y COLUMNA
+                ///VERIFICAMOS QUE NO ESTE EN USO ESA FILA Y COLUMNA
                 valido = validarUbicacion(_ubi, vectoLibro);
 
                 if(valido){
@@ -213,7 +200,7 @@ void modificarLibro(int flagDNI, vector<libro>& vectoLibro){
 
             }while(valido);
 
-            vectoLibro[flagDNI].setDato_UBI(colu, fila);
+                vectoLibro[flagDNIB].setDato_UBI(colu, fila);
 
         }else if(posDato == 8){
 
@@ -223,12 +210,11 @@ void modificarLibro(int flagDNI, vector<libro>& vectoLibro){
 
                 if(posDato == 1){
                     est = true;
-
-                     vectoLibro[flagDNI].setDato_estadoSN(est);
+                     vectoLibro[flagDNIB].setDato_estadoSN(est);
 
                 }else if(posDato == 2){
                     est = false;
-                    vectoLibro[flagDNI].setDato_estadoSN(est);
+                    vectoLibro[flagDNIB].setDato_estadoSN(est);
 
                 }else{
                     cout<< "OPCION INCORRECTA"<< endl;
@@ -247,15 +233,15 @@ void modificarLibro(int flagDNI, vector<libro>& vectoLibro){
 
 void subirCambiosLibro(vector <libro>& vectorLibro){
 
-    fstream file;
-        //LIBRO
-        //OUT PARA ESCRIBIR Y TRUNC PARA ELIMINAR EL CONTENIDO ANTERIOIR DEL ARCHIVO
+   fstream file;
+        ///LIBRO
+        ///OUT PARA ESCRIBIR Y TRUNC PARA ELIMINAR EL CONTENIDO ANTERIOIR DEL ARCHIVO
         file.open("lista_libros.csv", ios::out | ios::trunc);
 
         for(size_t i=0; i<vectorLibro.size(); i++){
 
-            //ALMACENAMOS EN ARCHIVO --- stringFile
-            //stringFile -- CONVIERTE LOS ATRIBUTOS DEL OBJETO EN UN STRING QUE RETORNA
+            ///ALMACENAMOS EN ARCHIVO --- stringFile
+            ///stringFile -- CONVIERTE LOS ATRIBUTOS DEL OBJETO EN UN STRING QUE RETORNA
             file << vectorLibro[i].stringFile()<<'\n';
         }
 

@@ -15,29 +15,29 @@ class socio{
     string edad;
     string fechaN;
     string mail;
-    int posicionDato; // ELIMINAR
+    int posicionDato; /// ELIMINAR
 
 public :
     socio();
     socio(string, string, string, string, string, string, string, string, int);
     ~socio();
 
-    int validar(string);//SIRVE PARA LA BUSQUEDA DEL SOCIO
-    string stringFile();//CONVIERTE LOS ATRIBUTOS A UN STRING
+    int validar(string);///SIRVE PARA LA BUSQUEDA DEL SOCIO
+    string stringFile()const;///CONVIERTE LOS ATRIBUTOS A UN STRING
     void mostrarSocio();
 
     //setters
-    void setDato(string, int);//MODIFICA ALGUN ATRIBUTO DEL OBJETO
+    void setDato(string, int);///MODIFICA ALGUN ATRIBUTO DEL OBJETO
 
     //getters
-    string getapll();
-    string getdni();
-    string getsex();
-    string getdir();
-    string getnum();
-    string getedad();
-    string getfechaN();
-    string getmail();
+    string getapll()const;
+    string getdni()const;
+    string getsex()const;
+    string getdir()const;
+    string getnum()const;
+    string getedad()const;
+    string getfechaN()const;
+    string getmail()const;
 
 };
 

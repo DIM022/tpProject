@@ -6,69 +6,49 @@ using namespace std;
 
 /**---------------------------------------------------------------------------------------------------*/
 
-//ASEGURA QUE SE ENTRE UNA SOLA VEZ PARA EVITAR SOBRE ESCRITURAS
-int inicioAperturaSocio(vector<socio>& vectorSocio, ifstream& file, int& contRepeS){
-
-
-    //SOLO SE ABRE EL ARCHIVO 1 VEZ
-    //YA QUE SI SELECIONACMOS PARA ACCEDER A SOCIO SIN AVER GUARDAO LAS MODIFICACIONES
-    //SE PIERDEN ESAS MODIFICACIONES Y TIENE EL VECTOR ORIGINAL DE NUEVO
-    if(!contRepeS ){
-
-        //ABRIMOS EL ARCHIVO
-        file = archivo_IO();
-
-        //VERIFICAMOS QUE SE ASIGNO
-        if(file.fail()){
-            //SI NO, IMPRIMOS Y RETORNAMOS
-            cout<< "ERROR AL ABRIR EL ARCHIVO ( MAIN )"<< endl;
-            cout<< "CERRANDO PROGRAMA"<< endl;
-            return 1;
+int buscarIndicePorDNI(const std::vector<socio>& vec, const std::string& dniBuscado) {
+    for (size_t i = 0; i < vec.size(); ++i) {
+        if (vec[i].getdni() == dniBuscado) {
+            return static_cast<int>(i);
         }
-
-        //TOMA LOS DATOS DEL ARCHIVO Y CIERRA ARCHIVO
-        lecturaLinea(vectorSocio, file);
-
-        contRepeS++;
     }
-    return 0;
+    return -1; // No encontrado
 }
 
-/**---------------------------------------------------------------------------------------------------*/
 
-void eliminarSocio(vector <socio>& vector_Socio, int flagDNI){
 
-    //.begin -- apunta al primer elemento del vector
-    //.erase -- se desplaza desde la posicion indicada ( begin ), tantas veces como se especifique el segundo argumento
-    //         elimina esa posicion reducion el vector sin dejar un espacio en blanco
-    vector_Socio.erase(vector_Socio.begin() + flagDNI);
+void eliminarSocio(vector <socio>& vector_Socio, int flagDNIB){
 
+    ///.begin -- apunta al primer elemento del vector
+    ///.erase -- se desplaza desde la posicion indicada, tantas veces como se especifique el segundo argumento
+    ///         elimina esa posicion reducion el vector sin dejar un espacio en blanco
+    vector_Socio.erase(vector_Socio.begin() + flagDNIB);
     cout<< "SOCIO ELIMINADO.."<< endl;
 }
 
-/**---------------------------------------------------------------------------------------------------*/
+/**----------------------------------------------------ssss-----------------------------------------------*/
 
-void agregarSocio(vector <socio>& vectorSocio){
+void agregarSocio(vector <socio>& vector_Socio){
 
     int _posicionA = 0, tam_bytes = 0, contEdad = 0, posChar = 0;
 
     string _apellido, _dni, _genero, _direccion, _numeroT, _edad, _fechaC, _mail;
-    string numCalle, nombreCalle;//VARIABLE AUXILIAR --- LINEA 142
+    string numCalle, nombreCalle;///VARIABLE AUXILIAR --- LINEA 142
 
    bool salir = true;
 
     cout<< "-------------------------"<< endl;
     cout<< "INGRESO DE NUEVO SOCIO"<< endl;
 
-    //NOMBRE
-    //NO DEBE HABER NUMERO / SIGNOS
+    ///NOMBRE
+    ///NO DEBE HABER NUMERO / SIGNOS
     do{
 
         cout<< "NOMBRE: ";
         getline(cin, _apellido);
 
-        //VERIFICAMOS
-        //RETORNA 1 SI HAY UN NUMERO Y 0 SI NO LO HAY
+        ///VERIFICAMOS
+        ///RETORNA 1 SI HAY UN NUMERO Y 0 SI NO LO HAY
         salir = verificarCharString(_apellido);
 
     }while(salir);
@@ -79,21 +59,17 @@ void agregarSocio(vector <socio>& vectorSocio){
         cout<< "DNI: ";
         getline(cin, _dni);
 
-        //VERIFIACAMOS SOLO NUMEROS
-        //TRUE - HAY MAS QUE SOLO NUMEROS
-        //FALSE - SOLO NUMEROS
-        //----
-        //VERIFICAMOS QUE NO HALLA UN DNI EXISTENTE
-        //TRUE - EXISTE
-        //FALSE NO EXISTE
-        salir = verificarNumeroString(_dni);
+        for(size_t i=0; i<_dni.size(); i++){
 
-        if(!salir){
-            //VERIFICAMOS QUE NO HALLA UN DNI EXISTENTE PARA EVITAR ERRORES
-            salir = verificarExistenciaDniSocio(_dni, vectorSocio);
+            if(_dni[i] >= '0' && _dni[i] <= '9'){
+                ///NO HACE NADA
+                salir = false;
 
-            if(salir){
-                cout<< "DNI YA EXISTENTE INGRESAR UN DNI VALIDO"<< endl;
+            }else{
+                cout<< "SOLO SE PERMITE NUMERO"<< endl;
+                i = _dni.size();
+                ///LE ASIGNAMOS TRUE PARA QUE ENTRE AL IF
+                salir = true;
             }
         }
 
@@ -101,22 +77,22 @@ void agregarSocio(vector <socio>& vectorSocio){
 
 /**----    female O male   ----*/
 
-     //female O male
-     //NO DEBE HABER NUMERO / SIGNOS
+     ///female O male
+     ///NO DEBE HABER NUMERO / SIGNOS
     do{
 
         cout<< "GENERO ( MALE O FEMALE ): ";
         cin >> _genero;
         cin.ignore();
 
-        //VERIFICAMOS QUE SOLO HAYA LETRAS VALIDAS ( a - z && A - Z)
-        //FALSE SI SOLO HAY CHARES VALIDOS
+        ///VERIFICAMOS QUE SOLO HAYA LETRAS VALIDAS ( a - z && A - Z)
+        ///FALSE SI SOLO HAY CHARES VALIDOS
         salir = verificarCharString(_genero);
 
-        //PASAMOS EL STRING A MINUSCULA POR LAS DUDAS
+        ///PASAMOS EL STRING A MINUSCULA POR LAS DUDAS
         _genero = a_minusculas(_genero);
 
-        //TIENE QUE SER UNO DE LOS DOS PARA ENTRAR
+        ///TIENE QUE SER UNO DE LOS DOS PARA ENTRAR
         if(_genero != "female" && _genero != "male"){
             cout<< "SOLO INGRESAR FEMALE OR MALE"<< endl;
             salir = true;
@@ -132,15 +108,15 @@ void agregarSocio(vector <socio>& vectorSocio){
     do{
         salir = false;
 
-        //SE INGRESA LA DIRECCION
+        ///SE INGRESA LA DIRECCION
         cout<< "CALLE : ";
         getline(cin, nombreCalle);
 
         salir = verificarCharString(nombreCalle);
 
-        //SI EL STRING ES SOLO CHAR VALIDO RETORNA FALSE PARA TERMINAR EL BUCLE
-        //LO NEGAMOS SI ENTRA ES PORQUE ES SOLO CHAR VALIDO
-        //Y AHORA PEDIMOS LA DIRECCION ( NUMERO )
+        ///SI EL STRING ES SOLO CHAR VALIDO RETORNA FALSE PARA TERMINAR EL BUCLE
+        ///LO NEGAMOS SI ENTRA ES PORQUE ES SOLO CHAR VALIDO
+        ///Y AHORA PEDIMOS LA DIRECCION ( NUMERO )
         if(!salir){
 
             do{
@@ -150,11 +126,11 @@ void agregarSocio(vector <socio>& vectorSocio){
 
                 salir = verificarNumeroString(numCalle);
 
-            //SI ES FALSE NO ITERA MAS
+            ///SI ES FALSE NO ITERA MAS
             }while(salir);
 
         }else{
-            //SE INGRESO UN CARACTER NO VAIDO EN CALLE
+            ///SE INGRESO UN CARACTER NO VAIDO EN CALLE
             cout<< "SOLO SE PERMITE CARACTERES VALIDOS"<< endl;
             salir = true;
         }
@@ -164,30 +140,30 @@ void agregarSocio(vector <socio>& vectorSocio){
 
 /**--------   NUMERO TELEFONICO  ------*/
 
-    // xxx xxx xxx
+    /// xxx xxx xxx
     do{
         cout<< "NUMERO TELEFONICO ( 9 DIGITOS && SIN ESPACIOS ): ";
         getline(cin, _numeroT);
 
         tam_bytes = _numeroT.size();
 
-        //VERIFICAMOS QUE SOLO SE HALLA INGRESAO ) DIGITOS
+        ///VERIFICAMOS QUE SOLO SE HALLA INGRESAO ) DIGITOS
         if(tam_bytes == 9){
 
             salir = verificarNumeroString(_numeroT);
 
-            //TRUE --> NO HAY SOLO NUMEROS
-            //FALSE --> SOLO NUMEROS
+            ///TRUE --> NO HAY SOLO NUMEROS
+            ///FALSE --> SOLO NUMEROS
             if(salir){
                 cout<< "SOLO ESTA PERMITIDO NUMERO"<< endl;
                 salir = true;
 
             }else{
-                //SALIR = FALSE
-                //SI ES VERDADERO
-                //xxx xxx xxx
-                //xxx xxx xxx
-                //CON ESTO SEPARAMOS DE 3 EN 3 EL STRING
+                ///SALIR = FALSE
+                ///SI ES VERDADERO
+                ///xxx xxx xxx
+                ///xxx xxx xxx
+                ///CON ESTO SEPARAMOS DE 3 EN 3 EL STRING
                 _numeroT.insert(3, " ");
                 _numeroT.insert(7, " ");
 
@@ -203,46 +179,43 @@ void agregarSocio(vector <socio>& vectorSocio){
     }while(salir);
 
 /**-------  EDAD    ----*/
-    // > 0 && < 120
+    /// > 0 && < 120
     do{
         cout<< "EDAD: ";
         getline(cin, _edad);
 
-        if(!verificarNumeroString(_edad)){
+        ///CONVERTIMOS LA EDAD DE STRIING A NUMERO PARA VERIFICAR
+        contEdad = stoi(_edad);
 
-            //CONVERTIMOS LA EDAD DE STRIING A NUMERO PARA VERIFICAR
-            contEdad = stoi(_edad);
+        if(contEdad > 0 && contEdad <= 120){
+            ///EDAD VALIDA
+            salir = false;
 
-            if(contEdad > 0 && contEdad <= 120){
-                //EDAD VALIDA
-                salir = false;
-
-            }else{
-                cout<< "EDAD INVALIDA"<< endl;
-                salir = true;
-            }
+        }else{
+            cout<< "EDAD INVALIDA"<< endl;
+            salir = true;
         }
 
     }while(salir);
 
 /**----- FECHA NACIMIENTO   ------*/
 
-    //xx/xx/xxxx
+    ///xx/xx/xxxx
     cout<< "FECHA NACIMIENTO: ";
     getline(cin, _fechaC);
 
 /**-------*/
-    //xxxxxx@xxx
+    ///xxxxxx@xxx
     do{
-        //INGRESO DEL MAIL
+        ///INGRESO DEL MAIL
         cout<< "MAIL: ";
         getline(cin, _mail);
 
-        //SE INGRESA EL MAIL
-        //LEEMOS HASTA EL ARROBA Y VERIFICAMOS SOLO LETRAS Y/O NUMEROS
+        ///SE INGRESA EL MAIL
+        ///LEEMOS HASTA EL ARROBA Y VERIFICAMOS SOLO LETRAS Y/O NUMEROS
         posChar = _mail.find("@");
 
-        if(_mail[posChar] == '@'){
+        if(posChar != 0){
 
             for(int i=0; i<posChar; i++){
 
@@ -264,22 +237,20 @@ void agregarSocio(vector <socio>& vectorSocio){
     }while(salir);
 /**-----*/
 
-    //LE ASIGNAMOS LA POSICION IDENTIFICATORIA AL SOCIO
-    _posicionA = vectorSocio.size();
+    ///LE ASIGNAMOS LA POSICION IDENTIFICATORIA AL SOCIO
+    _posicionA = vector_Socio.size();
 
-    //LE PASAMOS TODOS ESOS DATOS A VECTOR QUE DE FORMA DINAMICA ALMACENA A LO ULTIMO EL NUEVO OBJETO SOCIO
-    vectorSocio.push_back(socio(_apellido, _dni, _genero, _direccion, _numeroT, _edad, _fechaC, _mail, _posicionA) );
-
+    ///LE PASAMOS TODOS ESOS DATOS A VECTOR QUE DE FORMA DINAMICA ALMACENA A LO ULTIMO EL NUEVO OBJETO SOCIO
+     vector_Socio.push_back(socio(_apellido, _dni, _genero, _direccion, _numeroT, _edad, _fechaC, _mail, _posicionA) );
 
 }
 
 /**---------------------------------------------------------------------------------------------------*/
 
-//MODIFICA EL VECTOR Y EN LA FUNCION < subirCambios > SOBREESCRIBIMOS EL ARCHIVO CON EL VECTOR
+///MODIFICA EL VECTOR Y EN LA FUNCION < subirCambios > SOBREESCRIBIMOS EL ARCHIVO CON EL VECTOR
+void modificar_Socio(vector <socio>& vector_Socio, int flagDNIB){
 
-void modificarSocio(vector <socio>& vector_Socio, int flagDNI){
-
-    string nuevoValor;//ALMACENA EL NUEVO VALOR
+    string nuevoValor;///ALMACENA EL NUEVO VALOR
     int posDato = 0;
     bool salir = true;
 
@@ -289,7 +260,7 @@ void modificarSocio(vector <socio>& vector_Socio, int flagDNI){
             << "5-TELEFONO  6-EDAD  7-FECHA NACIMIENTO  8-MAIL   9-SALIR>> ";
         cin >> posDato;
 
-        //IGNORA EL ENTER PARA EVITAR LEERLO
+        ///IGNORA EL ENTER PARA EVITAR LEERLO
         cin.ignore();
 
         if(posDato == 9){
@@ -300,8 +271,8 @@ void modificarSocio(vector <socio>& vector_Socio, int flagDNI){
             cout<< "INGRESE EL NUEVO VALOR : ";
             getline(cin, nuevoValor);
 
-            //PARAMETROS : EL VALOR NUEVO, Y LA OPCION DEL DATO A CAMBIAR
-            vector_Socio[flagDNI].setDato(nuevoValor, posDato);
+            ///PARAMETROS : EL VALOR NUEVO, Y LA OPCION DEL DATO A CAMBIAR
+            vector_Socio[flagDNIB].setDato(nuevoValor, posDato);
 
         }else{
             cout<< "OPCION INVALIDA < MENU MODIFCAR ( FUNCION ) >"<< endl;
@@ -312,38 +283,38 @@ void modificarSocio(vector <socio>& vector_Socio, int flagDNI){
 
 /**---------------------------------------------------------------------------------------------------*/
 
-//TOMA LA LINEA DEL ARCHIVO Y LO PLASMA EN VARIABLES
+///TOMA LA LINEA DEL ARCHIVO Y LO PLASMA EN VARIABLES
 void lecturaLinea(vector <socio>& vector_Socio, ifstream& file){
 
-    int _posicionA = 0;//INDICA EN QUE POSICION ( LINEA ) DEL ARCHIVO SE ENCUENTRA
-    int contDato = 1;//PARA IDENTIFICAR EN QUE TIPO DE DATO ESTAMOS
+    int _posicionA = 0;///INDICA EN QUE POSICION ( LINEA ) DEL ARCHIVO SE ENCUENTRA
+    int contDato = 1;///PARA IDENTIFICAR EN QUE TIPO DE DATO ESTAMOS
     int indice = 0;
 
-    string lineaDato;//es donde guardaremos los datos tomados del archivo
+    string lineaDato;///es donde guardaremos los datos tomados del archivo
     string _apellido, _dni, _genero, _direccion, _numeroT, _edad, _fechaC, _mail;
 
-    //TOMA LA LINEA DE DATOS HASTA QUE FINALIZA Y DEVULVE FALSE
+    ///TOMA LA LINEA DE DATOS HASTA QUE FINALIZA Y DEVULVE FALSE
      while(getline(file, lineaDato)){
 
-        //ITERAMOS HASTA EL FINAL DEL STRING ( LINEA )
+        ///ITERAMOS HASTA EL FINAL DEL STRING ( LINEA )
         while(lineaDato[indice] != '\0'){
 
-            //SI ENCEUNTRA UNA < , > LO SALTEA
+            ///SI ENCEUNTRA UNA < , > LO SALTEA
             if(lineaDato[indice] == ','){
 
-                //PASAMOS AL SIGUITE DATO
+                ///PASAMOS AL SIGUITE DATO
                 contDato++;
 
-                //PASAMOS AL SIGUIETE INDICE
+                ///PASAMOS AL SIGUIETE INDICE
                 indice++;
 
-            //SALTEAMOS LAS COMILLAS
+            ///SALTEAMOS LAS COMILLAS
             }else if(lineaDato[indice] == '"'){
                 indice++;
 
             }else{
 
-                //RECORREMOS CADA DATO GUARDANDO CHAR X CHAR HASTA TERMINAR DE RECORRERLO
+                ///RECORREMOS CADA DATO GUARDANDO CHAR X CHAR HASTA TERMINAR DE RECORRERLO
                 if(contDato == 1){
 
                     _apellido += lineaDato[indice];
@@ -379,12 +350,12 @@ void lecturaLinea(vector <socio>& vector_Socio, ifstream& file){
                 }
             }
 
-        }//FIN WHILE QUE RECORRE HASTA UN ' \0 '
+        }///FIN WHILE QUE RECORRE HASTA UN ' \0 '
 
-        //SE AGREGA DE FORMA DINAMICA UN NUEVO ESPACIO DE VECTOR CON LO QUE INICILIAZAMOS ESOS VALORES TOMADOS
+        ///SE AGREGA DE FORMA DINAMICA UN NUEVO ESPACIO DE VECTOR CON LO QUE INICILIAZAMOS ESOS VALORES TOMADOS
         vector_Socio.push_back(socio(_apellido, _dni, _genero, _direccion, _numeroT, _edad, _fechaC, _mail, _posicionA));
 
-        //LIMPIAMOS LOS STRING PARA EVITAR SOBREESCRIBIR LOS DATOS UNOS SOBRE OTROS
+        ///LIMPIAMOS LOS STRING PARA EVITAR SOBREESCRIBIR LOS DATOS UNOS SOBRE OTROS
         lineaDato.clear();
         _apellido.clear();
         _dni.clear();
@@ -395,32 +366,14 @@ void lecturaLinea(vector <socio>& vector_Socio, ifstream& file){
         _fechaC.clear();
         _mail.clear();
 
-        //MODIFICAMOS VARIABLES PARA CADA LINEA NUEVA
+        ///MODIFICAMOS VARIABLES PARA CADA LINEA NUEVA
         indice=0;
         contDato = 1;
         _posicionA++;
      }
 
-     //CERRAMOS EL ARACHIVO
+     ///CERRAMOS EL ARACHIVO
      file.close();
-}
-
-/**---------------------------------------------------------------------------------------------------*/
-
-bool verificarExistenciaDniSocio(string _string, vector <socio>& vectorSocio){
-
-    //RECORRE TODO EL VECTOR SOCIO
-    for(size_t i=0; i<vectorSocio.size(); i++){
-
-        //SI ENCUENTRA UNA COINCIDENCIA ENTRA
-        if(_string == vectorSocio[i].getdni() ){
-            i = vectorSocio.size();
-            return true;
-        }
-    }
-
-    //EN CASO DE ENCNTRAR NADA RETORNAMOS FALSE
-    return false;
 }
 
 /**---------------------------------------------------------------------------------------------------*/

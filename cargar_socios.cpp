@@ -28,17 +28,6 @@ vector<socio> cargarSocio(string nombre_archivo) {
 
         getline(stream, apellido, limitador);
         getline(stream, dni, limitador);
-<<<<<<< HEAD
-    
-        while (!dni.empty() && isspace(dni.back())) {//isspace devuelve true si es ' ', \n, \t, \r
-        dni.pop_back();//elimina el ultimo caracter
-    }
-        while (!dni.empty() && isspace(dni.front())) {
-        dni.erase(dni.begin());//begin, el primer elemento, lo borramos con erase
-}
-
-=======
->>>>>>> MenuPrestamos
         getline(stream, sexo, limitador);
         getline(stream, direccion, limitador);
         direccion = borrar_comillas(direccion);
